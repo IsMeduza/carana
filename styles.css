@@ -302,6 +302,8 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   line-height: 1;
   user-select: none;
   white-space: nowrap;
+  position: relative;
+  z-index: 1001;
   transition: opacity 0.2s ease;
 }
 .nav-logo:hover {
@@ -372,8 +374,38 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   width: 44px !important;
   height: 44px !important;
 }
-.nav-burger { display: none; flex-direction: column; gap: 5px; padding: 12px; }
-.nav-burger span { width: 22px; height: 2px; background: var(--ink); }
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-radius: 14px;
+  background-color: var(--ink);
+  box-shadow: inset -10px -10px 20px 0px rgba(255, 255, 255, 0.18);
+  cursor: pointer;
+  z-index: 1001;
+  position: relative;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+.nav-burger span {
+  width: 18px;
+  height: 2px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  display: block;
+  transform-origin: center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+.nav-burger.active span:nth-child(1) {
+  transform: translateY(4px) rotate(45deg);
+}
+.nav-burger.active span:nth-child(2) {
+  transform: translateY(-4px) rotate(-45deg);
+}
 
 /* ============ HERO (100VW DE PUNTA A PUNTA) ============ */
 .hero {
@@ -2313,6 +2345,22 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
 .reveal-delay-4 { transition-delay: 0.38s; }
 .reveal-delay-5 { transition-delay: 0.48s; }
 
+/* Car Card Dynamic Filter Animation */
+@keyframes carFilterIn {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.car-card.filter-animate {
+  animation: carFilterIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 /* ============ CAR DETAIL PAGE STYLES (FRAMER REPLICA) ============ */
 .car-hero-section {
   padding: 130px 32px 50px;
@@ -2457,7 +2505,7 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
 .floating-price-box,
 .floating-price-row {
   background: #ffffff;
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 4px;
   display: flex;
   align-items: center;
@@ -2481,7 +2529,7 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
 }
 .floating-spec-item {
   background: #ffffff;
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 4px;
   display: flex;
   align-items: center;
@@ -2911,6 +2959,7 @@ html.js.loaded .car-hero-section .reveal-head,
 html.js.loaded .car-hero-section .reveal-card {
   opacity: 1;
   transform: none;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ============ TRADE-IN (ENTREGA TU COCHE) PAGE STYLES ============ */
@@ -4299,22 +4348,171 @@ a.dealership-info-val:hover {
   .services-left h2 { margin-bottom: 80px; }
   .services, .team, .blog, .faq { gap: 40px; }
 }
+body.menu-open {
+  overflow: hidden !important;
+  touch-action: none;
+}
+.mobile-nav-actions {
+  display: none !important;
+}
 @media (max-width: 900px) {
-  .nav-links {
-    position: fixed;
-    top: 70px;
-    left: 12px;
-    right: 12px;
-    flex-direction: column;
-    background: #fff;
-    border-radius: var(--r);
-    padding: 16px;
-    box-shadow: 0 16px 40px rgba(0,0,0,.15);
+  .nav-burger {
+    display: flex;
+  }
+  .nav-right .btn {
     display: none;
   }
-  .nav-links.open { display: flex; }
-  .nav-burger { display: flex; }
-  .nav-right .btn { display: none; }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background: var(--bg);
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 84px 24px 32px;
+    box-sizing: border-box;
+    z-index: 998;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    
+    /* Animation: slide down when opening, slide up when closing */
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.3s ease,
+                visibility 0.45s;
+  }
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .nav-links .nav-link,
+  .nav-links a:not(.mobile-icon-btn):not(.btn) {
+    background: #ffffff;
+    color: var(--ink);
+    border-radius: 16px;
+    padding: 0 28px;
+    height: 48px;
+    font-size: 15.5px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: 130px;
+    max-width: 90%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+    text-align: center;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  .nav-links .nav-link:hover,
+  .nav-links a:not(.mobile-icon-btn):not(.btn):hover {
+    background: #f7f7f7;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  }
+  .nav-links .nav-link:active,
+  .nav-links a:not(.mobile-icon-btn):not(.btn):active {
+    background: #ebebeb;
+    transform: scale(0.98);
+  }
+  .nav-links a::after {
+    display: none;
+  }
+  
+  .mobile-nav-actions {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-top: 10px;
+    width: 100%;
+  }
+  .mobile-nav-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .mobile-icon-btn,
+  .nav-links a.mobile-icon-btn {
+    width: 52px !important;
+    height: 52px !important;
+    min-width: 52px !important;
+    max-width: 52px !important;
+    padding: 0 !important;
+    border-radius: 16px !important;
+    background: #000000 !important;
+    background-color: #000000 !important;
+    box-shadow: inset -10px -10px 20px 0px rgba(255, 255, 255, 0.22) !important;
+    color: #ffffff !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: none !important;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  .mobile-icon-btn:hover,
+  .nav-links a.mobile-icon-btn:hover {
+    background-color: #1a1a1a !important;
+    box-shadow: inset -10px -10px 20px 0px rgba(255, 255, 255, 0.25) !important;
+  }
+  .mobile-icon-btn:active,
+  .nav-links a.mobile-icon-btn:active {
+    transform: scale(0.96) !important;
+  }
+  .mobile-icon-btn svg,
+  .nav-links a.mobile-icon-btn svg {
+    width: 20px !important;
+    height: 20px !important;
+    stroke: #ffffff !important;
+    color: #ffffff !important;
+  }
+  .mobile-contact-btn,
+  .nav-links a.mobile-contact-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+    height: 52px !important;
+    padding: 4px 4px 4px 24px !important;
+    border-radius: 16px !important;
+    font-size: 15.5px !important;
+    font-weight: 600 !important;
+    background: #000000 !important;
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18), inset -10px -10px 20px 0px rgba(255, 255, 255, 0.14) !important;
+    transition: transform 0.2s ease, background-color 0.2s ease !important;
+    width: auto !important;
+    min-width: 175px !important;
+  }
+  .mobile-contact-btn:hover,
+  .nav-links a.mobile-contact-btn:hover {
+    background-color: #1a1a1a !important;
+  }
+  .mobile-contact-btn:active,
+  .nav-links a.mobile-contact-btn:active {
+    transform: scale(0.98) !important;
+  }
+  .mobile-contact-btn .btn-chip {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 12px !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
   .section-head { flex-direction: column; gap: 24px; }
   .car-grid { grid-template-columns: 1fr; }
   .testi-grid { flex-direction: column; align-items: stretch; }

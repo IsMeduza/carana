@@ -121,6 +121,21 @@
   }
 
   function observeReveals() {
+    // Auto-stagger grids without explicit delays so all pages animate like home
+    const gridSelectors = [
+      '.car-grid', '.services-grid', '.team-cards', '.blog-cards',
+      '.about-stats-grid', '.about-team-grid', '.steps-grid',
+      '.trade-features-grid', '.dealership-grid', '.blog-full-grid',
+      '.related-grid', '.specs-cards-grid', '.inv-grid'
+    ];
+    document.querySelectorAll(gridSelectors.join(', ')).forEach((grid) => {
+      const cards = grid.querySelectorAll('.reveal-card:not([class*="reveal-delay-"])');
+      cards.forEach((card, idx) => {
+        const delayIdx = (idx % 4) + 1;
+        card.classList.add(`reveal-delay-${delayIdx}`);
+      });
+    });
+
     if (!revealObserver) return;
     const elements = document.querySelectorAll(
       '.reveal-head:not(.in), .reveal-card:not(.in), .reveal-fade:not(.in), [data-reveal]:not(.in)'
@@ -135,33 +150,88 @@
 
     if (!burger || !navLinks) return;
 
-    burger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      navLinks.classList.toggle('open');
-      burger.classList.toggle('active');
-    });
+    // Ensure mobile actions (location, phone, contact button) exist in navLinks
+    if (!navLinks.querySelector('.mobile-nav-actions')) {
+      const actions = document.createElement('div');
+      actions.className = 'mobile-nav-actions';
+      actions.innerHTML = `
+        <div class="mobile-nav-icons">
+          <a href="contacto.html#map" class="mobile-icon-btn" aria-label="Ubicación">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </a>
+          <a href="tel:+34900000000" class="mobile-icon-btn" aria-label="Teléfono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </a>
+        </div>
+        <a class="btn btn-dark mobile-contact-btn" href="contacto.html">
+          <span>Contactar</span>
+          <span class="btn-chip btn-chip-light">
+            <span class="btn-arrow-wrap">
+              <span class="btn-arrow-track">
+                <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                </svg>
+                <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                </svg>
+              </span>
+            </span>
+          </span>
+        </a>
+      `;
+      navLinks.appendChild(actions);
+    }
 
-    // Close when clicking a link
-    navLinks.querySelectorAll('a').forEach((a) => {
-      a.addEventListener('click', () => {
+    function toggleMenu(forceState) {
+      const isCurrentlyOpen = navLinks.classList.contains('open');
+      const shouldOpen = forceState !== undefined ? forceState : !isCurrentlyOpen;
+
+      if (shouldOpen) {
+        navLinks.classList.add('open');
+        burger.classList.add('active');
+        document.body.classList.add('menu-open');
+        if (window.lenis && typeof window.lenis.stop === 'function') {
+          window.lenis.stop();
+        }
+      } else {
         navLinks.classList.remove('open');
         burger.classList.remove('active');
-      });
+        document.body.classList.remove('menu-open');
+        if (window.lenis && typeof window.lenis.start === 'function') {
+          window.lenis.start();
+        }
+      }
+    }
+
+    burger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    // Close when clicking any link inside navLinks
+    navLinks.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (link) {
+        toggleMenu(false);
+      }
     });
 
     // Close when clicking outside
     document.addEventListener('click', (e) => {
       if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && !burger.contains(e.target)) {
-        navLinks.classList.remove('open');
-        burger.classList.remove('active');
+        toggleMenu(false);
       }
     });
 
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && navLinks.classList.contains('open')) {
-        navLinks.classList.remove('open');
-        burger.classList.remove('active');
+        toggleMenu(false);
       }
     });
   }
@@ -315,8 +385,21 @@
     }
 
     requestAnimationFrame(() => {
+      document.documentElement.classList.add('js');
       setTimeout(() => {
         document.documentElement.classList.add('loaded');
+
+        // Coordinate in-view reveals smoothly on page load
+        const inViewElements = document.querySelectorAll(
+          '.reveal-head:not(.in), .reveal-card:not(.in), .reveal-fade:not(.in), [data-reveal]:not(.in)'
+        );
+        inViewElements.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.height > 0 && rect.width > 0 && rect.top < window.innerHeight + 80 && rect.bottom > 0) {
+            el.classList.add('in');
+            if (revealObserver) revealObserver.unobserve(el);
+          }
+        });
       }, 50);
     });
   }

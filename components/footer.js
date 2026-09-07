@@ -10,7 +10,7 @@ const footerTemplate = `
         <h2 class="reveal-head">¿Listo para probar<br>tu coche soñado?</h2>
         <p class="section-sub reveal-head reveal-delay-1">Vehículos de lujo seleccionados de las marcas más prestigiosas del mundo desde 2010</p>
         <div class="footer-ctas">
-          <a class="btn btn-dark" href="contact.html">
+          <a class="btn btn-dark" href="contacto.html">
             <span>Contactar</span>
             <span class="btn-chip btn-chip-light">
               <span class="btn-arrow-wrap">
@@ -41,13 +41,13 @@ const footerTemplate = `
       <div class="footer-nav">
         <nav class="footer-col">
           <a href="index.html">Inicio</a>
-          <a href="inventory.html">Inventario</a>
-          <a href="trade-in.html">Entrega tu coche</a>
-          <a href="financing.html">Financiación</a>
+          <a href="inventario.html">Inventario</a>
+          <a href="entrega-tu-coche.html">Entrega tu coche</a>
+          <a href="financiacion.html">Financiación</a>
         </nav>
         <nav class="footer-col">
-          <a href="about-us.html">Sobre nosotros</a>
-          <a href="contact.html">Contacto</a>
+          <a href="sobre-nosotros.html">Sobre nosotros</a>
+          <a href="contacto.html">Contacto</a>
           <a href="blog.html">Blog</a>
         </nav>
       </div>
@@ -60,11 +60,11 @@ const footerTemplate = `
     <div class="footer-bottom">
       <p class="footer-copyright">© 2026 EVO MOVE - TODOS LOS DERECHOS RESERVADOS</p>
       <div class="footer-legal">
-        <a href="terms-conditions.html">Términos y condiciones</a>
+        <a href="terminos-y-condiciones.html">Términos y condiciones</a>
         <span class="footer-legal-sep">|</span>
-        <a href="privacy-policy.html">Política de privacidad</a>
+        <a href="politica-de-privacidad.html">Política de privacidad</a>
         <span class="footer-legal-sep">|</span>
-        <a href="cookie-policy.html">Política de cookies</a>
+        <a href="politica-de-cookies.html">Política de cookies</a>
       </div>
     </div>
   </div>

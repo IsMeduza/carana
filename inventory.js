@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentCategory = 'all';
 
   // Function to filter cars
-  function applyFilters() {
+  function applyFilters(isUserAction = false) {
     const searchTerm = (searchInput ? searchInput.value.trim().toLowerCase() : '');
     const selectedMake = (makeSelect ? makeSelect.value : 'all');
     const selectedCondition = (conditionSelect ? conditionSelect.value : 'all');
@@ -127,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     let visibleCount = 0;
+    const newlyVisibleCards = [];
 
     carCards.forEach(card => {
       const name = (card.dataset.name || '').toLowerCase();
@@ -173,13 +174,34 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isVisible) {
         card.style.display = '';
         visibleCount++;
+        newlyVisibleCards.push(card);
       } else {
         card.style.display = 'none';
+        card.classList.remove('in');
       }
     });
 
     if (noResults) {
       noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    // When filtering is triggered by user interaction, animate all matching cards smoothly
+    if (isUserAction && newlyVisibleCards.length > 0) {
+      newlyVisibleCards.forEach((card, idx) => {
+        card.classList.remove('filter-animate');
+        card.style.animationDelay = `${(idx % 6) * 0.08}s`;
+      });
+
+      // Force reflow to guarantee CSS keyframe animation triggers
+      void newlyVisibleCards[0].offsetWidth;
+
+      newlyVisibleCards.forEach(card => {
+        card.classList.add('filter-animate', 'in');
+      });
+    }
+
+    if (window.EVO && typeof window.EVO.refreshReveals === 'function') {
+      window.EVO.refreshReveals();
     }
   }
 
@@ -189,33 +211,33 @@ document.addEventListener('DOMContentLoaded', () => {
       categoryPills.forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
       currentCategory = pill.dataset.cat || 'all';
-      applyFilters();
+      applyFilters(true);
     });
   });
 
   // --- Event Listeners for Live Inputs ---
   if (searchInput) {
-    searchInput.addEventListener('input', applyFilters);
+    searchInput.addEventListener('input', () => applyFilters(true));
   }
 
   if (makeSelect) {
-    makeSelect.addEventListener('change', applyFilters);
+    makeSelect.addEventListener('change', () => applyFilters(true));
   }
 
   if (conditionSelect) {
-    conditionSelect.addEventListener('change', applyFilters);
+    conditionSelect.addEventListener('change', () => applyFilters(true));
   }
 
   if (yearInput) {
-    yearInput.addEventListener('input', applyFilters);
+    yearInput.addEventListener('input', () => applyFilters(true));
   }
 
   if (mileageInput) {
-    mileageInput.addEventListener('input', applyFilters);
+    mileageInput.addEventListener('input', () => applyFilters(true));
   }
 
   priceCheckboxes.forEach(cb => {
-    cb.addEventListener('change', applyFilters);
+    cb.addEventListener('change', () => applyFilters(true));
   });
 
   // --- Clear Filters Button ---
@@ -256,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.history.replaceState({}, '', url);
       }
 
-      applyFilters();
+      applyFilters(true);
     });
   }
 

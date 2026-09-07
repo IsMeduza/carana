@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario | EVO MOVE - Concesionario de lujo</title>
+  <meta name="description" content="Explora nuestra colección exclusiva de vehículos premium y de alto rendimiento.">
+  
+  <link rel="preload" href="assets/fonts/SpaceGrotesk-500.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/SpaceGrotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="assets/lenis.min.js"></script>
+  <script src="assets/vendor/lucide.min.js"></script>
+</head>
+<body>
+  <!-- ============ NAV HEADER ============ -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html" aria-label="Home">EVO MOVE</a>
+      <nav class="nav-links" id="navLinks">
+        <a class="nav-link active" href="inventario.html">Inventario</a>
+        <a class="nav-link" href="entrega-tu-coche.html">Entrega tu coche</a>
+        <a class="nav-link" href="financiacion.html">Financiación</a>
+        <a class="nav-link" href="sobre-nosotros.html">Sobre nosotros</a>
+        <a class="nav-link" href="contacto.html">Contacto</a>
+      </nav>
+      <div class="nav-right">
+        <a class="btn btn-dark" href="contacto.html">
+          <span>Ventas</span>
+          <span class="btn-chip btn-chip-light">
+            <span class="btn-arrow-wrap">
+              <span class="btn-arrow-track">
+                <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                </svg>
+                <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                </svg>
+              </span>
+            </span>
+          </span>
+        </a>
+        <button class="nav-burger" id="navBurger" aria-label="Menú">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ INVENTORY HERO (COMPACT, NO GIANT VOID) ============ -->
+  <section class="inv-hero">
+    <div class="inv-hero-top reveal-head">
+      <h1>Encuentra hoy tu coche perfecto y condúcelo mañana</h1>
+    </div>
+    <div class="inv-hero-bottom">
+      <div class="inv-hero-left reveal-card reveal-delay-1">
+        <p>Vehículos de lujo seleccionados de las marcas más prestigiosas del mundo, inspeccionados rigurosamente y listos para su entrega inmediata.</p>
+        <a class="btn btn-dark" href="#catalog">
+          <span>Ver inventario</span>
+          <span class="btn-chip btn-chip-light">
+            <span class="btn-arrow-wrap">
+              <span class="btn-arrow-track">
+                <i data-lucide="arrow-right" class="arrow-svg"></i>
+                <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
+              </span>
+            </span>
+          </span>
+        </a>
+      </div>
+      <div class="inv-hero-stats">
+        <div class="stat-card reveal-card reveal-delay-1">
+          <span class="stat-icon">
+            <i data-lucide="gem"></i>
+          </span>
+          <span class="stat-text"><strong>25+</strong><small>Marca de lujo</small></span>
+        </div>
+        <div class="stat-card reveal-card reveal-delay-2">
+          <span class="stat-icon">
+            <i data-lucide="box"></i>
+          </span>
+          <span class="stat-text"><strong>100+</strong><small>Coches disponibles</small></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CATALOG & FILTERS SECTION ============ -->
+  <section class="inv-section" id="catalog">
+    <div class="inv-layout">
+      <!-- FILTERS SIDEBAR -->
+      <aside class="filters-sidebar reveal-card reveal-delay-1">
+        <div class="filters-header reveal-card reveal-delay-1">
+          <span class="filters-title">Filters</span>
+          <button class="filters-clear-btn" id="clearFiltersBtn" type="button">Limpiar</button>
+        </div>
+
+        <!-- SEARCH INPUT -->
+        <div class="filter-search-box reveal-card reveal-delay-1">
+          <span class="filter-search-icon">
+            <i data-lucide="search"></i>
+          </span>
+          <input class="filter-search-input" id="filterSearchInput" type="text" placeholder="Search Car..." autocomplete="off">
+        </div>
+
+        <!-- MAKE SELECT (CUSTOM DROPDOWN) -->
+        <div class="filter-group reveal-card reveal-delay-2">
+          <label class="filter-label" id="labelMake">Make</label>
+          <div class="custom-dropdown" id="dropdownMake" data-select="filterMake" data-lenis-prevent>
+            <button type="button" class="custom-dropdown-trigger" id="btnDropdownMake" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="labelMake btnDropdownMake">
+              <span class="custom-dropdown-value">All</span>
+              <span class="select-arrow">
+                <i data-lucide="chevron-down"></i>
+              </span>
+            </button>
+            <div class="custom-dropdown-menu" role="listbox" data-lenis-prevent>
+              <div class="custom-dropdown-option selected" data-value="all" role="option" aria-selected="true">
+                <span>All</span>
+                <i data-lucide="check" class="opt-check"></i>
+              </div>
+              <div class="custom-dropdown-option" data-value="Aston Martin" role="option">
+                <span>Aston Martin</span>
+                <i data-lucide="check" class="opt-check"></i>
+              </div>
+              <div class="custom-dropdown-option" data-value="Audi" role="option">
+                <span>Audi</span>
+                <i data-lucide="check" class="opt-check"></i>
+              </div>
+              <div class="custom-dropdown-option" data-value="BMW" role="option">
+                <span>BMW</span>
+                <i data-lucide="check" class="opt-check"></i>
+              </div>
+              <div class="custom-dropdown-option" data-value="Lamborghini" role="option">
+                <span>Lamborghini</span>
+                <i data-lucide="check" class="opt-check"></i>
+              </div>
+              <div class="custom-dropdown-option" data-value="Land Rover" role="option">
+                <span>Land Rover</span>
+                <i data-lucide="check" class="opt-check"></i>
+              </div>
+              <div class="custom-dropdown-option" data-value="McLaren" role="option">
+                <span>McLaren</span>
+                <i data-lucide="check" class="opt-check"></i>
+              </div>
+              <div class="custom-dropdown-option" data-value="Mercedes-Benz" role="option">
+                <span>Mercedes-Benz</span>
+                <i data-lucide="check" class="opt-check"></i>
+              </div>
+              <div class="custom-dropdown-option" data-value="Porsche" role="option">
+                <span>Porsche</span>
+                <i data-lucide="check" class="opt-check"></i>
+              </div>
+            </div>
+            <!-- Visually hidden native select for full filtering compatibility -->
+            <select class="visually-hidden-select" id="filterMake" tabindex="-1" aria-hidden="true">
+              <option value="all">All</option>
+              <option value="Aston Martin">Aston Martin</option>
+              <option value="Audi">Audi</option>
+              <option value="BMW">BMW</option>
+              <option value="Lamborghini">Lamborghini</option>
+              <option value="Land Rover">Land Rover</option>
+              <option value="McLaren">McLaren</option>
+              <option value="Mercedes-Benz">Mercedes-Benz</option>
+              <option value="Porsche">Porsche</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- CONDITION SELECT (CUSTOM DROPDOWN) -->
+        <div class="filter-group reveal-card reveal-delay-2">
+          <label class="filter-label" id="labelCondition">Condition</label>
+          <div class="custom-dropdown" id="dropdownCondition" data-select="filterCondition" data-lenis-prevent>
+            <button type="button" class="custom-dropdown-trigger" id="btnDropdownCondition" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="labelCondition btnDropdownCondition">
+              <span class="custom-dropdown-value">All</span>
+              <span class="select-arrow">
+                <i data-lucide="chevron-down"></i>
+              </span>
+            </button>
+            <div class="custom-dropdown-menu" role="listbox" data-lenis-prevent>
+              <div class="custom-dropdown-option selected" data-value="all" role="option" aria-selected="true">
+                <span>All</span>
+                <i data-lucide="check" class="opt-check"></i>
+              </div>
+              <div class="custom-dropdown-option" data-value="Nuevo" role="option">
+                <span>Nuevo</span>
+                <i data-lucide="check" class="opt-check"></i>
+              </div>
+              <div class="custom-dropdown-option" data-value="De ocasión" role="option">
+                <span>De ocasión</span>
+                <i data-lucide="check" class="opt-check"></i>
+              </div>
+            </div>
+            <!-- Visually hidden native select for full filtering compatibility -->
+            <select class="visually-hidden-select" id="filterCondition" tabindex="-1" aria-hidden="true">
+              <option value="all">All</option>
+              <option value="Nuevo">Nuevo</option>
+              <option value="De ocasión">De ocasión</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- YEAR & MILEAGE -->
+        <div class="filter-row-inputs reveal-card reveal-delay-3">
+          <div class="filter-group">
+            <label class="filter-label" for="filterYear">Year</label>
+            <input class="filter-input-small" id="filterYear" type="number" placeholder="Year..." min="2010" max="2026">
+          </div>
+          <div class="filter-group">
+            <label class="filter-label" for="filterMileage">Max Mileage</label>
+            <input class="filter-input-small" id="filterMileage" type="number" placeholder="Max..." min="0" step="1000">
+          </div>
+        </div>
+
+        <!-- PRICE RANGE CHECKBOXES (PRO CUSTOM DESIGN) -->
+        <div class="filter-group reveal-card reveal-delay-3">
+          <span class="filter-label">Rango de precios</span>
+          <div class="filter-checkboxes">
+            <label class="filter-check-item">
+              <input type="checkbox" name="priceRange" value="50-100">
+              <span class="custom-checkbox">
+                <i data-lucide="check" class="check-icon"></i>
+              </span>
+              <span>50k-100k</span>
+            </label>
+            <label class="filter-check-item">
+              <input type="checkbox" name="priceRange" value="100-200">
+              <span class="custom-checkbox">
+                <i data-lucide="check" class="check-icon"></i>
+              </span>
+              <span>100k-200k</span>
+            </label>
+            <label class="filter-check-item">
+              <input type="checkbox" name="priceRange" value="200+">
+              <span class="custom-checkbox">
+                <i data-lucide="check" class="check-icon"></i>
+              </span>
+              <span>más de 200k</span>
+            </label>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN CARS CONTENT -->
+      <main class="inv-main">
+        <!-- CATEGORY TABS (SPAN FULL WIDTH) -->
+        <div class="category-tabs reveal-head reveal-delay-1" id="categoryTabs">
+          <button class="cat-pill active reveal-head reveal-delay-1" data-cat="all" type="button">All</button>
+          <button class="cat-pill reveal-head reveal-delay-2" data-cat="suv" type="button">SUV</button>
+          <button class="cat-pill reveal-head reveal-delay-3" data-cat="coupe" type="button">Coupé</button>
+          <button class="cat-pill reveal-head reveal-delay-4" data-cat="descapotable" type="button">Descapotable</button>
+          <button class="cat-pill reveal-head reveal-delay-5" data-cat="familiar" type="button">Familiar</button>
+        </div>
+
+        <!-- CARS GRID -->
+        <div class="inv-grid" id="invGrid">
+          <!-- CAR 1: Veltora Seryn -->
+          <a class="car-card reveal-card reveal-delay-1" href="coche.html?car=veltora-e1"
+             data-name="Veltora Seryn"
+             data-make="Audi"
+             data-category="familiar"
+             data-condition="Nuevo"
+             data-year="2024"
+             data-price="119500"
+             data-mileage="4200">
+            <div class="car-img">
+              <img src="assets/img/car-veltora.png" alt="Audi RS6 Avant, gris con llantas negras" loading="lazy">
+              <div class="corner-cutout corner-cutout--bottom-right car-cutout">
+                <span class="cutout-btn car-arrow">
+                  <span class="btn-arrow-wrap">
+                    <span class="btn-arrow-track">
+                      <i data-lucide="arrow-right" class="arrow-svg"></i>
+                      <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="car-info">
+              <div class="car-row"><span class="car-name">Veltora Seryn</span><span class="car-price">$119,500</span></div>
+              <div class="car-row"><span class="car-meta">2024</span><span class="car-meta"></span></div>
+            </div>
+          </a>
+
+          <!-- CAR 2: Krynox ZR-9 -->
+          <a class="car-card reveal-card reveal-delay-2" href="coche.html?car=krynox-gt"
+             data-name="Krynox ZR-9"
+             data-make="McLaren"
+             data-category="descapotable"
+             data-condition="De ocasión"
+             data-year="2023"
+             data-price="299000"
+             data-mileage="1800">
+            <div class="car-img">
+              <img src="assets/img/car-krynox.png" alt="McLaren 720S Spider deportivo descapotable naranja" loading="lazy">
+              <div class="corner-cutout corner-cutout--bottom-right car-cutout">
+                <span class="cutout-btn car-arrow">
+                  <span class="btn-arrow-wrap">
+                    <span class="btn-arrow-track">
+                      <i data-lucide="arrow-right" class="arrow-svg"></i>
+                      <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="car-info">
+              <div class="car-row"><span class="car-name">Krynox ZR-9</span><span class="car-price">$299,000</span></div>
+              <div class="car-row"><span class="car-meta">2023</span><span class="car-meta">Exclusivo</span></div>
+            </div>
+          </a>
+
+          <!-- CAR 3: Dreznak Karov -->
+          <a class="car-card reveal-card reveal-delay-1" href="coche.html?car=dreznak-karov"
+             data-name="Dreznak Karov"
+             data-make="Land Rover"
+             data-category="suv"
+             data-condition="Nuevo"
+             data-year="2024"
+             data-price="145000"
+             data-mileage="3500">
+            <div class="car-img">
+              <img src="assets/img/car-dreznak.png" alt="Range Rover Sport SUV negro lujo" loading="lazy">
+              <div class="corner-cutout corner-cutout--bottom-right car-cutout">
+                <span class="cutout-btn car-arrow">
+                  <span class="btn-arrow-wrap">
+                    <span class="btn-arrow-track">
+                      <i data-lucide="arrow-right" class="arrow-svg"></i>
+                      <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="car-info">
+              <div class="car-row"><span class="car-name">Dreznak Karov</span><span class="car-price">$145,000</span></div>
+              <div class="car-row"><span class="car-meta">2024</span><span class="car-meta"></span></div>
+            </div>
+          </a>
+
+          <!-- CAR 4: Aurvane Celeste -->
+          <a class="car-card reveal-card reveal-delay-2" href="coche.html?car=aurvane-solaris"
+             data-name="Aurvane Celeste"
+             data-make="BMW"
+             data-category="coupe"
+             data-condition="De ocasión"
+             data-year="2023"
+             data-price="82500"
+             data-mileage="8400">
+            <div class="car-img">
+              <img src="assets/img/car-aurvane.png" alt="BMW M4 Coupé verde metalizado" loading="lazy">
+              <div class="corner-cutout corner-cutout--bottom-right car-cutout">
+                <span class="cutout-btn car-arrow">
+                  <span class="btn-arrow-wrap">
+                    <span class="btn-arrow-track">
+                      <i data-lucide="arrow-right" class="arrow-svg"></i>
+                      <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="car-info">
+              <div class="car-row"><span class="car-name">Aurvane Celeste</span><span class="car-price">$82,500</span></div>
+              <div class="car-row"><span class="car-meta">2023</span><span class="car-meta"></span></div>
+            </div>
+          </a>
+
+          <!-- CAR 5: Soliven Brisa -->
+          <a class="car-card reveal-card reveal-delay-1" href="coche.html?car=soliven-corsa"
+             data-name="Soliven Brisa"
+             data-make="Aston Martin"
+             data-category="coupe"
+             data-condition="Nuevo"
+             data-year="2024"
+             data-price="195000"
+             data-mileage="2100">
+            <div class="car-img">
+              <img src="assets/img/car-soliven.png" alt="Aston Martin DB12 gran turismo plata" loading="lazy">
+              <div class="corner-cutout corner-cutout--bottom-right car-cutout">
+                <span class="cutout-btn car-arrow">
+                  <span class="btn-arrow-wrap">
+                    <span class="btn-arrow-track">
+                      <i data-lucide="arrow-right" class="arrow-svg"></i>
+                      <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="car-info">
+              <div class="car-row"><span class="car-name">Soliven Brisa</span><span class="car-price">$195,000</span></div>
+              <div class="car-row"><span class="car-meta">2024</span><span class="car-meta"></span></div>
+            </div>
+          </a>
+
+          <!-- CAR 6: Pharyx Full -->
+          <a class="car-card reveal-card reveal-delay-2" href="coche.html?car=pharyx-phantom"
+             data-name="Pharyx Full"
+             data-make="Mercedes-Benz"
+             data-category="suv"
+             data-condition="De ocasión"
+             data-year="2024"
+             data-price="179000"
+             data-mileage="5600">
+            <div class="car-img">
+              <img src="assets/img/car-pharyx.png" alt="Mercedes-AMG G 63 Clase G SUV negro" loading="lazy">
+              <div class="corner-cutout corner-cutout--bottom-right car-cutout">
+                <span class="cutout-btn car-arrow">
+                  <span class="btn-arrow-wrap">
+                    <span class="btn-arrow-track">
+                      <i data-lucide="arrow-right" class="arrow-svg"></i>
+                      <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="car-info">
+              <div class="car-row"><span class="car-name">Pharyx Full</span><span class="car-price">$179,000</span></div>
+              <div class="car-row"><span class="car-meta">2024</span><span class="car-meta">Recién llegado</span></div>
+            </div>
+          </a>
+
+          <!-- CAR 7: Zethrux Infernum -->
+          <a class="car-card reveal-card reveal-delay-1" href="coche.html?car=zethrux-vantage"
+             data-name="Zethrux Infernum"
+             data-make="Porsche"
+             data-category="coupe"
+             data-condition="De ocasión"
+             data-year="2023"
+             data-price="241350"
+             data-mileage="950">
+            <div class="car-img">
+              <img src="assets/img/car-zethrux.webp" alt="Porsche 911 GT3 RS superdeportivo plata" loading="lazy">
+              <div class="corner-cutout corner-cutout--bottom-right car-cutout">
+                <span class="cutout-btn car-arrow">
+                  <span class="btn-arrow-wrap">
+                    <span class="btn-arrow-track">
+                      <i data-lucide="arrow-right" class="arrow-svg"></i>
+                      <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="car-info">
+              <div class="car-row"><span class="car-name">Zethrux Infernum</span><span class="car-price">$241,350</span></div>
+              <div class="car-row"><span class="car-meta">2023</span><span class="car-meta">Icono del rendimiento</span></div>
+            </div>
+          </a>
+
+          <!-- CAR 8: Emblora Wyndcroft -->
+          <a class="car-card reveal-card reveal-delay-2" href="coche.html?car=emblora-wyndcroft"
+             data-name="Emblora Wyndcroft"
+             data-make="Lamborghini"
+             data-category="suv"
+             data-condition="Nuevo"
+             data-year="2024"
+             data-price="239950"
+             data-mileage="1200">
+            <div class="car-img">
+              <img src="assets/img/car-emblora.webp" alt="Lamborghini Urus Performante SUV de superlujo gris mate" loading="lazy">
+              <div class="corner-cutout corner-cutout--bottom-right car-cutout">
+                <span class="cutout-btn car-arrow">
+                  <span class="btn-arrow-wrap">
+                    <span class="btn-arrow-track">
+                      <i data-lucide="arrow-right" class="arrow-svg"></i>
+                      <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="car-info">
+              <div class="car-row"><span class="car-name">Emblora Wyndcroft</span><span class="car-price">$239,950</span></div>
+              <div class="car-row"><span class="car-meta">2024</span><span class="car-meta">Nueva incorporación</span></div>
+            </div>
+          </a>
+
+          <!-- NO RESULTS PLACEHOLDER -->
+          <div class="no-results" id="noResults" style="display: none;">
+            <p>No se encontraron vehículos que coincidan con los filtros seleccionados.</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <!-- ============ CTA OVERLAY COMPONENT (REUSABLE) ============ -->
+  <section class="cta inv-cta">
+    <div class="cta-frame reveal-card">
+      <img class="cta-bg" src="assets/img/cta-bg.png" alt="Coche deportivo de lujo con luces traseras rojas" loading="lazy">
+      <div class="cta-overlay"></div>
+      <div class="cta-content">
+        <h2>¿Listo para vivir la experiencia<br>de tu coche soñado?</h2>
+        <p>Reserva una prueba privada y descubre qué significa el verdadero rendimiento.<br>Todos los vehículos están disponibles para verlos de inmediato.</p>
+        <a class="btn btn-light" href="contacto.html">
+          <span>Programar prueba de conducción</span>
+          <span class="btn-chip btn-chip-dark">
+            <span class="btn-arrow-wrap">
+              <span class="btn-arrow-track">
+                <i data-lucide="arrow-right" class="arrow-svg"></i>
+                <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
+              </span>
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer" id="contact">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-left">
+          <h2 class="reveal-head">¿Listo para probar<br>tu coche soñado?</h2>
+          <p class="section-sub reveal-head reveal-delay-1">Vehículos de lujo seleccionados de las marcas más prestigiosas del mundo desde 2010</p>
+          <div class="footer-ctas">
+            <a class="btn btn-dark" href="contacto.html">
+              <span>Contactar</span>
+              <span class="btn-chip btn-chip-light">
+                <span class="btn-arrow-wrap">
+                  <span class="btn-arrow-track">
+                    <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                    </svg>
+                    <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                    </svg>
+                  </span>
+                </span>
+              </span>
+            </a>
+            <a class="footer-icon-btn" href="https://maps.google.com" target="_blank" rel="noopener" aria-label="Ubicación">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M 6.4 4.76 C 9.5 1.72 14.47 1.74 17.54 4.82 C 20.61 7.89 20.64 12.86 17.6 15.96 L 13.41 20.15 C 12.63 20.93 11.37 20.93 10.59 20.15 L 6.4 15.96 C 3.31 12.87 3.31 7.85 6.4 4.76 Z"/>
+                <circle cx="12" cy="10.36" r="3"/>
+              </svg>
+            </a>
+            <a class="footer-icon-btn" href="tel:+123456789" aria-label="Llámanos">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M 7.829 16.171 C 5.678 14.016 4.024 11.417 2.983 8.557 C 2.41 6.993 2.935 5.275 4.113 4.097 L 4.842 3.369 C 5.238 2.972 5.775 2.749 6.335 2.749 C 6.896 2.749 7.433 2.972 7.829 3.369 L 9.536 5.076 C 9.932 5.471 10.155 6.009 10.155 6.569 C 10.155 7.129 9.932 7.667 9.536 8.063 L 9.116 8.483 C 8.776 8.822 8.586 9.282 8.586 9.763 C 8.586 10.243 8.776 10.703 9.116 11.043 L 12.956 14.884 C 13.295 15.223 13.756 15.414 14.236 15.414 C 14.716 15.414 15.176 15.223 15.516 14.884 L 15.937 14.464 C 16.333 14.067 16.87 13.844 17.43 13.844 C 17.991 13.844 18.528 14.067 18.924 14.464 L 20.631 16.171 C 21.027 16.566 21.25 17.104 21.25 17.664 C 21.25 18.224 21.027 18.762 20.631 19.158 L 19.903 19.886 C 18.725 21.065 17.007 21.59 15.443 21.017 C 12.582 19.975 9.984 18.321 7.829 16.171 Z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-nav">
+          <nav class="footer-col">
+            <a href="index.html">Inicio</a>
+            <a href="inventario.html">Inventario</a>
+            <a href="entrega-tu-coche.html">Entrega tu coche</a>
+            <a href="financiacion.html">Financiación</a>
+          </nav>
+          <nav class="footer-col">
+            <a href="sobre-nosotros.html">Sobre nosotros</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="blog.html">Blog</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-giant reveal-head" aria-hidden="true">
+        <svg viewBox="0 35 726 122" style="display: block; width: 100%; height: auto; overflow: visible;">
+          <text x="0" y="148" textLength="726" lengthAdjust="spacing" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="150" fill="currentColor">EVO MOVE</text>
+        </svg>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 EVO MOVE - TODOS LOS DERECHOS RESERVADOS</p>
+        <div class="footer-legal">
+          <a href="terminos-y-condiciones.html">Términos y condiciones</a>
+          <span class="footer-legal-sep">|</span>
+          <a href="politica-de-privacidad.html">Política de privacidad</a>
+          <span class="footer-legal-sep">|</span>
+          <a href="politica-de-cookies.html">Política de cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/lenis.min.js"></script>
+  <script src="assets/motion.js"></script>
+  <script src="inventory.js"></script>
+</body>
+</html>
