@@ -3,24 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luxury Car Dealership in Washington | EVO MOVE©</title>
+<title>EVO MOVE | Soluciones Integrales 360° en Automoción y Comercio Europeo</title>
+<link rel="preload" href="assets/fonts/SpaceGrotesk-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/SpaceGrotesk-700.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');</script>
 <link rel="stylesheet" href="styles.css">
+<script src="assets/vendor/lucide.min.js"></script>
 </head>
 <body>
 
 <!-- ============ NAV ============ -->
 <header class="nav" id="nav">
   <div class="nav-inner">
-    <a class="nav-logo" href="index.html" aria-label="Home">
-      EVO MOVE
-    </a>
+    <a class="nav-logo" href="index.html" aria-label="Home">EVO MOVE</a>
     <nav class="nav-links" id="navLinks">
-      <a href="inventory.html">Inventario</a>
-      <a href="#contact">Entrega tu coche</a>
-      <a href="#contact">Financiación</a>
-      <a href="#team">Sobre nosotros</a>
-      <a href="#contact">Contacto</a>
+      <a class="nav-link" href="inventory.html">Inventario</a>
+      <a class="nav-link" href="trade-in.html">Entrega tu coche</a>
+      <a class="nav-link" href="financing.html">Financiación</a>
+      <a class="nav-link" href="#team">Sobre nosotros</a>
+      <a class="nav-link" href="#contact">Contacto</a>
     </nav>
     <div class="nav-right">
       <a class="btn btn-dark" href="#contact">
@@ -38,7 +39,7 @@
           </span>
         </span>
       </a>
-      <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+      <button class="nav-burger" id="burger" aria-label="Menú"><span></span><span></span></button>
     </div>
   </div>
 </header>
@@ -147,11 +148,11 @@
       </div>
     </div>
     <div class="car-grid">
-      <a class="car-card reveal-card reveal-delay-1" href="#featured">
+      <a class="car-card reveal-card reveal-delay-1" href="car.html?car=dreznak-karov">
         <div class="car-img">
           <img src="assets/img/car-dreznak.png" alt="Black Range Rover Sport P530 SV in studio">
-          <div class="car-cutout">
-            <span class="car-arrow">
+          <div class="corner-cutout corner-cutout--bottom-right car-cutout">
+            <span class="cutout-btn car-arrow">
               <span class="btn-arrow-wrap">
                 <span class="btn-arrow-track">
                   <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -170,11 +171,11 @@
           <div class="car-row"><span class="car-meta">2024</span><span class="car-meta"></span></div>
         </div>
       </a>
-      <a class="car-card reveal-card reveal-delay-2" href="#featured">
+      <a class="car-card reveal-card reveal-delay-2" href="car.html?car=zethrux-vantage">
         <div class="car-img">
           <img src="assets/img/car-zethrux.webp" alt="Silver Porsche GT3 RS with large rear wing and diffuser">
-          <div class="car-cutout">
-            <span class="car-arrow">
+          <div class="corner-cutout corner-cutout--bottom-right car-cutout">
+            <span class="cutout-btn car-arrow">
               <span class="btn-arrow-wrap">
                 <span class="btn-arrow-track">
                   <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -193,11 +194,11 @@
           <div class="car-row"><span class="car-meta">2023</span><span class="car-meta">Icono del rendimiento</span></div>
         </div>
       </a>
-      <a class="car-card reveal-card reveal-delay-3" href="#featured">
+      <a class="car-card reveal-card reveal-delay-3" href="car.html?car=emblora-wyndcroft">
         <div class="car-img">
           <img src="assets/img/car-emblora.webp" alt="Matte black Lamborghini Urus SUV, front view.">
-          <div class="car-cutout">
-            <span class="car-arrow">
+          <div class="corner-cutout corner-cutout--bottom-right car-cutout">
+            <span class="cutout-btn car-arrow">
               <span class="btn-arrow-wrap">
                 <span class="btn-arrow-track">
                   <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -222,8 +223,10 @@
   <!-- ============ SERVICES ============ -->
   <section class="section services">
     <div class="services-left reveal-head">
-      <p class="tag">Servicios</p>
-      <h2>Somos mucho más<br>que un concesionario</h2>
+      <div class="services-header">
+        <p class="tag">Servicios</p>
+        <h2>Somos mucho más<br>que un concesionario</h2>
+      </div>
       <div class="services-cta">
         <p class="section-sub">Los vehículos premium merecen un servicio premium,<br>y eso es exactamente lo que recibirás.</p>
         <a class="btn btn-dark" href="#featured">
@@ -310,8 +313,8 @@
       <div class="testi-card reveal-card reveal-delay-1">
         <div class="testi-photo">
           <img src="assets/img/testimonial.png" alt="Young man posing in front of his Porsche 911">
-          <div class="testi-cutout-left">
-            <button class="testi-nav testi-prev" aria-label="Anterior">
+          <div class="corner-cutout corner-cutout--top-left testi-cutout-left">
+            <button class="cutout-btn testi-nav testi-prev" aria-label="Anterior">
               <span class="btn-arrow-wrap">
                 <span class="btn-arrow-track">
                   <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg)">
@@ -324,8 +327,8 @@
               </span>
             </button>
           </div>
-          <div class="testi-cutout-right">
-            <button class="testi-nav testi-next" aria-label="Siguiente">
+          <div class="corner-cutout corner-cutout--top-right testi-cutout-right">
+            <button class="cutout-btn testi-nav testi-next" aria-label="Siguiente">
               <span class="btn-arrow-wrap">
                 <span class="btn-arrow-track">
                   <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -438,8 +441,8 @@
     <div class="blog-cards">
       <a class="blog-card reveal-card reveal-delay-1" href="#blog">
         <img src="assets/img/blog-urus.webp" alt="Black Lamborghini Urus">
-        <div class="blog-cutout">
-          <span class="blog-arrow">
+        <div class="corner-cutout corner-cutout--top-right blog-cutout">
+          <span class="cutout-btn blog-arrow">
             <span class="btn-arrow-wrap">
               <span class="btn-arrow-track">
                 <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -459,8 +462,8 @@
       </a>
       <a class="blog-card reveal-card reveal-delay-2" href="#blog">
         <img src="assets/img/blog-leasing.webp" alt="Car keys with euro banknotes">
-        <div class="blog-cutout">
-          <span class="blog-arrow">
+        <div class="corner-cutout corner-cutout--top-right blog-cutout">
+          <span class="cutout-btn blog-arrow">
             <span class="btn-arrow-wrap">
               <span class="btn-arrow-track">
                 <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -494,12 +497,8 @@
           <span class="btn-chip btn-chip-dark">
             <span class="btn-arrow-wrap">
               <span class="btn-arrow-track">
-                <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                </svg>
-                <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                </svg>
+                <i data-lucide="arrow-right" class="arrow-svg"></i>
+                <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
               </span>
             </span>
           </span>
@@ -513,63 +512,63 @@
     <div class="faq-left reveal-head">
       <p class="tag">Preguntas Frecuentes</p>
       <h2>Todo lo que<br>necesitas, aquí</h2>
-      <p class="section-sub">Todo lo que necesitas saber sobre financiación, garantías,<br>entrega y cómo comprar con confianza.</p>
+      <p class="section-sub">Resolvemos tus dudas sobre importación, gestión documental,<br>transporte, revisión técnica y financiación.</p>
     </div>
     <div class="faq-list">
       <div class="faq-item reveal-card reveal-delay-1">
         <button class="faq-q">
-          <span>¿Qué opciones de financiación ofrecen?</span>
+          <span>¿Qué incluye exactamente el servicio de "Entrega a Puerta"?</span>
           <span class="faq-arrow">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
             </svg>
           </span>
         </button>
-        <div class="faq-a"><p>Trabajamos con una amplia red de entidades para ofrecer soluciones de financiación flexibles, tanto si compras un vehículo nuevo o usado como si quieres refinanciarlo. Nuestro equipo financiero te explicará las tarifas competitivas, las opciones de leasing y los planes de pago adaptados a tu presupuesto. Puedes solicitar una preaprobación online en pocos minutos.</p></div>
+        <div class="faq-a"><p>Nos encargamos de recoger el vehículo en el país de origen y transportarlo directamente hasta las instalaciones de su empresa, concesionario o la dirección exacta que nos indique en Europa, sin necesidad de que usted realice desplazamientos.</p></div>
       </div>
       <div class="faq-item reveal-card reveal-delay-2">
         <button class="faq-q">
-          <span>¿Puedo entregar mi vehículo actual como parte del pago?</span>
+          <span>¿Cuánto tiempo tarda la tramitación de la documentación en Tráfico?</span>
           <span class="faq-arrow">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
             </svg>
           </span>
         </button>
-        <div class="faq-a"><p>Por supuesto. Aceptamos vehículos de todas las marcas y modelos. Tráenos tu coche para una tasación gratuita y sin compromiso, o consigue una valoración instantánea online. El valor de tu vehículo se puede aplicar directamente a tu próxima compra.</p></div>
+        <div class="faq-a"><p>Los plazos varían según el país de destino final. En España, las matriculaciones y homologaciones suelen completarse en un plazo de entre 5 y 10 días hábiles una vez recibida toda la documentación original. Nosotros nos encargamos de todo el proceso para acortar los tiempos al máximo.</p></div>
       </div>
       <div class="faq-item reveal-card reveal-delay-3">
         <button class="faq-q">
-          <span>¿Los vehículos usados incluyen garantía?</span>
+          <span>¿Los vehículos pasan alguna revisión antes de ser enviados?</span>
           <span class="faq-arrow">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
             </svg>
           </span>
         </button>
-        <div class="faq-a"><p>Todos los vehículos certificados de ocasión de nuestro inventario pasan por una rigurosa inspección multipunto e incluyen una garantía limitada. También ofrecemos planes de protección ampliada para que conduzcas con total tranquilidad.</p></div>
+        <div class="faq-a"><p>Sí. Realizamos un peritaje y una revisión técnica rigurosa de cada unidad antes de subirla al transporte. Esto nos permite garantizar por escrito que el estado real del vehículo coincide al 100% con lo acordado.</p></div>
       </div>
       <div class="faq-item reveal-card reveal-delay-1">
         <button class="faq-q">
-          <span>¿Cómo puedo programar una prueba de conducción?</span>
+          <span>¿Qué opciones de financiación ofrecen a empresas y profesionales?</span>
           <span class="faq-arrow">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
             </svg>
           </span>
         </button>
-        <div class="faq-a"><p>Puedes reservar una prueba de conducción directamente desde nuestra web seleccionando cualquier vehículo del inventario, o llamar a nuestro concesionario. Abrimos los 7 días de la semana y estaremos encantados de atenderte el mismo día.</p></div>
+        <div class="faq-a"><p>Ofrecemos fórmulas totalmente flexibles que se adaptan a su estructura financiera, incluyendo operaciones de Leasing (con opción a compra), Renting corporativo a medio/largo plazo y Créditos comerciales directos para la adquisición de flotas.</p></div>
       </div>
       <div class="faq-item reveal-card reveal-delay-2">
         <button class="faq-q">
-          <span>¿Ofrecen entrega de vehículos?</span>
+          <span>¿El transporte incluye seguro para los vehículos?</span>
           <span class="faq-arrow">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
             </svg>
           </span>
         </button>
-        <div class="faq-a"><p>Sí. Ofrecemos entrega a domicilio y en la oficina dentro de la región. Cuando el papeleo esté listo, coordinaremos un horario cómodo para llevarte el vehículo directamente.</p></div>
+        <div class="faq-a"><p>Todo transporte incluye el seguro obligatorio de carga. Adicionalmente, ofrecemos seguros opcionales a todo riesgo diseñados específicamente para el tránsito internacional y los primeros días de circulación en el país de destino.</p></div>
       </div>
     </div>
   </section>
@@ -615,8 +614,8 @@
         <nav class="footer-col">
           <a href="index.html">Inicio</a>
           <a href="inventory.html">Inventario</a>
-          <a href="#contact">Entrega tu coche</a>
-          <a href="#contact">Financiación</a>
+          <a href="trade-in.html">Entrega tu coche</a>
+          <a href="financing.html">Financiación</a>
         </nav>
         <nav class="footer-col">
           <a href="#team">Sobre nosotros</a>
@@ -633,17 +632,18 @@
     <div class="footer-bottom">
       <p class="footer-copyright">© 2026 EVO MOVE - TODOS LOS DERECHOS RESERVADOS</p>
       <div class="footer-legal">
-        <a href="#">Términos y condiciones</a>
+        <a href="terms-conditions.html">Términos y condiciones</a>
         <span class="footer-legal-sep">|</span>
-        <a href="#">Política de privacidad</a>
+        <a href="privacy-policy.html">Política de privacidad</a>
         <span class="footer-legal-sep">|</span>
-        <a href="#">Política de cookies</a>
+        <a href="cookie-policy.html">Política de cookies</a>
       </div>
     </div>
   </div>
 </footer>
 
 <script src="assets/lenis.min.js"></script>
+<script src="assets/motion.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

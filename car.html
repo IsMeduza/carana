@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/">
+  <title>Dreznak Karov | EVO MOVE - Concesionario de lujo</title>
+  <meta name="description" content="Dreznak Karov en venta en EVO MOVE. Vehículo exclusivo de alto rendimiento con especificaciones completas e historial certificado.">
+  <link rel="preload" href="assets/fonts/SpaceGrotesk-500.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/SpaceGrotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="assets/lenis.min.js"></script>
+  <script src="assets/vendor/lucide.min.js"></script>
+</head>
+<body>
+  <!-- ============ NAV HEADER (STATIC) ============ -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html" aria-label="Home">EVO MOVE</a>
+      <nav class="nav-links" id="navLinks">
+        <a class="nav-link active" href="inventory.html">Inventario</a>
+        <a class="nav-link" href="trade-in.html">Entrega tu coche</a>
+        <a class="nav-link" href="financing.html">Financiación</a>
+        <a class="nav-link" href="index.html#team">Sobre nosotros</a>
+        <a class="nav-link" href="index.html#contact">Contacto</a>
+      </nav>
+      <div class="nav-right">
+        <a class="btn btn-dark" href="index.html#contact">
+          <span>Ventas</span>
+          <span class="btn-chip btn-chip-light">
+            <span class="btn-arrow-wrap">
+              <span class="btn-arrow-track">
+                <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                </svg>
+                <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                </svg>
+              </span>
+            </span>
+          </span>
+        </a>
+        <button class="nav-burger" id="navBurger" aria-label="Menú">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ 1. CAR HERO SECTION ============ -->
+  <section class="car-hero-section">
+    <div class="car-hero-grid">
+      <!-- Left Column: Breadcrumb, Title, Desc, Buttons -->
+      <div class="car-hero-info reveal-head">
+        <a href="inventory.html" class="car-crumb" id="carCrumb">INVENTARIO - SUV</a>
+        <h1 class="car-detail-title" id="carTitle">Dreznak Karov</h1>
+        <p class="car-detail-desc" id="carDesc">Un SUV de ultra-lujo que redefine la potencia y el confort en carretera, con acabados artesanales y tecnología de vanguardia.</p>
+        
+        <div class="car-hero-actions">
+          <a class="btn btn-dark" href="index.html#contact">
+            <span>Contactar con ventas</span>
+            <span class="btn-chip btn-chip-light">
+              <span class="btn-arrow-wrap">
+                <span class="btn-arrow-track">
+                  <i data-lucide="arrow-right" class="arrow-svg"></i>
+                  <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
+                </span>
+              </span>
+            </span>
+          </a>
+
+          <div class="copy-btns-row">
+            <button class="copy-pill-btn" id="copyVinBtn" type="button" data-copy="SALWR2V48PA194821">
+              <i data-lucide="copy"></i>
+              <span class="copy-text">Copy VIN</span>
+            </button>
+            <button class="copy-pill-btn" id="copyStockBtn" type="button" data-copy="EVO-DK-2024">
+              <i data-lucide="copy"></i>
+              <span class="copy-text">Copy Stock</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Big Vehicle Studio View + Floating Badge -->
+      <div class="car-hero-frame reveal-card">
+        <img class="car-hero-main-img" id="carHeroMainImg" src="assets/img/car-dreznak.png" alt="Dreznak Karov" loading="eager">
+        
+        <!-- Floating Specs Badge -->
+        <div class="car-floating-card">
+          <div class="floating-price-box">
+            <span class="floating-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                <circle cx="7" cy="7" r="1.5" fill="currentColor"/>
+              </svg>
+            </span>
+            <span class="floating-price-val" id="floatPrice">$145,000</span>
+          </div>
+          <div class="floating-specs-grid">
+            <div class="floating-spec-item">
+              <span class="floating-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2"/>
+                  <line x1="16" y1="2" x2="16" y2="5"/>
+                  <line x1="8" y1="2" x2="8" y2="5"/>
+                  <line x1="3" y1="9" x2="21" y2="9"/>
+                </svg>
+              </span>
+              <span class="floating-spec-text" id="floatYear">2024</span>
+            </div>
+            <div class="floating-spec-item">
+              <span class="floating-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11"/>
+                  <rect x="3" y="11" width="18" height="8" rx="2"/>
+                  <circle cx="7" cy="15" r="1.2" fill="currentColor"/>
+                  <circle cx="17" cy="15" r="1.2" fill="currentColor"/>
+                </svg>
+              </span>
+              <span class="floating-spec-text" id="floatBody">SUV</span>
+            </div>
+            <div class="floating-spec-item">
+              <span class="floating-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                </svg>
+              </span>
+              <span class="floating-spec-text" id="floatFuel">Gasolina</span>
+            </div>
+            <div class="floating-spec-item">
+              <span class="floating-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="7" r="4"/>
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                </svg>
+              </span>
+              <span class="floating-spec-text" id="floatSeats">5</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2. CAR DETAILS (CAROUSEL + 8 SPECS CARDS) ============ -->
+  <section class="car-details-section">
+    <!-- Left: Gallery Carousel -->
+    <div class="car-carousel reveal-card">
+      <div class="car-carousel-track" id="carouselTrack">
+        <div class="car-carousel-slide">
+          <img src="assets/img/gallery-dreznak-1.png" alt="Dreznak Karov interior" loading="eager">
+        </div>
+        <div class="car-carousel-slide">
+          <img src="assets/img/gallery-dreznak-2.webp" alt="Dreznak Karov llanta" loading="lazy">
+        </div>
+        <div class="car-carousel-slide">
+          <img src="assets/img/gallery-dreznak-3.png" alt="Dreznak Karov detalle" loading="lazy">
+        </div>
+        <div class="car-carousel-slide">
+          <img src="assets/img/car-dreznak.png" alt="Dreznak Karov exterior" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Prev / Next Controls (Corner cutouts like testimonials) -->
+      <div class="corner-cutout corner-cutout--top-left testi-cutout-left">
+        <button class="cutout-btn testi-nav testi-prev" id="carouselPrev" type="button" aria-label="Anterior">
+          <span class="btn-arrow-wrap">
+            <span class="btn-arrow-track">
+              <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg)">
+                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+              </svg>
+              <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg)">
+                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+              </svg>
+            </span>
+          </span>
+        </button>
+      </div>
+      <div class="corner-cutout corner-cutout--top-right testi-cutout-right">
+        <button class="cutout-btn testi-nav testi-next" id="carouselNext" type="button" aria-label="Siguiente">
+          <span class="btn-arrow-wrap">
+            <span class="btn-arrow-track">
+              <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+              </svg>
+              <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+              </svg>
+            </span>
+          </span>
+        </button>
+      </div>
+
+      <!-- Dots Indicators (Marca para ver cuántas imágenes hay) -->
+      <div class="carousel-dots" id="carouselDots">
+        <button class="carousel-dot active" data-index="0" aria-label="Slide 1"></button>
+        <button class="carousel-dot" data-index="1" aria-label="Slide 2"></button>
+        <button class="carousel-dot" data-index="2" aria-label="Slide 3"></button>
+        <button class="carousel-dot" data-index="3" aria-label="Slide 4"></button>
+      </div>
+    </div>
+
+    <!-- Right: 8 Specs Cards -->
+    <div class="car-specs-wrap reveal-head">
+      <span class="tag">VEHICULE DETAILS</span>
+      <h2>Specs</h2>
+      <div class="specs-cards-grid" id="specsCardsGrid">
+        <div class="spec-card">
+          <span class="spec-card-label">Transmisión</span>
+          <span class="spec-card-val">Automático</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-card-label">Kilometraje</span>
+          <span class="spec-card-val">3,500 km</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-card-label">Motor</span>
+          <span class="spec-card-val">4.4L V8</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-card-label">Potencia</span>
+          <span class="spec-card-val">523 HP</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-card-label">Tracción</span>
+          <span class="spec-card-val">AWD</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-card-label">Color exterior</span>
+          <span class="spec-card-val">Santorini Black</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-card-label">Color interior</span>
+          <span class="spec-card-val">Navy / Camel</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-card-label">Puertas</span>
+          <span class="spec-card-val">4</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. ACCORDIONS (UNIFIED COMPONENT) ============ -->
+  <section class="car-accordions-section">
+    <div class="faq-list">
+      <!-- Accordion 1: Specifications (Open by default) -->
+      <div class="faq-item open reveal-card">
+        <button class="faq-q" type="button">
+          <span>Especificaciones completas</span>
+          <span class="faq-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+            </svg>
+          </span>
+        </button>
+        <div class="faq-a">
+          <div class="car-acc-table" id="specificationsTable">
+            <div class="acc-row">
+              <span class="acc-label">Transmisión</span>
+              <span class="acc-val">Automático de 8 velocidades</span>
+            </div>
+            <div class="acc-row">
+              <span class="acc-label">Motor</span>
+              <span class="acc-val">4.4L biturbo V8 (BMW-sourced)</span>
+            </div>
+            <div class="acc-row">
+              <span class="acc-label">Potencia</span>
+              <span class="acc-val">523 HP @ 5,500 rpm</span>
+            </div>
+            <div class="acc-row">
+              <span class="acc-label">Tracción</span>
+              <span class="acc-val">AWD (4x4 inteligente)</span>
+            </div>
+            <div class="acc-row">
+              <span class="acc-label">Color exterior</span>
+              <span class="acc-val">Santorini Negro metálico</span>
+            </div>
+            <div class="acc-row">
+              <span class="acc-label">Color interior</span>
+              <span class="acc-val">SV Bespoke cuero (Navy/camel)</span>
+            </div>
+            <div class="acc-row">
+              <span class="acc-label">Puertas</span>
+              <span class="acc-val">4</span>
+            </div>
+            <div class="acc-row">
+              <span class="acc-label">Asientos</span>
+              <span class="acc-val">5</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion 2: Condition & History -->
+      <div class="faq-item reveal-card">
+        <button class="faq-q" type="button">
+          <span>Estado e historial</span>
+          <span class="faq-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+            </svg>
+          </span>
+        </button>
+        <div class="faq-a">
+          <div class="car-acc-table" id="conditionTable">
+            <div class="acc-row">
+              <span class="acc-label">Condición</span>
+              <span class="acc-val">Como nuevo</span>
+            </div>
+            <div class="acc-row">
+              <span class="acc-label">Propietarios anteriores</span>
+              <span class="acc-val">1</span>
+            </div>
+            <div class="acc-row">
+              <span class="acc-label">Historial de servicio</span>
+              <span class="acc-val">Aprobado por Dreznak Oficial</span>
+            </div>
+            <div class="acc-row">
+              <span class="acc-label">Garantía</span>
+              <span class="acc-val">Garantía completa del fabricante (3 años)</span>
+            </div>
+            <div class="acc-row">
+              <span class="acc-label">ITV / Inspección</span>
+              <span class="acc-val">Válido hasta 2026</span>
+            </div>
+            <div class="acc-row">
+              <span class="acc-label">Certificado HPI</span>
+              <span class="acc-val">Limpio y verificado (Sin accidentes)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion 3: Key Features -->
+      <div class="faq-item reveal-card">
+        <button class="faq-q" type="button">
+          <span>Equipamiento y características destacadas</span>
+          <span class="faq-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+            </svg>
+          </span>
+        </button>
+        <div class="faq-a">
+          <div class="car-features-grid" id="featuresGrid">
+            <div class="feature-item">
+              <i data-lucide="check"></i>
+              <span>Sistema de sonido Meridian Signature 35 altavoces</span>
+            </div>
+            <div class="feature-item">
+              <i data-lucide="check"></i>
+              <span>Suspensión neumática dinámica adaptativa</span>
+            </div>
+            <div class="feature-item">
+              <i data-lucide="check"></i>
+              <span>Head-up display a todo color de alta definición</span>
+            </div>
+            <div class="feature-item">
+              <i data-lucide="check"></i>
+              <span>Faros Digital LED con proyección de líneas</span>
+            </div>
+            <div class="feature-item">
+              <i data-lucide="check"></i>
+              <span>Techo panorámico corredizo con filtro solar</span>
+            </div>
+            <div class="feature-item">
+              <i data-lucide="check"></i>
+              <span>Asientos con masaje en 24 posiciones climatizados</span>
+            </div>
+            <div class="feature-item">
+              <i data-lucide="check"></i>
+              <span>Cámara de visión 360° en 3D con sensores predictivos</span>
+            </div>
+            <div class="feature-item">
+              <i data-lucide="check"></i>
+              <span>Conectividad inalámbrica Apple CarPlay y Android Auto</span>
+            </div>
+            <div class="feature-item">
+              <i data-lucide="check"></i>
+              <span>Llantas de aleación de 23 pulgadas en negro pulido</span>
+            </div>
+            <div class="feature-item">
+              <i data-lucide="check"></i>
+              <span>Puertas con cierre suave asistido (Soft-Close)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. CTA OVERLAY COMPONENT ============ -->
+  <section class="cta inv-cta">
+    <div class="cta-frame reveal-card">
+      <img class="cta-bg" src="assets/img/cta-bg.png" alt="Coche deportivo de lujo con luces traseras rojas" loading="lazy">
+      <div class="cta-overlay"></div>
+      <div class="cta-content">
+        <h2>¿Listo para vivir la experiencia<br>de tu coche soñado?</h2>
+        <p>Reserva una prueba privada y descubre qué significa el verdadero rendimiento.<br>Todos los vehículos están disponibles para verlos de inmediato.</p>
+        <a class="btn btn-light" href="index.html#contact">
+          <span>Programar prueba de conducción</span>
+          <span class="btn-chip btn-chip-dark">
+            <span class="btn-arrow-wrap">
+              <span class="btn-arrow-track">
+                <i data-lucide="arrow-right" class="arrow-svg"></i>
+                <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
+              </span>
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. RELATED CARS SECTION ============ -->
+  <section class="related-cars-section">
+    <div class="related-head reveal-head">
+      <div>
+        <span class="tag">COCHES DESTACADOS</span>
+        <h2>Coches que pueden interesarte</h2>
+      </div>
+      <a class="btn btn-dark" href="inventory.html">
+        <span>Ver inventario</span>
+        <span class="btn-chip btn-chip-light">
+          <span class="btn-arrow-wrap">
+            <span class="btn-arrow-track">
+              <i data-lucide="arrow-right" class="arrow-svg"></i>
+              <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
+            </span>
+          </span>
+        </span>
+      </a>
+    </div>
+
+    <div class="related-grid">
+      <!-- Related 1: Veltora E1 -->
+      <a class="car-card reveal-card reveal-delay-1" href="car.html?car=veltora-e1">
+        <div class="car-img">
+          <img src="assets/img/car-veltora.png" alt="Veltora E1" loading="lazy">
+          <div class="corner-cutout corner-cutout--bottom-right car-cutout">
+            <span class="cutout-btn car-arrow">
+              <span class="btn-arrow-wrap">
+                <span class="btn-arrow-track">
+                  <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                  </svg>
+                  <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                  </svg>
+                </span>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="car-info">
+          <div class="car-row">
+            <span class="car-name">Veltora E1</span>
+            <span class="car-price">$89,900</span>
+          </div>
+          <div class="car-row">
+            <span class="car-meta">2024</span>
+            <span class="car-meta">Eléctrico</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Related 2: Krynox GT-R -->
+      <a class="car-card reveal-card reveal-delay-2" href="car.html?car=krynox-gt">
+        <div class="car-img">
+          <img src="assets/img/car-krynox.png" alt="Krynox GT-R" loading="lazy">
+          <div class="corner-cutout corner-cutout--bottom-right car-cutout">
+            <span class="cutout-btn car-arrow">
+              <span class="btn-arrow-wrap">
+                <span class="btn-arrow-track">
+                  <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                  </svg>
+                  <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                  </svg>
+                </span>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="car-info">
+          <div class="car-row">
+            <span class="car-name">Krynox GT-R</span>
+            <span class="car-price">$178,500</span>
+          </div>
+          <div class="car-row">
+            <span class="car-meta">2023</span>
+            <span class="car-meta">Gasolina</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Related 3: Aurvane Solaris -->
+      <a class="car-card reveal-card reveal-delay-3" href="car.html?car=aurvane-solaris">
+        <div class="car-img">
+          <img src="assets/img/car-aurvane.png" alt="Aurvane Solaris" loading="lazy">
+          <div class="corner-cutout corner-cutout--bottom-right car-cutout">
+            <span class="cutout-btn car-arrow">
+              <span class="btn-arrow-wrap">
+                <span class="btn-arrow-track">
+                  <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                  </svg>
+                  <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                  </svg>
+                </span>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="car-info">
+          <div class="car-row">
+            <span class="car-name">Aurvane Solaris</span>
+            <span class="car-price">$112,000</span>
+          </div>
+          <div class="car-row">
+            <span class="car-meta">2024</span>
+            <span class="car-meta">Híbrido</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer" id="contact">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-left">
+          <h2 class="reveal-head">¿Listo para probar<br>tu coche soñado?</h2>
+          <p class="section-sub reveal-head reveal-delay-1">Vehículos de lujo seleccionados de las marcas más prestigiosas del mundo desde 2010</p>
+          <div class="footer-ctas">
+            <a class="btn btn-dark" href="index.html#contact">
+              <span>Contactar</span>
+              <span class="btn-chip btn-chip-light">
+                <span class="btn-arrow-wrap">
+                  <span class="btn-arrow-track">
+                    <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                    </svg>
+                    <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                    </svg>
+                  </span>
+                </span>
+              </span>
+            </a>
+            <a class="footer-icon-btn" href="https://maps.google.com" target="_blank" rel="noopener" aria-label="Ubicación">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M 6.4 4.76 C 9.5 1.72 14.47 1.74 17.54 4.82 C 20.61 7.89 20.64 12.86 17.6 15.96 L 13.41 20.15 C 12.63 20.93 11.37 20.93 10.59 20.15 L 6.4 15.96 C 3.31 12.87 3.31 7.85 6.4 4.76 Z"/>
+                <circle cx="12" cy="10.36" r="3"/>
+              </svg>
+            </a>
+            <a class="footer-icon-btn" href="tel:+123456789" aria-label="Llámanos">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M 7.829 16.171 C 5.678 14.016 4.024 11.417 2.983 8.557 C 2.41 6.993 2.935 5.275 4.113 4.097 L 4.842 3.369 C 5.238 2.972 5.775 2.749 6.335 2.749 C 6.896 2.749 7.433 2.972 7.829 3.369 L 9.536 5.076 C 9.932 5.471 10.155 6.009 10.155 6.569 C 10.155 7.129 9.932 7.667 9.536 8.063 L 9.116 8.483 C 8.776 8.822 8.586 9.282 8.586 9.763 C 8.586 10.243 8.776 10.703 9.116 11.043 L 12.956 14.884 C 13.295 15.223 13.756 15.414 14.236 15.414 C 14.716 15.414 15.176 15.223 15.516 14.884 L 15.937 14.464 C 16.333 14.067 16.87 13.844 17.43 13.844 C 17.991 13.844 18.528 14.067 18.924 14.464 L 20.631 16.171 C 21.027 16.566 21.25 17.104 21.25 17.664 C 21.25 18.224 21.027 18.762 20.631 19.158 L 19.903 19.886 C 18.725 21.065 17.007 21.59 15.443 21.017 C 12.582 19.975 9.984 18.321 7.829 16.171 Z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-nav">
+          <nav class="footer-col">
+            <a href="index.html">Inicio</a>
+            <a href="inventory.html">Inventario</a>
+            <a href="trade-in.html">Entrega tu coche</a>
+            <a href="financing.html">Financiación</a>
+          </nav>
+          <nav class="footer-col">
+            <a href="index.html#team">Sobre nosotros</a>
+            <a href="index.html#contact">Contacto</a>
+            <a href="index.html#blog">Blog</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-giant reveal-head" aria-hidden="true">
+        <svg viewBox="0 35 726 122" width="100%" height="auto" style="display: block; width: 100%; height: auto; overflow: visible;">
+          <text x="0" y="148" textLength="726" lengthAdjust="spacing" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="150" fill="currentColor">EVO MOVE</text>
+        </svg>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 EVO MOVE - TODOS LOS DERECHOS RESERVADOS</p>
+        <div class="footer-legal">
+          <a href="terms-conditions.html">Términos y condiciones</a>
+          <span class="footer-legal-sep">|</span>
+          <a href="privacy-policy.html">Política de privacidad</a>
+          <span class="footer-legal-sep">|</span>
+          <a href="cookie-policy.html">Política de cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/lenis.min.js"></script>
+  <script src="assets/motion.js"></script>
+  <script src="car.js"></script>
+</body>
+</html>

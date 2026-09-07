@@ -1,34 +1,7 @@
-// ============ LENIS SMOOTH SCROLL ============
-let lenis = null;
-if (typeof Lenis !== 'undefined') {
-  lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smoothWheel: true,
-    touchMultiplier: 1.2,
-    infinite: false,
-  });
-
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
-}
-
-// ============ HERO ENTRANCE & SCROLL PARALLAX ============
+// ============ HERO SCROLL PARALLAX ============
 const heroBg = document.querySelector('.hero-bg');
 const heroContent = document.querySelector('.hero-content');
 const heroFrame = document.querySelector('.hero-frame');
-
-// Trigger coordinated Framer-style entrance on load / F5
-window.addEventListener('DOMContentLoaded', () => {
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      document.documentElement.classList.add('loaded');
-    }, 50);
-  });
-});
 
 let isInitialEntranceDone = false;
 setTimeout(() => {
@@ -46,14 +19,12 @@ function updateHeroParallax() {
     const progress = Math.min(1, Math.max(0, scrollY / heroH));
 
     if (heroBg && (scrollY > 0 || isInitialEntranceDone)) {
-      // Parallax: background drifts down and subtly zooms on scroll
       const translateY = scrollY * 0.32;
       const scale = 1.0 + progress * 0.04;
       heroBg.style.transform = `translate3d(0, ${translateY}px, 0) scale(${scale})`;
     }
 
     if (heroContent) {
-      // Content gently floats up and fades as you scroll past
       const opacity = Math.max(0, 1 - progress * 1.35);
       const translateY = -scrollY * 0.16;
       heroContent.style.opacity = opacity;
@@ -63,53 +34,51 @@ function updateHeroParallax() {
 }
 
 window.addEventListener('scroll', updateHeroParallax, { passive: true });
-if (lenis) {
-  lenis.on('scroll', updateHeroParallax);
+if (window.EVO && window.EVO.lenis) {
+  window.EVO.lenis.on('scroll', updateHeroParallax);
 }
 
-// ============ STAGGERED SCROLL REVEAL (FRAMER STYLE) ============
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('in');
-      revealObserver.unobserve(entry.target);
+// ============ UNIFIED ACCORDION COMPONENT ============
+function setupAccordions(scope = document) {
+  const accItems = scope.querySelectorAll('.faq-item, .accordion-item, .car-acc-item');
+  accItems.forEach(item => {
+    const header = item.querySelector('.faq-q, .accordion-header, .accordion-q, .car-acc-header');
+    const body = item.querySelector('.faq-a, .accordion-body, .accordion-a, .car-acc-body');
+    if (!header || !body) return;
+
+    if (header.dataset.accordionBound) return;
+    header.dataset.accordionBound = 'true';
+
+    if (item.classList.contains('open')) {
+      body.style.maxHeight = body.scrollHeight + 'px';
     }
-  });
-}, {
-  threshold: 0.1,
-  rootMargin: '0px 0px -40px 0px'
-});
 
-document.querySelectorAll('.reveal-head, .reveal-card').forEach(el => {
-  revealObserver.observe(el);
-});
+    header.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      const container = item.closest('.faq-list, .accordion-list');
 
-// ============ FAQ ACCORDION ============
-document.querySelectorAll('.faq-q').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.closest('.faq-item');
-    const answer = item.querySelector('.faq-a');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(o => {
-      o.classList.remove('open');
-      o.querySelector('.faq-a').style.maxHeight = null;
+      if (container) {
+        container.querySelectorAll('.faq-item.open, .accordion-item.open, .car-acc-item.open').forEach(other => {
+          if (other !== item) {
+            other.classList.remove('open');
+            const otherBody = other.querySelector('.faq-a, .accordion-body, .accordion-a, .car-acc-body');
+            if (otherBody) otherBody.style.maxHeight = null;
+          }
+        });
+      }
+
+      if (isOpen) {
+        item.classList.remove('open');
+        body.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
     });
-    if (!isOpen) {
-      item.classList.add('open');
-      answer.style.maxHeight = answer.scrollHeight + 'px';
-    }
-  });
-});
-
-// ============ MOBILE NAVIGATION ============
-const burger = document.getElementById('burger');
-const navLinks = document.getElementById('navLinks');
-if (burger && navLinks) {
-  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => navLinks.classList.remove('open'));
   });
 }
+setupAccordions();
+
 
 // ============ REPLICATED SEARCH COMPONENT ============
 const inventory = [

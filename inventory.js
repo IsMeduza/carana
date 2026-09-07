@@ -1,13 +1,100 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // --- Mobile Navigation Toggle ---
-  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const navCenter = document.querySelector('.nav-center');
+/**
+ * inventory.js - Luxury Vehicle Catalog & Filter Logic
+ * Motion & smooth scroll handled globally by assets/motion.js
+ */
 
-  if (mobileMenuBtn && navCenter) {
-    mobileMenuBtn.addEventListener('click', () => {
-      navCenter.classList.toggle('nav-open');
+document.addEventListener('DOMContentLoaded', () => {
+  // --- Custom Dropdowns Functionality ---
+  const customDropdowns = document.querySelectorAll('.custom-dropdown');
+  customDropdowns.forEach(dd => {
+    if (dd.dataset.ddInit === 'true') return;
+    dd.dataset.ddInit = 'true';
+    const trigger = dd.querySelector('.custom-dropdown-trigger');
+    const valueSpan = dd.querySelector('.custom-dropdown-value');
+    const options = dd.querySelectorAll('.custom-dropdown-option');
+    const hiddenSelectId = dd.dataset.select;
+    const hiddenSelect = hiddenSelectId ? document.getElementById(hiddenSelectId) : null;
+
+    const menu = dd.querySelector('.custom-dropdown-menu');
+    if (menu) {
+      menu.setAttribute('data-lenis-prevent', '');
+      menu.addEventListener('click', (e) => {
+        // Prevent clicking inside menu or on its scrollbar from closing dropdown
+        e.stopPropagation();
+      });
+      menu.addEventListener('wheel', (e) => {
+        // Stop Lenis or window scroll from hijacking wheel inside menu
+        e.stopPropagation();
+      }, { passive: true });
+    }
+
+    if (!trigger) return;
+
+    // Toggle dropdown open/close
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = dd.classList.contains('open');
+
+      // Close all other dropdowns
+      customDropdowns.forEach(other => {
+        if (other !== dd) {
+          other.classList.remove('open');
+          const otherTrig = other.querySelector('.custom-dropdown-trigger');
+          if (otherTrig) otherTrig.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      dd.classList.toggle('open', !isOpen);
+      trigger.setAttribute('aria-expanded', String(!isOpen));
     });
-  }
+
+    // Option selection
+    options.forEach(opt => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const val = opt.dataset.value;
+        const text = opt.querySelector('span') ? opt.querySelector('span').textContent : val;
+
+        options.forEach(o => {
+          o.classList.remove('selected');
+          o.removeAttribute('aria-selected');
+        });
+        opt.classList.add('selected');
+        opt.setAttribute('aria-selected', 'true');
+
+        if (valueSpan) valueSpan.textContent = text;
+
+        if (hiddenSelect) {
+          hiddenSelect.value = val;
+          hiddenSelect.dispatchEvent(new Event('change'));
+        }
+
+        dd.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  });
+
+  // Close dropdowns only on true outside click or Escape
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.custom-dropdown')) {
+      customDropdowns.forEach(dd => {
+        dd.classList.remove('open');
+        const trig = dd.querySelector('.custom-dropdown-trigger');
+        if (trig) trig.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      customDropdowns.forEach(dd => {
+        dd.classList.remove('open');
+        const trig = dd.querySelector('.custom-dropdown-trigger');
+        if (trig) trig.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
 
   // --- Filter Elements ---
   const searchInput = document.getElementById('filterSearchInput');
@@ -146,6 +233,23 @@ document.addEventListener('DOMContentLoaded', () => {
       if (allPill) allPill.classList.add('active');
       currentCategory = 'all';
 
+      // Reset custom dropdowns display
+      customDropdowns.forEach(dd => {
+        const valueSpan = dd.querySelector('.custom-dropdown-value');
+        if (valueSpan) valueSpan.textContent = 'All';
+        const options = dd.querySelectorAll('.custom-dropdown-option');
+        options.forEach(opt => {
+          if (opt.dataset.value === 'all') {
+            opt.classList.add('selected');
+            opt.setAttribute('aria-selected', 'true');
+          } else {
+            opt.classList.remove('selected');
+            opt.removeAttribute('aria-selected');
+          }
+        });
+        dd.classList.remove('open');
+      });
+
       // Clear query params from URL without reload
       if (window.history.replaceState) {
         const url = window.location.pathname;
@@ -179,6 +283,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const option = Array.from(makeSelect.options).find(o => o.value.toLowerCase() === makeParam.toLowerCase());
     if (option) {
       makeSelect.value = option.value;
+      const ddMake = document.getElementById('dropdownMake');
+      if (ddMake) {
+        const valSpan = ddMake.querySelector('.custom-dropdown-value');
+        if (valSpan) valSpan.textContent = option.value;
+        ddMake.querySelectorAll('.custom-dropdown-option').forEach(o => {
+          if (o.dataset.value.toLowerCase() === makeParam.toLowerCase()) {
+            o.classList.add('selected');
+            o.setAttribute('aria-selected', 'true');
+          } else {
+            o.classList.remove('selected');
+            o.removeAttribute('aria-selected');
+          }
+        });
+      }
     }
   }
 
