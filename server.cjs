@@ -15,9 +15,20 @@ http.createServer((req, res) => {
   let file = path.join(__dirname, p);
   if (!file.startsWith(__dirname)) { res.writeHead(403); return res.end(); }
 
+  if (fs.existsSync(file) && fs.statSync(file).isDirectory()) {
+    const idxCandidate = path.join(file, 'index.html');
+    if (fs.existsSync(idxCandidate)) {
+      file = idxCandidate;
+    } else if (p === '/blog' && fs.existsSync(path.join(__dirname, 'blog.html'))) {
+      file = path.join(__dirname, 'blog.html');
+    }
+  }
+
   if (!fs.existsSync(file)) {
     if (fs.existsSync(file + '.html')) {
       file = file + '.html';
+    } else if (p === '/blog' && fs.existsSync(path.join(__dirname, 'blog.html'))) {
+      file = path.join(__dirname, 'blog.html');
     } else if (p.startsWith('/inventory/') && !path.extname(p)) {
       file = path.join(__dirname, 'car.html');
     } else if (p.startsWith('/legal-pages/') && !path.extname(p)) {
@@ -28,7 +39,14 @@ http.createServer((req, res) => {
   }
 
   fs.readFile(file, (err, data) => {
-    if (err) { res.writeHead(404); return res.end('not found'); }
+    if (err) {
+      const notFoundPage = path.join(__dirname, '404.html');
+      if (fs.existsSync(notFoundPage)) {
+        res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+        return res.end(fs.readFileSync(notFoundPage));
+      }
+      res.writeHead(404); return res.end('not found');
+    }
     const base = path.basename(file).split('@')[0];
     res.writeHead(200, { 'Content-Type': mime[path.extname(base).toLowerCase()] || 'application/octet-stream' });
     res.end(data);

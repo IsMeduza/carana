@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -24,7 +24,7 @@
         <a class="nav-link" href="inventory.html">Inventario</a>
         <a class="nav-link" href="trade-in.html">Entrega tu coche</a>
         <a class="nav-link" href="financing.html">Financiación</a>
-        <a class="nav-link" href="index.html#team">Sobre nosotros</a>
+        <a class="nav-link" href="about-us.html">Sobre nosotros</a>
         <a class="nav-link active" href="contact.html">Contacto</a>
       </nav>
       <div class="nav-right">
@@ -78,8 +78,8 @@
 
         <div class="contact-hero-bottom-left">
           <p>Vehículos de lujo seleccionados de las marcas más prestigiosas del mundo. Nuestro equipo está listo para responder a tus preguntas hoy.</p>
-          <a class="contact-call-btn" href="tel:+123456789" aria-label="Llamar por teléfono">
-            <i data-lucide="phone"></i>
+          <a class="contact-call-btn" href="https://maps.google.com/maps?q=10500+NE+8th+St,+Bellevue,+WA+98004" target="_blank" rel="noopener" aria-label="Ubicación en Google Maps">
+            <i data-lucide="map-pin"></i>
           </a>
         </div>
       </div>
@@ -159,42 +159,42 @@
 
     <!-- ============ VISITA NUESTRO CONCESIONARIO ============ -->
     <section class="contact-dealership-section">
-      <div class="section-head reveal-head">
-        <div class="section-head-left">
-          <span class="tag">CONTACTO</span>
-          <h2>Visita nuestro<br>concesionario</h2>
-        </div>
-        <div class="section-head-right">
-          <p class="section-sub">Vive nuestra colección seleccionada en persona. Visita el concesionario, conoce al equipo y descubre los vehículos de cerca.</p>
-        </div>
-      </div>
-
-      <div class="dealership-grid">
-        <div class="dealership-map-card reveal-card">
-          <iframe 
-            src="https://maps.google.com/maps?q=10500%20NE%208th%20St&amp;z=18&amp;output=embed" 
-            loading="lazy" 
-            title="Ubicación del concesionario EVO MOVE"
-            aria-label="Mapa de ubicación en Google Maps">
-          </iframe>
+      <div class="dealership-container">
+        <div class="dealership-map-col reveal-card">
+          <div class="dealership-map-card">
+            <iframe 
+              src="https://maps.google.com/maps?q=10500%20NE%208th%20St&amp;z=18&amp;output=embed" 
+              loading="lazy" 
+              title="Ubicación del concesionario EVO MOVE"
+              aria-label="Mapa de ubicación en Google Maps">
+            </iframe>
+          </div>
         </div>
 
-        <div class="dealership-info-grid">
-          <div class="dealership-info-card reveal-card reveal-delay-1">
-            <span class="dealership-info-label">Mail</span>
-            <a class="dealership-info-val" href="mailto:contact@car-dealership.co">contact@car-dealership.co</a>
+        <div class="dealership-right-col reveal-head">
+          <div class="dealership-header">
+            <span class="tag">CONTACTO</span>
+            <h2>Visita nuestro<br>concesionario</h2>
+            <p class="section-sub">Vive nuestra colección seleccionada en persona. Visita el concesionario, conoce al equipo y descubre los vehículos de cerca.</p>
           </div>
-          <div class="dealership-info-card reveal-card reveal-delay-2">
-            <span class="dealership-info-label">Teléfono</span>
-            <a class="dealership-info-val" href="tel:+0123456789">+ 01 234 56789</a>
-          </div>
-          <div class="dealership-info-card reveal-card reveal-delay-1">
-            <span class="dealership-info-label">Address</span>
-            <span class="dealership-info-val">10500 NE 8th Street Bellevue</span>
-          </div>
-          <div class="dealership-info-card reveal-card reveal-delay-2">
-            <span class="dealership-info-label">Horario de atención</span>
-            <span class="dealership-info-val">Mon-Sat, 9AM-6PM</span>
+
+          <div class="dealership-info-grid">
+            <div class="dealership-info-card">
+              <span class="dealership-info-label">Mail</span>
+              <a class="dealership-info-val" href="mailto:contact@car-dealership.co">contact@car-dealership.co</a>
+            </div>
+            <div class="dealership-info-card">
+              <span class="dealership-info-label">Teléfono</span>
+              <a class="dealership-info-val" href="tel:+0123456789">+ 01 234 56789</a>
+            </div>
+            <div class="dealership-info-card">
+              <span class="dealership-info-label">Adress</span>
+              <span class="dealership-info-val">10500 NE 8th Street Bellevue</span>
+            </div>
+            <div class="dealership-info-card">
+              <span class="dealership-info-label">Horario de atención</span>
+              <span class="dealership-info-val">Mon-Sat, 9AM-6PM</span>
+            </div>
           </div>
         </div>
       </div>
@@ -203,7 +203,7 @@
     <!-- ============ PREGUNTAS FRECUENTES (FAQ) ============ -->
     <section class="section faq">
       <div class="faq-left reveal-head">
-        <span class="tag">FAQ</span>
+        <span class="tag">Preguntas Frecuentes</span>
         <h2>Todo lo que<br>necesitas, aquí</h2>
         <p class="section-sub">Respuestas rápidas a preguntas frecuentes sobre visitar nuestro concesionario, reservar citas y contactar con nuestro equipo.</p>
       </div>
@@ -214,7 +214,7 @@
             <span>¿Cuál es el horario del concesionario?</span>
             <span class="faq-arrow">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M 9 18 L 15 12 L 9 6"/>
+                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
               </svg>
             </span>
           </button>
@@ -228,7 +228,7 @@
             <span>¿Necesito cita para visitaros?</span>
             <span class="faq-arrow">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M 9 18 L 15 12 L 9 6"/>
+                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
               </svg>
             </span>
           </button>
@@ -242,7 +242,7 @@
             <span>¿Cuánto tardaréis en responder a mi consulta?</span>
             <span class="faq-arrow">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M 9 18 L 15 12 L 9 6"/>
+                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
               </svg>
             </span>
           </button>
@@ -256,7 +256,7 @@
             <span>¿Puedo programar una prueba de conducción desde el formulario de contacto?</span>
             <span class="faq-arrow">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M 9 18 L 15 12 L 9 6"/>
+                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
               </svg>
             </span>
           </button>
@@ -270,7 +270,7 @@
             <span>¿Hay aparcamiento en el concesionario?</span>
             <span class="faq-arrow">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M 9 18 L 15 12 L 9 6"/>
+                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
               </svg>
             </span>
           </button>
@@ -326,9 +326,9 @@
             <a href="financing.html">Financiación</a>
           </nav>
           <nav class="footer-col">
-            <a href="index.html#team">Sobre nosotros</a>
+            <a href="about-us.html">Sobre nosotros</a>
             <a href="contact.html">Contacto</a>
-            <a href="index.html#blog">Blog</a>
+            <a href="blog.html">Blog</a>
           </nav>
         </div>
       </div>
