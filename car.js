@@ -176,6 +176,286 @@ const CAR_DATABASE = {
       'Alerón trasero retráctil adaptativo',
       'Telemetría de circuito integrada'
     ]
+  },
+  'zethrux-vantage': {
+    id: 'zethrux-vantage',
+    name: 'Zethrux Infernum',
+    category: 'Coupé',
+    categoryLabel: 'INVENTARIO - COUPÉ',
+    price: '$241,350',
+    year: '2023',
+    bodyType: 'Coupé',
+    fuel: 'Gasolina',
+    seats: '2',
+    vin: 'WP0AC2A93PS292417',
+    stock: 'EVO-ZI-2023',
+    description: 'Icono del rendimiento. Un deportivo de circuito nacido para dominar cada curva, con aerodinámica activa y motor de altas revoluciones.',
+    mainImage: 'assets/img/car-zethrux.webp',
+    gallery: [
+      'assets/img/car-zethrux.webp',
+      'assets/img/gallery-dreznak-1.png',
+      'assets/img/gallery-dreznak-2.webp',
+      'assets/img/gallery-dreznak-3.png'
+    ],
+    specsCards: [
+      { label: 'Transmisión', value: 'PDK 7 vel.' },
+      { label: 'Kilometraje', value: '950 km' },
+      { label: 'Motor', value: '4.0L Bóxer 6' },
+      { label: 'Potencia', value: '525 HP' },
+      { label: 'Tracción', value: 'RWD Trasera' },
+      { label: 'Color exterior', value: 'GT Silver' },
+      { label: 'Color interior', value: 'Cuero Negro' },
+      { label: 'Puertas', value: '2' }
+    ],
+    specifications: [
+      { label: 'Transmisión', value: 'PDK de 7 velocidades' },
+      { label: 'Motor', value: '4.0L bóxer atmosférico' },
+      { label: 'Potencia', value: '525 HP @ 8,500 rpm' },
+      { label: 'Tracción', value: 'Propulsión trasera' },
+      { label: 'Aceleración', value: '0-100 km/h en 3.2 segundos' },
+      { label: 'Velocidad punta', value: '318 km/h' },
+      { label: 'Puertas', value: '2' },
+      { label: 'Asientos', value: '2' }
+    ],
+    conditionHistory: [
+      { label: 'Condición', value: 'Impecable' },
+      { label: 'Propietarios anteriores', value: '1' },
+      { label: 'Historial de servicio', value: 'Mantenimiento oficial completo' },
+      { label: 'Garantía', value: 'Garantía EVO MOVE Plus 24 meses' },
+      { label: 'ITV / Inspección', value: 'Válido hasta 2026' },
+      { label: 'Certificado HPI', value: 'Limpio y verificado' }
+    ],
+    keyFeatures: [
+      'Paquete Weissach de fibra de carbono',
+      'Aerodinámica activa con DRS',
+      'Escape deportivo en titanio',
+      'Asientos baquet Clubsport',
+      'Suspensión de competición adaptativa'
+    ]
+  },
+  'emblora-wyndcroft': {
+    id: 'emblora-wyndcroft',
+    name: 'Emblora Wyndcroft',
+    category: 'SUV',
+    categoryLabel: 'INVENTARIO - SUV',
+    price: '$239,950',
+    year: '2024',
+    bodyType: 'SUV',
+    fuel: 'Gasolina',
+    seats: '5',
+    vin: 'ZPBPE1RL8RY288701',
+    stock: 'EVO-EW-2024',
+    description: 'El SUV de superlujo que combina la ferocidad de un deportivo con la elegancia y el espacio de una gran berlina.',
+    mainImage: 'assets/img/car-emblora.webp',
+    gallery: [
+      'assets/img/car-emblora.webp',
+      'assets/img/gallery-dreznak-1.png',
+      'assets/img/gallery-dreznak-2.webp',
+      'assets/img/gallery-dreznak-3.png'
+    ],
+    specsCards: [
+      { label: 'Transmisión', value: 'Automático 8 vel.' },
+      { label: 'Kilometraje', value: '1,200 km' },
+      { label: 'Motor', value: '4.0L V8 Biturbo' },
+      { label: 'Potencia', value: '666 HP' },
+      { label: 'Tracción', value: 'AWD' },
+      { label: 'Color exterior', value: 'Grigio Telesto' },
+      { label: 'Color interior', value: 'Cuero Nero' },
+      { label: 'Puertas', value: '5' }
+    ],
+    specifications: [
+      { label: 'Transmisión', value: 'Automático de 8 velocidades' },
+      { label: 'Motor', value: '4.0L V8 biturbo' },
+      { label: 'Potencia', value: '666 HP @ 6,000 rpm' },
+      { label: 'Tracción', value: 'AWD inteligente' },
+      { label: 'Aceleración', value: '0-100 km/h en 3.3 segundos' },
+      { label: 'Velocidad punta', value: '306 km/h' },
+      { label: 'Puertas', value: '5' },
+      { label: 'Asientos', value: '5' }
+    ],
+    conditionHistory: [
+      { label: 'Condición', value: 'Nuevo' },
+      { label: 'Propietarios anteriores', value: '0' },
+      { label: 'Historial de servicio', value: 'Entrega oficial con libro nuevo' },
+      { label: 'Garantía', value: 'Garantía completa del fabricante' },
+      { label: 'ITV / Inspección', value: 'Válido hasta 2028' },
+      { label: 'Certificado HPI', value: 'Unidad nueva de fábrica' }
+    ],
+    keyFeatures: [
+      'Modo Strada, Sport y Corsa',
+      'Escape deportivo con válvulas activas',
+      'Sistema de audio premium 3D',
+      'Suspensión neumática adaptativa',
+      'Cockpit digital con pantalla táctil'
+    ]
+  },
+  'aurvane-solaris': {
+    id: 'aurvane-solaris',
+    name: 'Aurvane Celeste',
+    category: 'Coupé',
+    categoryLabel: 'INVENTARIO - COUPÉ',
+    price: '$82,500',
+    year: '2023',
+    bodyType: 'Coupé',
+    fuel: 'Gasolina',
+    seats: '4',
+    vin: 'WBS8M9C52J5L20493',
+    stock: 'EVO-AC-2023',
+    description: 'Un coupé deportivo con ADN de circuito: precisión, potencia y una conducción visceral que enamora en cada kilómetro.',
+    mainImage: 'assets/img/car-aurvane.png',
+    gallery: [
+      'assets/img/car-aurvane.png',
+      'assets/img/gallery-dreznak-1.png',
+      'assets/img/gallery-dreznak-2.webp',
+      'assets/img/gallery-dreznak-3.png'
+    ],
+    specsCards: [
+      { label: 'Transmisión', value: 'Automático 8 vel.' },
+      { label: 'Kilometraje', value: '8,400 km' },
+      { label: 'Motor', value: '3.0L I6 Biturbo' },
+      { label: 'Potencia', value: '503 HP' },
+      { label: 'Tracción', value: 'AWD' },
+      { label: 'Color exterior', value: 'Isle of Man Green' },
+      { label: 'Color interior', value: 'Cuero Negro' },
+      { label: 'Puertas', value: '2' }
+    ],
+    specifications: [
+      { label: 'Transmisión', value: 'Automático de 8 velocidades' },
+      { label: 'Motor', value: '3.0L 6 cilindros biturbo' },
+      { label: 'Potencia', value: '503 HP @ 6,250 rpm' },
+      { label: 'Tracción', value: 'AWD' },
+      { label: 'Aceleración', value: '0-100 km/h en 3.5 segundos' },
+      { label: 'Velocidad punta', value: '250 km/h' },
+      { label: 'Puertas', value: '2' },
+      { label: 'Asientos', value: '4' }
+    ],
+    conditionHistory: [
+      { label: 'Condición', value: 'Excelente' },
+      { label: 'Propietarios anteriores', value: '1' },
+      { label: 'Historial de servicio', value: 'Mantenimiento oficial' },
+      { label: 'Garantía', value: 'Garantía EVO MOVE Plus 24 meses' },
+      { label: 'ITV / Inspección', value: 'Válido hasta 2026' },
+      { label: 'Certificado HPI', value: 'Limpio y verificado' }
+    ],
+    keyFeatures: [
+      'Paquete M Competition',
+      'Escape deportivo con flaps',
+      'Asientos deportivos M',
+      'Suspensión adaptativa',
+      'Pantalla curva con Head-Up Display'
+    ]
+  },
+  'soliven-corsa': {
+    id: 'soliven-corsa',
+    name: 'Soliven Brisa',
+    category: 'Coupé',
+    categoryLabel: 'INVENTARIO - COUPÉ',
+    price: '$195,000',
+    year: '2024',
+    bodyType: 'Coupé',
+    fuel: 'Gasolina',
+    seats: '4',
+    vin: 'SCFRMFAV5PGL50104',
+    stock: 'EVO-SB-2024',
+    description: 'Gran turismo británico de pura cepa: elegancia atemporal, motor V8 y una artesanía que marca la diferencia.',
+    mainImage: 'assets/img/car-soliven.png',
+    gallery: [
+      'assets/img/car-soliven.png',
+      'assets/img/gallery-dreznak-1.png',
+      'assets/img/gallery-dreznak-2.webp',
+      'assets/img/gallery-dreznak-3.png'
+    ],
+    specsCards: [
+      { label: 'Transmisión', value: 'Automático 8 vel.' },
+      { label: 'Kilometraje', value: '2,100 km' },
+      { label: 'Motor', value: '4.0L V8 Biturbo' },
+      { label: 'Potencia', value: '671 HP' },
+      { label: 'Tracción', value: 'RWD Trasera' },
+      { label: 'Color exterior', value: 'Aston Martin Racing' },
+      { label: 'Color interior', value: 'Cuero Café' },
+      { label: 'Puertas', value: '2' }
+    ],
+    specifications: [
+      { label: 'Transmisión', value: 'Automático de 8 velocidades' },
+      { label: 'Motor', value: '4.0L V8 biturbo' },
+      { label: 'Potencia', value: '671 HP @ 6,000 rpm' },
+      { label: 'Tracción', value: 'Propulsión trasera' },
+      { label: 'Aceleración', value: '0-100 km/h en 3.5 segundos' },
+      { label: 'Velocidad punta', value: '325 km/h' },
+      { label: 'Puertas', value: '2' },
+      { label: 'Asientos', value: '4' }
+    ],
+    conditionHistory: [
+      { label: 'Condición', value: 'Nuevo' },
+      { label: 'Propietarios anteriores', value: '0' },
+      { label: 'Historial de servicio', value: 'Entrega oficial' },
+      { label: 'Garantía', value: 'Garantía completa del fabricante' },
+      { label: 'ITV / Inspección', value: 'Válido hasta 2028' },
+      { label: 'Certificado HPI', value: 'Unidad nueva' }
+    ],
+    keyFeatures: [
+      'Diferencial electrónico trasero',
+      'Suspensión adaptativa Skyhook',
+      'Sistema de sonido Bowers & Wilkins',
+      'Interior de cuero artesanal',
+      'Modos GT, Sport y Sport+'
+    ]
+  },
+  'pharyx-phantom': {
+    id: 'pharyx-phantom',
+    name: 'Pharyx Full',
+    category: 'SUV',
+    categoryLabel: 'INVENTARIO - SUV',
+    price: '$179,000',
+    year: '2024',
+    bodyType: 'SUV',
+    fuel: 'Gasolina',
+    seats: '5',
+    vin: 'W1NYC7BJ3RX232109',
+    stock: 'EVO-PF-2024',
+    description: 'Un todoterreno de culto con presencia imponente, potencia sobrealimentada y el confort de un auténtico icono de lujo.',
+    mainImage: 'assets/img/car-pharyx.png',
+    gallery: [
+      'assets/img/car-pharyx.png',
+      'assets/img/gallery-dreznak-1.png',
+      'assets/img/gallery-dreznak-2.webp',
+      'assets/img/gallery-dreznak-3.png'
+    ],
+    specsCards: [
+      { label: 'Transmisión', value: 'Automático 9 vel.' },
+      { label: 'Kilometraje', value: '5,600 km' },
+      { label: 'Motor', value: '4.0L V8 Biturbo' },
+      { label: 'Potencia', value: '585 HP' },
+      { label: 'Tracción', value: 'AWD 4Matic' },
+      { label: 'Color exterior', value: 'Obsidiana Negra' },
+      { label: 'Color interior', value: 'Nappa Rojo' },
+      { label: 'Puertas', value: '5' }
+    ],
+    specifications: [
+      { label: 'Transmisión', value: 'Automático de 9 velocidades' },
+      { label: 'Motor', value: '4.0L V8 biturbo' },
+      { label: 'Potencia', value: '585 HP @ 5,500 rpm' },
+      { label: 'Tracción', value: 'AWD 4Matic' },
+      { label: 'Aceleración', value: '0-100 km/h en 4.5 segundos' },
+      { label: 'Velocidad punta', value: '240 km/h' },
+      { label: 'Puertas', value: '5' },
+      { label: 'Asientos', value: '5' }
+    ],
+    conditionHistory: [
+      { label: 'Condición', value: 'Como nuevo' },
+      { label: 'Propietarios anteriores', value: '1' },
+      { label: 'Historial de servicio', value: 'Mantenimiento oficial' },
+      { label: 'Garantía', value: 'Garantía EVO MOVE Plus 24 meses' },
+      { label: 'ITV / Inspección', value: 'Válido hasta 2027' },
+      { label: 'Certificado HPI', value: 'Limpio y verificado' }
+    ],
+    keyFeatures: [
+      'Paquete AMG Night',
+      'Suspensión AMG Ride Control',
+      'Asientos AMG Performance',
+      'Sistema Burmester 3D Surround',
+      'Faros DIGITAL Light'
+    ]
   }
 };
 
