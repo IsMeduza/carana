@@ -2722,87 +2722,195 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
 
 
 
-html.js .hero-bg {
+/* ============ GLOBAL UNIFIED HERO ENTRANCE ANIMATIONS (ALL PAGES) ============ */
+html.js .hero-bg,
+html.js .not-found-hero .hero-bg {
   transform: scale(1.04);
   opacity: 0.45;
   will-change: transform, opacity;
 }
-html.js.loaded .hero-bg {
+html.js.loaded .hero-bg,
+html.js.loaded .not-found-hero .hero-bg {
   transform: scale(1);
   opacity: 1;
   transition: transform 1.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 1.6s ease;
 }
 
-html.js .hero-top h1 {
+/* 1. Hero Headings across all pages */
+html.js .hero-top h1,
+html.js .inv-hero-top h1,
+html.js .trade-hero-top h1,
+html.js .about-hero-title,
+html.js .contact-hero-left h1,
+html.js .blog-page-title,
+html.js .car-detail-title,
+html.js .legal-title,
+html.js .not-found-hero h1 {
   opacity: 0;
-  transform: translateY(-14px);
+  transform: translateY(-16px);
   will-change: opacity, transform;
 }
-html.js.loaded .hero-top h1 {
+html.js.loaded .hero-top h1,
+html.js.loaded .inv-hero-top h1,
+html.js.loaded .trade-hero-top h1,
+html.js.loaded .about-hero-title,
+html.js.loaded .contact-hero-left h1,
+html.js.loaded .blog-page-title,
+html.js.loaded .car-detail-title,
+html.js.loaded .legal-title,
+html.js.loaded .not-found-hero h1 {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.85s cubic-bezier(0.12, 0.23, 0.5, 1), transform 0.85s cubic-bezier(0.12, 0.23, 0.5, 1);
-  transition-delay: 0.35s;
+  transition-delay: 0.22s;
 }
 
-html.js .hero-search {
+/* 2. Hero Search Box & Tags */
+html.js .hero-search,
+html.js .contact-hero-top-left .tag,
+html.js .car-hero-info .tag,
+html.js .legal-sidebar .tag {
   opacity: 0;
-  transform: translateY(-14px) scale(0.96);
+  transform: translateY(-12px) scale(0.96);
   will-change: opacity, transform;
 }
-html.js.loaded .hero-search {
+html.js.loaded .hero-search,
+html.js.loaded .contact-hero-top-left .tag,
+html.js.loaded .car-hero-info .tag,
+html.js.loaded .legal-sidebar .tag {
   opacity: 1;
   transform: translateY(0) scale(1);
   transition: opacity 0.8s cubic-bezier(0.12, 0.23, 0.5, 1), transform 0.8s cubic-bezier(0.12, 0.23, 0.5, 1);
-  transition-delay: 0.45s;
+  transition-delay: 0.32s;
 }
 
-html.js .hero-left p {
+/* 3. Hero Paragraphs & Lead Descriptions */
+html.js .hero-left p,
+html.js .inv-hero-left p,
+html.js .trade-hero-left p,
+html.js .about-hero-left p,
+html.js .contact-hero-left p,
+html.js .blog-article-lead,
+html.js .car-detail-desc,
+html.js .legal-lead,
+html.js .not-found-hero .hero-left p {
   opacity: 0;
   transform: translateY(16px);
   will-change: opacity, transform;
 }
-html.js.loaded .hero-left p {
+html.js.loaded .hero-left p,
+html.js.loaded .inv-hero-left p,
+html.js.loaded .trade-hero-left p,
+html.js.loaded .about-hero-left p,
+html.js.loaded .contact-hero-left p,
+html.js.loaded .blog-article-lead,
+html.js.loaded .car-detail-desc,
+html.js.loaded .legal-lead,
+html.js.loaded .not-found-hero .hero-left p {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.75s cubic-bezier(0.12, 0.23, 0.5, 1), transform 0.75s cubic-bezier(0.12, 0.23, 0.5, 1);
-  transition-delay: 0.55s;
+  transition-delay: 0.42s;
 }
 
-html.js .hero-left .btn {
+/* 4. Hero Action Buttons & Channels */
+html.js .hero-left .btn,
+html.js .inv-hero-left .btn,
+html.js .trade-hero-left .btn,
+html.js .about-hero-left .btn,
+html.js .contact-channels,
+html.js .car-hero-actions,
+html.js .not-found-hero .hero-left .btn {
   opacity: 0;
-  transform: translateY(16px) scale(0.96);
+  transform: translateY(16px) scale(0.97);
   will-change: opacity, transform;
 }
-html.js.loaded .hero-left .btn {
+html.js.loaded .hero-left .btn,
+html.js.loaded .inv-hero-left .btn,
+html.js.loaded .trade-hero-left .btn,
+html.js.loaded .about-hero-left .btn,
+html.js.loaded .contact-channels,
+html.js.loaded .car-hero-actions,
+html.js.loaded .not-found-hero .hero-left .btn {
   opacity: 1;
   transform: translateY(0) scale(1);
   transition: opacity 0.75s cubic-bezier(0.12, 0.23, 0.5, 1), transform 0.75s cubic-bezier(0.12, 0.23, 0.5, 1), background 0.3s ease, box-shadow 0.3s ease;
-  transition-delay: 0.65s;
+  transition-delay: 0.52s;
 }
 
-html.js .hero-stats .stat-card:nth-child(1) {
+/* 5. Hero Stat Cards (Staggered 1st and 2nd on ALL Pages) */
+html.js .hero-stats .stat-card:nth-child(1),
+html.js .inv-hero-stats .stat-card:nth-child(1),
+html.js .trade-hero-stats .stat-card:nth-child(1),
+html.js .about-hero-stats .stat-card:nth-child(1) {
   opacity: 0;
   transform: translateY(20px) scale(0.94);
   will-change: opacity, transform;
 }
-html.js.loaded .hero-stats .stat-card:nth-child(1) {
+html.js.loaded .hero-stats .stat-card:nth-child(1),
+html.js.loaded .inv-hero-stats .stat-card:nth-child(1),
+html.js.loaded .trade-hero-stats .stat-card:nth-child(1),
+html.js.loaded .about-hero-stats .stat-card:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0.62s;
+}
+
+html.js .hero-stats .stat-card:nth-child(2),
+html.js .inv-hero-stats .stat-card:nth-child(2),
+html.js .trade-hero-stats .stat-card:nth-child(2),
+html.js .about-hero-stats .stat-card:nth-child(2) {
+  opacity: 0;
+  transform: translateY(20px) scale(0.94);
+  will-change: opacity, transform;
+}
+html.js.loaded .hero-stats .stat-card:nth-child(2),
+html.js.loaded .inv-hero-stats .stat-card:nth-child(2),
+html.js.loaded .trade-hero-stats .stat-card:nth-child(2),
+html.js.loaded .about-hero-stats .stat-card:nth-child(2) {
   opacity: 1;
   transform: translateY(0) scale(1);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: 0.72s;
 }
 
-html.js .hero-stats .stat-card:nth-child(2) {
+/* 6. Hero Right Media / Cards across pages */
+html.js .car-hero-frame,
+html.js .car-floating-card,
+html.js .dealership-info-card,
+html.js .trade-banner-wrap {
   opacity: 0;
-  transform: translateY(20px) scale(0.94);
+  transform: translateY(22px) scale(0.97);
   will-change: opacity, transform;
 }
-html.js.loaded .hero-stats .stat-card:nth-child(2) {
+html.js.loaded .car-hero-frame,
+html.js.loaded .car-floating-card,
+html.js.loaded .dealership-info-card,
+html.js.loaded .trade-banner-wrap {
   opacity: 1;
   transform: translateY(0) scale(1);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: 0.82s;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0.52s;
+}
+
+/* Ensure hero reveal items smoothly coordinate with page load */
+html.js.loaded .hero .reveal-head,
+html.js.loaded .hero .reveal-card,
+html.js.loaded .inv-hero .reveal-head,
+html.js.loaded .inv-hero .reveal-card,
+html.js.loaded .trade-hero .reveal-head,
+html.js.loaded .trade-hero .reveal-card,
+html.js.loaded .about-hero .reveal-head,
+html.js.loaded .about-hero .reveal-card,
+html.js.loaded .contact-hero .reveal-head,
+html.js.loaded .contact-hero .reveal-card,
+html.js.loaded .blog-page-hero .reveal-head,
+html.js.loaded .blog-page-hero .reveal-card,
+html.js.loaded .car-hero-section .reveal-head,
+html.js.loaded .car-hero-section .reveal-card {
+  opacity: 1;
+  transform: none;
 }
 
 /* ============ TRADE-IN (ENTREGA TU COCHE) PAGE STYLES ============ */
