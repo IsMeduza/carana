@@ -1,0 +1,10 @@
+/.git/**
+/.wrangler/**
+/.assetsignore
+/src/**
+/wrangler.jsonc
+/server.cjs
+/screenshot_testi_final.png
+/package.json
+/package-lock.json
+/node_modules/**

@@ -139,7 +139,7 @@ function renderSearchResults(items) {
     return;
   }
   searchResultsList.innerHTML = items.map(car => `
-    <a class="search-item" href="#featured" data-name="${car.name}">
+    <a class="search-item" href="inventory.html?search=${encodeURIComponent(car.name)}" data-name="${car.name}">
       ${returnArrowSvg}
       <span>${car.name}</span>
     </a>
@@ -148,13 +148,22 @@ function renderSearchResults(items) {
   searchResultsList.querySelectorAll('.search-item').forEach(item => {
     item.addEventListener('click', (e) => {
       searchDropdown.classList.remove('open');
-      searchInput.value = item.getAttribute('data-name');
+      // allow default link navigation to inventory.html?search=...
     });
   });
 }
 
 function showInitialSuggestions() {
   renderSearchResults(inventory.slice(0, 2));
+}
+
+function goToInventorySearch() {
+  const query = searchInput ? searchInput.value.trim() : '';
+  if (query) {
+    window.location.href = `inventory.html?search=${encodeURIComponent(query)}`;
+  } else {
+    window.location.href = 'inventory.html';
+  }
 }
 
 if (searchInput && searchDropdown) {
@@ -175,6 +184,20 @@ if (searchInput && searchDropdown) {
     }
     searchDropdown.classList.add('open');
   });
+
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      goToInventorySearch();
+    }
+  });
+
+  if (searchBtn) {
+    searchBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      goToInventorySearch();
+    });
+  }
 
   if (searchWrap) {
     searchWrap.addEventListener('mouseenter', () => {

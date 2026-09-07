@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luxury Car Dealership in Washington | CAR DEALERSHIP©</title>
+<title>Luxury Car Dealership in Washington | EVO MOVE©</title>
 <script>document.documentElement.classList.add('js');</script>
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -13,10 +13,10 @@
 <header class="nav" id="nav">
   <div class="nav-inner">
     <a class="nav-logo" href="index.html" aria-label="Home">
-      <img src="assets/img/logo.svg" alt="CAR DEALERSHIP">
+      EVO MOVE
     </a>
     <nav class="nav-links" id="navLinks">
-      <a href="#featured">Inventario</a>
+      <a href="inventory.html">Inventario</a>
       <a href="#contact">Entrega tu coche</a>
       <a href="#contact">Financiación</a>
       <a href="#team">Sobre nosotros</a>
@@ -256,12 +256,17 @@
       </div>
       <div class="svc-col">
         <div class="svc-card svc-card-brands reveal-card reveal-delay-1">
-          <div class="svc-brands-row">
-            <div class="svc-brand-badge"><img src="assets/img/brand-1.svg" alt="Brand emblem 1"></div>
-            <div class="svc-brand-badge"><img src="assets/img/brand-2.svg" alt="Brand emblem 2"></div>
-            <div class="svc-brand-badge"><img src="assets/img/brand-3.svg" alt="Brand emblem 3"></div>
+          <div class="svc-brands-wheel">
+            <div class="svc-brand-badge"><img src="assets/img/brand-framer-1.svg" alt="Brand emblem 1"></div>
+            <div class="svc-brand-badge"><img src="assets/img/brand-framer-2.svg" alt="Brand emblem 2"></div>
+            <div class="svc-brand-badge"><img src="assets/img/brand-framer-3.svg" alt="Brand emblem 3"></div>
+            <div class="svc-brand-badge"><img src="assets/img/brand-framer-4.svg" alt="Brand emblem 4"></div>
+            <div class="svc-brand-badge"><img src="assets/img/brand-framer-5.svg" alt="Brand emblem 5"></div>
+            <div class="svc-brand-badge"><img src="assets/img/brand-framer-6.svg" alt="Brand emblem 6"></div>
+            <div class="svc-brand-badge"><img src="assets/img/brand-framer-7.svg" alt="Brand emblem 7"></div>
+            <div class="svc-brand-badge"><img src="assets/img/brand-framer-8.svg" alt="Brand emblem 8"></div>
           </div>
-          <p>Historial verificado y marca de confianza</p>
+          <p>Historial verificado y<br>marca de confianza</p>
         </div>
         <div class="svc-card svc-card-img reveal-card reveal-delay-2">
           <img src="assets/img/svc-warranty.webp" alt="Asistencia de garantía">
@@ -337,16 +342,16 @@
         <p class="testi-quote">"Un servicio excepcional de principio a fin, un equipo verdaderamente profesional y una calidad del vehículo extraordinaria en todo momento"</p>
         <p class="testi-name">James Mitchell - Propietario de Porsche 911</p>
       </div>
-      <div class="testi-stat testi-stat-1 reveal-card reveal-delay-2">
-        <strong>20+</strong>
-        <small>Años de experiencia</small>
-      </div>
-      <div class="testi-stat-col reveal-card reveal-delay-3">
-        <div class="testi-stat testi-stat-2">
+      <div class="testi-right">
+        <div class="testi-stat testi-stat-1 reveal-card reveal-delay-2">
+          <strong>20+</strong>
+          <small>Años de experiencia</small>
+        </div>
+        <div class="testi-stat testi-stat-2 reveal-card reveal-delay-3">
           <strong>800+</strong>
           <small>Propietarios satisfechos</small>
         </div>
-        <div class="testi-rating">
+        <div class="testi-rating reveal-card reveal-delay-4">
           <div class="testi-rating-top">
             <img src="assets/img/google.png" alt="Google logo">
             <strong>5,0</strong>
@@ -367,15 +372,23 @@
   <!-- ============ TEAM ============ -->
   <section class="section team" id="team">
     <div class="team-cards">
-      <div class="team-card reveal-card reveal-delay-1">
-        <img src="assets/img/team-michael.webp" alt="Michael Richardson">
-        <p class="team-name">Michael Richardson</p>
-        <p class="team-role">Director de ventas</p>
+      <div class="team-card team-card-1 reveal-card reveal-delay-1">
+        <div class="team-photo">
+          <img src="assets/img/team-michael.webp" alt="Michael Richardson">
+        </div>
+        <div class="team-info">
+          <p class="team-name">Michael Richardson</p>
+          <p class="team-role">Director de ventas</p>
+        </div>
       </div>
-      <div class="team-card reveal-card reveal-delay-2">
-        <img src="assets/img/team-sarah.webp" alt="Sarah Thompson">
-        <p class="team-name">Sarah Thompson</p>
-        <p class="team-role">Fundadora y directora ejecutiva</p>
+      <div class="team-card team-card-2 reveal-card reveal-delay-2">
+        <div class="team-photo">
+          <img src="assets/img/team-sarah.webp" alt="Sarah Thompson">
+        </div>
+        <div class="team-info">
+          <p class="team-name">Sarah Thompson</p>
+          <p class="team-role">Fundadora y directora ejecutiva</p>
+        </div>
       </div>
     </div>
     <div class="team-right reveal-head">
@@ -425,18 +438,20 @@
     <div class="blog-cards">
       <a class="blog-card reveal-card reveal-delay-1" href="#blog">
         <img src="assets/img/blog-urus.webp" alt="Black Lamborghini Urus">
-        <span class="car-arrow">
-          <span class="btn-arrow-wrap">
-            <span class="btn-arrow-track">
-              <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-              </svg>
-              <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-              </svg>
+        <div class="blog-cutout">
+          <span class="blog-arrow">
+            <span class="btn-arrow-wrap">
+              <span class="btn-arrow-track">
+                <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                </svg>
+                <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                </svg>
+              </span>
             </span>
           </span>
-        </span>
+        </div>
         <div class="blog-card-text">
           <small>3 de mayo de 2026</small>
           <p>El nuevo Lamborghini Urus Performante ha llegado y es todo lo que esperábamos</p>
@@ -444,18 +459,20 @@
       </a>
       <a class="blog-card reveal-card reveal-delay-2" href="#blog">
         <img src="assets/img/blog-leasing.webp" alt="Car keys with euro banknotes">
-        <span class="car-arrow">
-          <span class="btn-arrow-wrap">
-            <span class="btn-arrow-track">
-              <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-              </svg>
-              <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-              </svg>
+        <div class="blog-cutout">
+          <span class="blog-arrow">
+            <span class="btn-arrow-wrap">
+              <span class="btn-arrow-track">
+                <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                </svg>
+                <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                </svg>
+              </span>
             </span>
           </span>
-        </span>
+        </div>
         <div class="blog-card-text">
           <small>3 de mayo de 2026</small>
           <p>¿Leasing o compra de un coche de lujo? ¿Qué opción es mejor para ti en 2024?</p>
@@ -560,61 +577,69 @@
 
 <!-- ============ FOOTER ============ -->
 <footer class="footer" id="contact">
-  <div class="footer-top reveal-head">
-    <div class="footer-left">
-      <h2>¿Listo para probar tu coche soñado?</h2>
-      <p class="section-sub">Vehículos de lujo seleccionados de las marcas más<br>prestigiosas del mundo desde 2010</p>
-      <div class="footer-ctas">
-        <a class="btn btn-dark" href="#contact">
-          <span>Contactar</span>
-          <span class="btn-chip btn-chip-light">
-            <span class="btn-arrow-wrap">
-              <span class="btn-arrow-track">
-                <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                </svg>
-                <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                </svg>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-left">
+        <h2 class="reveal-head">¿Listo para probar<br>tu coche soñado?</h2>
+        <p class="section-sub reveal-head reveal-delay-1">Vehículos de lujo seleccionados de las marcas más prestigiosas del mundo desde 2010</p>
+        <div class="footer-ctas">
+          <a class="btn btn-dark" href="#contact">
+            <span>Contactar</span>
+            <span class="btn-chip btn-chip-light">
+              <span class="btn-arrow-wrap">
+                <span class="btn-arrow-track">
+                  <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                  </svg>
+                  <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                  </svg>
+                </span>
               </span>
             </span>
-          </span>
-        </a>
-        <a class="footer-icon-btn" href="https://maps.google.com" target="_blank" rel="noopener" aria-label="Ubicación">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M 6.4 4.76 C 9.5 1.72 14.47 1.74 17.54 4.82 C 20.61 7.89 20.64 12.86 17.6 15.96 L 13.41 20.15 C 12.63 20.93 11.37 20.93 10.59 20.15 L 6.4 15.96 C 3.31 12.87 3.31 7.85 6.4 4.76 Z"/>
-            <circle cx="12" cy="10.36" r="3"/>
-          </svg>
-        </a>
-        <a class="footer-icon-btn" href="tel:+123456789" aria-label="Llámanos">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M 7.829 16.171 C 5.678 14.016 4.024 11.417 2.983 8.557 C 2.41 6.993 2.935 5.275 4.113 4.097 L 4.842 3.369 C 5.238 2.972 5.775 2.749 6.335 2.749 C 6.896 2.749 7.433 2.972 7.829 3.369 L 9.536 5.076 C 9.932 5.471 10.155 6.009 10.155 6.569 C 10.155 7.129 9.932 7.667 9.536 8.063 L 9.116 8.483 C 8.776 8.822 8.586 9.282 8.586 9.763 C 8.586 10.243 8.776 10.703 9.116 11.043 L 12.956 14.884 C 13.295 15.223 13.756 15.414 14.236 15.414 C 14.716 15.414 15.176 15.223 15.516 14.884 L 15.937 14.464 C 16.333 14.067 16.87 13.844 17.43 13.844 C 17.991 13.844 18.528 14.067 18.924 14.464 L 20.631 16.171 C 21.027 16.566 21.25 17.104 21.25 17.664 C 21.25 18.224 21.027 18.762 20.631 19.158 L 19.903 19.886 C 18.725 21.065 17.007 21.59 15.443 21.017 C 12.582 19.975 9.984 18.321 7.829 16.171 Z"/>
-          </svg>
-        </a>
+          </a>
+          <a class="footer-icon-btn" href="https://maps.google.com" target="_blank" rel="noopener" aria-label="Ubicación">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 6.4 4.76 C 9.5 1.72 14.47 1.74 17.54 4.82 C 20.61 7.89 20.64 12.86 17.6 15.96 L 13.41 20.15 C 12.63 20.93 11.37 20.93 10.59 20.15 L 6.4 15.96 C 3.31 12.87 3.31 7.85 6.4 4.76 Z"/>
+              <circle cx="12" cy="10.36" r="3"/>
+            </svg>
+          </a>
+          <a class="footer-icon-btn" href="tel:+123456789" aria-label="Llámanos">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 7.829 16.171 C 5.678 14.016 4.024 11.417 2.983 8.557 C 2.41 6.993 2.935 5.275 4.113 4.097 L 4.842 3.369 C 5.238 2.972 5.775 2.749 6.335 2.749 C 6.896 2.749 7.433 2.972 7.829 3.369 L 9.536 5.076 C 9.932 5.471 10.155 6.009 10.155 6.569 C 10.155 7.129 9.932 7.667 9.536 8.063 L 9.116 8.483 C 8.776 8.822 8.586 9.282 8.586 9.763 C 8.586 10.243 8.776 10.703 9.116 11.043 L 12.956 14.884 C 13.295 15.223 13.756 15.414 14.236 15.414 C 14.716 15.414 15.176 15.223 15.516 14.884 L 15.937 14.464 C 16.333 14.067 16.87 13.844 17.43 13.844 C 17.991 13.844 18.528 14.067 18.924 14.464 L 20.631 16.171 C 21.027 16.566 21.25 17.104 21.25 17.664 C 21.25 18.224 21.027 18.762 20.631 19.158 L 19.903 19.886 C 18.725 21.065 17.007 21.59 15.443 21.017 C 12.582 19.975 9.984 18.321 7.829 16.171 Z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <nav class="footer-col">
+          <a href="index.html">Inicio</a>
+          <a href="inventory.html">Inventario</a>
+          <a href="#contact">Entrega tu coche</a>
+          <a href="#contact">Financiación</a>
+        </nav>
+        <nav class="footer-col">
+          <a href="#team">Sobre nosotros</a>
+          <a href="#contact">Contacto</a>
+          <a href="#blog">Blog</a>
+        </nav>
       </div>
     </div>
-    <nav class="footer-col">
-      <a href="index.html">Inicio</a>
-      <a href="#featured">Inventario</a>
-      <a href="#contact">Entrega tu coche</a>
-      <a href="#contact">Financiación</a>
-    </nav>
-    <nav class="footer-col">
-      <a href="#team">Sobre nosotros</a>
-      <a href="#contact">Contacto</a>
-      <a href="#blog">Blog</a>
-    </nav>
-  </div>
-  <div class="footer-giant reveal-head" aria-hidden="true">CAR DEALERSHIP</div>
-  <div class="footer-bottom">
-    <p>© 2026 CAR DEALERSHIP - TODOS LOS DERECHOS RESERVADOS</p>
-    <p>
-      <a href="#">Términos y condiciones</a>
-      <span>|</span>
-      <a href="#">Política de privacidad</a>
-      <span>|</span>
-      <a href="#">Política de cookies</a>
-    </p>
+    <div class="footer-giant reveal-head" aria-hidden="true">
+      <svg viewBox="0 35 726 122" width="100%" height="auto" style="display: block; width: 100%; height: auto; overflow: visible;">
+        <text x="0" y="148" textLength="726" lengthAdjust="spacing" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="150" fill="currentColor">EVO MOVE</text>
+      </svg>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 EVO MOVE - TODOS LOS DERECHOS RESERVADOS</p>
+      <div class="footer-legal">
+        <a href="#">Términos y condiciones</a>
+        <span class="footer-legal-sep">|</span>
+        <a href="#">Política de privacidad</a>
+        <span class="footer-legal-sep">|</span>
+        <a href="#">Política de cookies</a>
+      </div>
+    </div>
   </div>
 </footer>
 

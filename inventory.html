@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario | EVO MOVE - Concesionario de lujo</title>
+  <meta name="description" content="Explora nuestra colección exclusiva de vehículos premium y de alto rendimiento.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ============ NAV HEADER ============ -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">EVO MOVE</a>
+      <nav class="nav-links" id="navLinks">
+        <a class="nav-link active" href="inventory.html">Inventario</a>
+        <a class="nav-link" href="index.html#services">Entrega tu coche</a>
+        <a class="nav-link" href="index.html#services">Financiación</a>
+        <a class="nav-link" href="index.html#team">Sobre nosotros</a>
+        <a class="nav-link" href="index.html#contact">Contacto</a>
+      </nav>
+      <div class="nav-right">
+        <a class="btn btn-dark" href="index.html#contact">
+          <span>Ventas</span>
+          <span class="btn-chip btn-chip-light">
+            <span class="btn-arrow-wrap">
+              <span class="btn-arrow-track">
+                <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                </svg>
+                <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                </svg>
+              </span>
+            </span>
+          </span>
+        </a>
+        <button class="nav-burger" id="navBurger" aria-label="Menú">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ INVENTORY HERO (COMPACT, NO GIANT VOID) ============ -->
+  <section class="inv-hero">
+    <div class="inv-hero-top">
+      <h1>Encuentra hoy tu coche perfecto y condúcelo mañana</h1>
+    </div>
+    <div class="inv-hero-bottom">
+      <div class="inv-hero-left">
+        <p>Vehículos de lujo seleccionados de las marcas más prestigiosas del mundo, inspeccionados rigurosamente y listos para su entrega inmediata.</p>
+        <a class="btn btn-dark" href="#catalog">
+          <span>Ver inventario</span>
+          <span class="btn-chip btn-chip-light">
+            <span class="btn-arrow-wrap">
+              <span class="btn-arrow-track">
+                <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                </svg>
+                <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                </svg>
+              </span>
+            </span>
+          </span>
+        </a>
+      </div>
+      <div class="inv-hero-stats">
+        <div class="stat-card">
+          <span class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 4.94 4.945 L 13.56 4.945 M 4.94 4.945 L 0 4.945 M 4.94 4.945 L 8.59 14.996 M 4.94 4.945 L 7.34 1.012 L 7.89 0 M 13.56 4.945 L 18.5 4.945 M 13.56 4.945 L 9.91 14.996 M 13.56 4.945 L 11.16 1.012 L 10.594 0 M 0 4.945 C 0 5.365 0.079 5.785 0.236 6.181 C 0.448 6.716 0.878 7.209 1.736 8.194 L 5.203 12.17 C 6.6 13.772 7.298 14.574 8.126 15.111 C 8.75 15.518 9.475 15.75 10.22 15.75 C 10.965 15.75 11.69 15.518 12.314 15.111 C 13.142 14.574 13.84 13.772 15.237 12.17 L 18.704 8.194 C 19.562 7.209 19.992 6.716 20.204 6.181 C 20.361 5.785 20.44 5.365 20.44 4.945 M 0 4.945 L 20.44 4.945"/>
+            </svg>
+          </span>
+          <span class="stat-text"><strong>25+</strong><small>Marca de lujo</small></span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 8.5 9.251 L 16.573 4.626 M 8.5 9.251 L 8.5 18.501 M 8.5 9.251 L 4.463 6.939 M 16.573 4.626 C 16.293 4.145 15.891 3.746 15.408 3.47 L 12.75 1.947 C 11.766 1.383 11.275 1.102 10.741 0.992 C 10.269 0.895 9.78 0.895 9.308 0.992 C 8.775 1.102 8.283 1.383 7.3 1.947 L 1.984 4.993 C 1.001 5.556 0.509 5.837 0.178 6.275 C -0.114 6.662 -0.285 7.126 -0.312 7.608 C -0.342 8.153 -0.342 8.716 -0.342 9.843 L -0.342 15.937 C -0.342 17.064 -0.342 17.627 -0.178 18.065 C -0.033 18.452 0.209 18.789 0.52 19.037 C 0.872 19.319 1.364 19.6 2.347 20.164 L 7.663 23.21 C 8.647 23.774 9.138 24.055 9.672 24.166 C 10.144 24.263 10.632 24.263 11.105 24.166 C 11.638 24.055 12.13 23.774 13.113 23.21 L 18.43 20.164 C 19.413 19.6 19.905 19.319 20.257 18.881 C 20.568 18.494 20.739 18.03 20.766 17.548 C 20.796 17.003 20.796 16.44 20.796 15.313 L 20.796 9.223 C 20.796 8.096 20.796 7.533 20.632 7.095 C 20.487 6.708 20.245 6.371 19.934 6.123 C 19.582 5.841 19.09 5.56 18.107 4.996 L 16.573 4.626"/>
+            </svg>
+          </span>
+          <span class="stat-text"><strong>100+</strong><small>Coches disponibles</small></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CATALOG & FILTERS SECTION ============ -->
+  <section class="inv-section" id="catalog">
+    <div class="inv-layout">
+      <!-- FILTERS SIDEBAR -->
+      <aside class="filters-sidebar">
+        <div class="filters-header">
+          <span class="filters-title">Filters</span>
+          <button class="filters-clear-btn" id="clearFiltersBtn" type="button">Limpiar</button>
+        </div>
+
+        <!-- SEARCH INPUT -->
+        <div class="filter-search-box">
+          <svg class="filter-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input class="filter-search-input" id="filterSearchInput" type="text" placeholder="Search Car..." autocomplete="off">
+        </div>
+
+        <!-- MAKE SELECT -->
+        <div class="filter-group">
+          <label class="filter-label" for="filterMake">Make</label>
+          <select class="filter-select" id="filterMake">
+            <option value="all">All</option>
+            <option value="Aston Martin">Aston Martin</option>
+            <option value="Audi">Audi</option>
+            <option value="BMW">BMW</option>
+            <option value="Lamborghini">Lamborghini</option>
+            <option value="Land Rover">Land Rover</option>
+            <option value="McLaren">McLaren</option>
+            <option value="Mercedes-Benz">Mercedes-Benz</option>
+            <option value="Porsche">Porsche</option>
+          </select>
+        </div>
+
+        <!-- CONDITION SELECT -->
+        <div class="filter-group">
+          <label class="filter-label" for="filterCondition">Condition</label>
+          <select class="filter-select" id="filterCondition">
+            <option value="all">All</option>
+            <option value="Nuevo">Nuevo</option>
+            <option value="De ocasión">De ocasión</option>
+          </select>
+        </div>
+
+        <!-- YEAR & MILEAGE -->
+        <div class="filter-row-inputs">
+          <div class="filter-group">
+            <label class="filter-label" for="filterYear">Year</label>
+            <input class="filter-input-small" id="filterYear" type="number" placeholder="Year..." min="2010" max="2026">
+          </div>
+          <div class="filter-group">
+            <label class="filter-label" for="filterMileage">Max Mileage</label>
+            <input class="filter-input-small" id="filterMileage" type="number" placeholder="Max..." min="0" step="1000">
+          </div>
+        </div>
+
+        <!-- PRICE RANGE CHECKBOXES -->
+        <div class="filter-group">
+          <span class="filter-label">Rango de precios</span>
+          <div class="filter-checkboxes">
+            <label class="filter-check-item">
+              <input type="checkbox" name="priceRange" value="50-100">
+              <span>50k-100k</span>
+            </label>
+            <label class="filter-check-item">
+              <input type="checkbox" name="priceRange" value="100-200">
+              <span>100k-200k</span>
+            </label>
+            <label class="filter-check-item">
+              <input type="checkbox" name="priceRange" value="200+">
+              <span>más de 200k</span>
+            </label>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN CARS CONTENT -->
+      <main class="inv-main">
+        <!-- CATEGORY TABS -->
+        <div class="category-tabs" id="categoryTabs">
+          <button class="cat-pill active" data-cat="all" type="button">All</button>
+          <button class="cat-pill" data-cat="suv" type="button">SUV</button>
+          <button class="cat-pill" data-cat="coupe" type="button">Coupé</button>
+          <button class="cat-pill" data-cat="descapotable" type="button">Descapotable</button>
+          <button class="cat-pill" data-cat="familiar" type="button">Familiar</button>
+        </div>
+
+        <!-- CARS GRID -->
+        <div class="inv-grid" id="invGrid">
+          <!-- CAR 1: Veltora Seryn -->
+          <a class="car-card" href="index.html#featured"
+             data-name="Veltora Seryn"
+             data-make="Audi"
+             data-category="familiar"
+             data-condition="Nuevo"
+             data-year="2024"
+             data-price="119500"
+             data-mileage="4200">
+            <div class="car-img">
+              <img src="assets/img/car-veltora.png" alt="Audi RS6 Avant, grey, black wheels">
+              <div class="car-cutout">
+                <span class="car-arrow">
+                  <span class="btn-arrow-wrap">
+                    <span class="btn-arrow-track">
+                      <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                      </svg>
+                      <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                      </svg>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="car-info">
+              <div class="car-row"><span class="car-name">Veltora Seryn</span><span class="car-price">$119,500</span></div>
+              <div class="car-row"><span class="car-meta">2024</span><span class="car-meta"></span></div>
+            </div>
+          </a>
+
+          <!-- CAR 2: Krynox ZR-9 -->
+          <a class="car-card" href="index.html#featured"
+             data-name="Krynox ZR-9"
+             data-make="McLaren"
+             data-category="descapotable"
+             data-condition="De ocasión"
+             data-year="2023"
+             data-price="299000"
+             data-mileage="1800">
+            <div class="car-img">
+              <img src="assets/img/car-krynox.png" alt="Orange McLaren 720S convertible sports car">
+              <div class="car-cutout">
+                <span class="car-arrow">
+                  <span class="btn-arrow-wrap">
+                    <span class="btn-arrow-track">
+                      <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                      </svg>
+                      <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                      </svg>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="car-info">
+              <div class="car-row"><span class="car-name">Krynox ZR-9</span><span class="car-price">$299,000</span></div>
+              <div class="car-row"><span class="car-meta">2023</span><span class="car-meta">Exclusivo</span></div>
+            </div>
+          </a>
+
+          <!-- CAR 3: Dreznak Karov -->
+          <a class="car-card" href="index.html#featured"
+             data-name="Dreznak Karov"
+             data-make="Land Rover"
+             data-category="suv"
+             data-condition="Nuevo"
+             data-year="2024"
+             data-price="145000"
+             data-mileage="3500">
+            <div class="car-img">
+              <img src="assets/img/car-dreznak.png" alt="Black Range Rover Sport P530 SV in studio">
+              <div class="car-cutout">
+                <span class="car-arrow">
+                  <span class="btn-arrow-wrap">
+                    <span class="btn-arrow-track">
+                      <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                      </svg>
+                      <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                      </svg>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="car-info">
+              <div class="car-row"><span class="car-name">Dreznak Karov</span><span class="car-price">$145,000</span></div>
+              <div class="car-row"><span class="car-meta">2024</span><span class="car-meta"></span></div>
+            </div>
+          </a>
+
+          <!-- CAR 4: Aurvane Celeste -->
+          <a class="car-card" href="index.html#featured"
+             data-name="Aurvane Celeste"
+             data-make="BMW"
+             data-category="coupe"
+             data-condition="De ocasión"
+             data-year="2023"
+             data-price="82500"
+             data-mileage="8400">
+            <div class="car-img">
+              <img src="assets/img/car-aurvane.png" alt="Green BMW M4 coupe with black accents">
+              <div class="car-cutout">
+                <span class="car-arrow">
+                  <span class="btn-arrow-wrap">
+                    <span class="btn-arrow-track">
+                      <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                      </svg>
+                      <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                      </svg>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="car-info">
+              <div class="car-row"><span class="car-name">Aurvane Celeste</span><span class="car-price">$82,500</span></div>
+              <div class="car-row"><span class="car-meta">2023</span><span class="car-meta"></span></div>
+            </div>
+          </a>
+
+          <!-- CAR 5: Soliven Brisa -->
+          <a class="car-card" href="index.html#featured"
+             data-name="Soliven Brisa"
+             data-make="Aston Martin"
+             data-category="coupe"
+             data-condition="Nuevo"
+             data-year="2024"
+             data-price="195000"
+             data-mileage="2100">
+            <div class="car-img">
+              <img src="assets/img/car-soliven.png" alt="Black Aston Martin coupe with light interior, studio shot">
+              <div class="car-cutout">
+                <span class="car-arrow">
+                  <span class="btn-arrow-wrap">
+                    <span class="btn-arrow-track">
+                      <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                      </svg>
+                      <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                      </svg>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="car-info">
+              <div class="car-row"><span class="car-name">Soliven Brisa</span><span class="car-price">$195,000</span></div>
+              <div class="car-row"><span class="car-meta">2024</span><span class="car-meta"></span></div>
+            </div>
+          </a>
+
+          <!-- CAR 6: Pharyx Full -->
+          <a class="car-card" href="index.html#featured"
+             data-name="Pharyx Full"
+             data-make="Mercedes-Benz"
+             data-category="suv"
+             data-condition="De ocasión"
+             data-year="2024"
+             data-price="179000"
+             data-mileage="5600">
+            <div class="car-img">
+              <img src="assets/img/car-pharyx.png" alt="Black Mercedes-AMG G 63 in studio">
+              <div class="car-cutout">
+                <span class="car-arrow">
+                  <span class="btn-arrow-wrap">
+                    <span class="btn-arrow-track">
+                      <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                      </svg>
+                      <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                      </svg>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="car-info">
+              <div class="car-row"><span class="car-name">Pharyx Full</span><span class="car-price">$179,000</span></div>
+              <div class="car-row"><span class="car-meta">2024</span><span class="car-meta">Recién llegado</span></div>
+            </div>
+          </a>
+
+          <!-- CAR 7: Zethrux Infernum -->
+          <a class="car-card" href="index.html#featured"
+             data-name="Zethrux Infernum"
+             data-make="Porsche"
+             data-category="coupe"
+             data-condition="De ocasión"
+             data-year="2023"
+             data-price="241350"
+             data-mileage="950">
+            <div class="car-img">
+              <img src="assets/img/car-zethrux.webp" alt="Silver Porsche GT3 RS with large rear wing and diffuser">
+              <div class="car-cutout">
+                <span class="car-arrow">
+                  <span class="btn-arrow-wrap">
+                    <span class="btn-arrow-track">
+                      <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                      </svg>
+                      <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                      </svg>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="car-info">
+              <div class="car-row"><span class="car-name">Zethrux Infernum</span><span class="car-price">$241,350</span></div>
+              <div class="car-row"><span class="car-meta">2023</span><span class="car-meta">Icono del rendimiento</span></div>
+            </div>
+          </a>
+
+          <!-- CAR 8: Emblora Wyndcroft -->
+          <a class="car-card" href="index.html#featured"
+             data-name="Emblora Wyndcroft"
+             data-make="Lamborghini"
+             data-category="suv"
+             data-condition="Nuevo"
+             data-year="2024"
+             data-price="239950"
+             data-mileage="1200">
+            <div class="car-img">
+              <img src="assets/img/car-emblora.webp" alt="Matte black Lamborghini Urus SUV, front view.">
+              <div class="car-cutout">
+                <span class="car-arrow">
+                  <span class="btn-arrow-wrap">
+                    <span class="btn-arrow-track">
+                      <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                      </svg>
+                      <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                      </svg>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="car-info">
+              <div class="car-row"><span class="car-name">Emblora Wyndcroft</span><span class="car-price">$239,950</span></div>
+              <div class="car-row"><span class="car-meta">2024</span><span class="car-meta">Nueva incorporación</span></div>
+            </div>
+          </a>
+
+          <!-- NO RESULTS PLACEHOLDER -->
+          <div class="no-results" id="noResults" style="display: none;">
+            <p>No se encontraron vehículos que coincidan con los filtros seleccionados.</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-left">
+          <h2>Conduce lo extraordinario</h2>
+          <p class="section-sub">Tu viaje hacia un rendimiento y lujo inigualables comienza aquí.<br>Visítanos hoy mismo.</p>
+          <div class="footer-ctas">
+            <a class="btn btn-dark" href="#catalog">
+              <span>Ver inventario</span>
+              <span class="btn-chip btn-chip-light">
+                <span class="btn-arrow-wrap">
+                  <span class="btn-arrow-track">
+                    <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                    </svg>
+                    <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
+                    </svg>
+                  </span>
+                </span>
+              </span>
+            </a>
+            <a class="footer-icon-btn" href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a class="footer-icon-btn" href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-nav">
+          <div class="footer-col">
+            <a href="inventory.html">Inventario</a>
+            <a href="index.html#services">Entrega tu coche</a>
+            <a href="index.html#services">Financiación</a>
+          </div>
+          <div class="footer-col">
+            <a href="index.html#team">Sobre nosotros</a>
+            <a href="index.html#blog">Blog</a>
+            <a href="index.html#contact">Contacto</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-giant">EVO MOVE</div>
+      <div class="footer-bottom">
+        <div class="footer-copyright">© 2026 EVO MOVE. Todos los derechos reservados.</div>
+        <div class="footer-legal">
+          <a href="#">Privacidad</a>
+          <span class="footer-legal-sep">|</span>
+          <a href="#">Términos</a>
+          <span class="footer-legal-sep">|</span>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="inventory.js"></script>
+</body>
+</html>
