@@ -582,7 +582,7 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
 }
 .search-clear-btn {
   position: absolute;
-  right: 60px;
+  right: 68px;
   top: 50%;
   transform: translateY(-50%);
   width: 32px;
@@ -4659,9 +4659,10 @@ body.menu-open {
   .nav-links a.mobile-contact-btn {
     display: inline-flex !important;
     align-items: center !important;
+    justify-content: center !important;
     gap: 16px !important;
     height: 52px !important;
-    padding: 4px 4px 4px 24px !important;
+    padding: 4px 4px 4px 22px !important;
     border-radius: 16px !important;
     font-size: 15.5px !important;
     font-weight: 600 !important;
@@ -4670,8 +4671,9 @@ body.menu-open {
     color: #ffffff !important;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18), inset -10px -10px 20px 0px rgba(255, 255, 255, 0.14) !important;
     transition: transform 0.2s ease, background-color 0.2s ease !important;
-    width: auto !important;
-    min-width: 175px !important;
+    width: fit-content !important;
+    min-width: 0 !important;
+    max-width: none !important;
   }
   .mobile-contact-btn:hover,
   .nav-links a.mobile-contact-btn:hover {
@@ -4687,6 +4689,8 @@ body.menu-open {
     border-radius: 12px !important;
     background: #ffffff !important;
     color: #000000 !important;
+    flex: none !important;
+    margin: 0 !important;
   }
   .section-head { flex-direction: column; gap: 24px; }
   .car-grid { grid-template-columns: 1fr; }

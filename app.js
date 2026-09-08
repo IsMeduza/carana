@@ -110,7 +110,7 @@ function updateClearBtn() {
   const hasText = searchInput.value.length > 0;
   if (hasText) {
     searchClearBtn.style.display = 'flex';
-    searchInput.style.paddingRight = '40px';
+    searchInput.style.paddingRight = '48px';
     if (searchWrap) searchWrap.classList.add('has-text');
   } else {
     searchClearBtn.style.display = 'none';
