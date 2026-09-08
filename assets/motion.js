@@ -1,5 +1,5 @@
 /**
- * EVO MOVE - Global Motion & Scroll Architecture
+ * AUTO JUNG - Global Motion & Scroll Architecture
  * Unified smooth scroll, auto-reveals, anchor handling, and page lifecycle.
  * Include this file on any page to get full Framer-grade motion with 0 boilerplate.
  */
@@ -11,7 +11,7 @@
   let lenisInstance = null;
 
   // Preserve scroll position ONLY across reloads (F5 / Ctrl+R) of the same URL
-  const SCROLL_PREFIX = 'evo-move-scroll:';
+  const SCROLL_PREFIX = 'auto-jung-scroll:';
   function getPageKey() {
     return SCROLL_PREFIX + window.location.pathname + window.location.search;
   }

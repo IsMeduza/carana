@@ -310,7 +310,7 @@ const testimonialsData = [
     img: "assets/img/avatar-placeholder.png"
   },
   {
-    quote: '"Buscábamos soluciones ágiles de renting y adquisición de flota europea para nuestra empresa. EVO MOVE nos ofreció un servicio 360° llave en mano con máxima transparencia."',
+    quote: '"Buscábamos soluciones ágiles de renting y adquisición de flota europea para nuestra empresa. AUTO JUNG nos ofreció un servicio 360° llave en mano con máxima transparencia."',
     name: "Empresa de Movilidad y Logística · Girona",
     img: "assets/img/avatar-placeholder.png"
   }

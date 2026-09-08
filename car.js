@@ -1,6 +1,6 @@
 /**
  * car.js - Vehicle Detail Page Interactive Logic
- * EVO MOVE Luxury Dealership
+ * AUTO JUNG Luxury Dealership
  */
 
 const CAR_DATABASE = {
@@ -15,7 +15,7 @@ const CAR_DATABASE = {
     fuel: 'Gasolina',
     seats: '5',
     vin: 'SALWR2V48PA194821',
-    stock: 'EVO-DK-2024',
+    stock: 'AJ-DK-2024',
     description: 'Un SUV de ultra-lujo que redefine la potencia y el confort en carretera, con acabados artesanales y tecnología de vanguardia.',
     mainImage: 'assets/img/car-dreznak.png',
     gallery: [
@@ -76,7 +76,7 @@ const CAR_DATABASE = {
     fuel: 'Eléctrico',
     seats: '5',
     vin: 'VLT8901239841829',
-    stock: 'EVO-VE1-2024',
+    stock: 'AJ-VE1-2024',
     description: 'La berlina eléctrica de alto rendimiento que combina autonomía superior con aceleración instantánea y acústica silenciosa de primer nivel.',
     mainImage: 'assets/img/car-veltora.png',
     gallery: [
@@ -132,7 +132,7 @@ const CAR_DATABASE = {
     fuel: 'Gasolina',
     seats: '4',
     vin: 'KRNX773489210924',
-    stock: 'EVO-KGT-2023',
+    stock: 'AJ-KGT-2023',
     description: 'Nacido en el circuito para dominar el asfalto. Aerodinámica activa en fibra de carbono y motor biturbo de respuesta inmediata.',
     mainImage: 'assets/img/car-krynox.png',
     gallery: [
@@ -165,7 +165,7 @@ const CAR_DATABASE = {
       { label: 'Condición', value: 'Excelente estado' },
       { label: 'Propietarios anteriores', value: '1' },
       { label: 'Historial de servicio', value: 'Mantenimiento oficial documentado' },
-      { label: 'Garantía', value: 'Garantía EVO MOVE Plus 24 meses' },
+      { label: 'Garantía', value: 'Garantía AUTO JUNG Plus 24 meses' },
       { label: 'ITV / Inspección', value: 'Válido hasta 2025' },
       { label: 'Certificado HPI', value: 'Verificado 100% libre de siniestros' }
     ],
@@ -188,7 +188,7 @@ const CAR_DATABASE = {
     fuel: 'Gasolina',
     seats: '2',
     vin: 'WP0AC2A93PS292417',
-    stock: 'EVO-ZI-2023',
+    stock: 'AJ-ZI-2023',
     description: 'Icono del rendimiento. Un deportivo de circuito nacido para dominar cada curva, con aerodinámica activa y motor de altas revoluciones.',
     mainImage: 'assets/img/car-zethrux.webp',
     gallery: [
@@ -221,7 +221,7 @@ const CAR_DATABASE = {
       { label: 'Condición', value: 'Impecable' },
       { label: 'Propietarios anteriores', value: '1' },
       { label: 'Historial de servicio', value: 'Mantenimiento oficial completo' },
-      { label: 'Garantía', value: 'Garantía EVO MOVE Plus 24 meses' },
+      { label: 'Garantía', value: 'Garantía AUTO JUNG Plus 24 meses' },
       { label: 'ITV / Inspección', value: 'Válido hasta 2026' },
       { label: 'Certificado HPI', value: 'Limpio y verificado' }
     ],
@@ -244,7 +244,7 @@ const CAR_DATABASE = {
     fuel: 'Gasolina',
     seats: '5',
     vin: 'ZPBPE1RL8RY288701',
-    stock: 'EVO-EW-2024',
+    stock: 'AJ-EW-2024',
     description: 'El SUV de superlujo que combina la ferocidad de un deportivo con la elegancia y el espacio de una gran berlina.',
     mainImage: 'assets/img/car-emblora.webp',
     gallery: [
@@ -300,7 +300,7 @@ const CAR_DATABASE = {
     fuel: 'Gasolina',
     seats: '4',
     vin: 'WBS8M9C52J5L20493',
-    stock: 'EVO-AC-2023',
+    stock: 'AJ-AC-2023',
     description: 'Un coupé deportivo con ADN de circuito: precisión, potencia y una conducción visceral que enamora en cada kilómetro.',
     mainImage: 'assets/img/car-aurvane.png',
     gallery: [
@@ -333,7 +333,7 @@ const CAR_DATABASE = {
       { label: 'Condición', value: 'Excelente' },
       { label: 'Propietarios anteriores', value: '1' },
       { label: 'Historial de servicio', value: 'Mantenimiento oficial' },
-      { label: 'Garantía', value: 'Garantía EVO MOVE Plus 24 meses' },
+      { label: 'Garantía', value: 'Garantía AUTO JUNG Plus 24 meses' },
       { label: 'ITV / Inspección', value: 'Válido hasta 2026' },
       { label: 'Certificado HPI', value: 'Limpio y verificado' }
     ],
@@ -356,7 +356,7 @@ const CAR_DATABASE = {
     fuel: 'Gasolina',
     seats: '4',
     vin: 'SCFRMFAV5PGL50104',
-    stock: 'EVO-SB-2024',
+    stock: 'AJ-SB-2024',
     description: 'Gran turismo británico de pura cepa: elegancia atemporal, motor V8 y una artesanía que marca la diferencia.',
     mainImage: 'assets/img/car-soliven.png',
     gallery: [
@@ -412,7 +412,7 @@ const CAR_DATABASE = {
     fuel: 'Gasolina',
     seats: '5',
     vin: 'W1NYC7BJ3RX232109',
-    stock: 'EVO-PF-2024',
+    stock: 'AJ-PF-2024',
     description: 'Un todoterreno de culto con presencia imponente, potencia sobrealimentada y el confort de un auténtico icono de lujo.',
     mainImage: 'assets/img/car-pharyx.png',
     gallery: [
@@ -445,7 +445,7 @@ const CAR_DATABASE = {
       { label: 'Condición', value: 'Como nuevo' },
       { label: 'Propietarios anteriores', value: '1' },
       { label: 'Historial de servicio', value: 'Mantenimiento oficial' },
-      { label: 'Garantía', value: 'Garantía EVO MOVE Plus 24 meses' },
+      { label: 'Garantía', value: 'Garantía AUTO JUNG Plus 24 meses' },
       { label: 'ITV / Inspección', value: 'Válido hasta 2027' },
       { label: 'Certificado HPI', value: 'Limpio y verificado' }
     ],
@@ -510,7 +510,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function populateCarData(car) {
-  document.title = car.name + ' | EVO MOVE - Concesionario de lujo';
+  document.title = car.name + ' | AUTO JUNG - Concesionario de lujo';
 
   const crumbEl = document.getElementById('carCrumb');
   if (crumbEl) crumbEl.textContent = car.categoryLabel;
