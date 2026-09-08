@@ -10,16 +10,29 @@
   // ============ 1. LENIS SMOOTH SCROLL SINGLETON ============
   let lenisInstance = null;
 
-  // Preserve scroll position across reloads (F5 / Ctrl+R)
-  const SCROLL_KEY = 'evo-move-scroll-y';
+  // Preserve scroll position ONLY across reloads (F5 / Ctrl+R) of the same URL
+  const SCROLL_PREFIX = 'evo-move-scroll:';
+  function getPageKey() {
+    return SCROLL_PREFIX + window.location.pathname + window.location.search;
+  }
   function saveScrollPosition() {
     try {
-      sessionStorage.setItem(SCROLL_KEY, String(window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0));
+      const y = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+      sessionStorage.setItem(getPageKey(), String(y));
     } catch (_) {}
   }
   function getSavedScrollPosition() {
     try {
-      const v = parseInt(sessionStorage.getItem(SCROLL_KEY), 10);
+      const navEntry = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+      const isReload = navEntry ? navEntry.type === 'reload' : (performance.navigation && performance.navigation.type === 1);
+      const pageKey = getPageKey();
+      if (!isReload) {
+        // Not a reload (fresh navigation) -> never restore scroll from previous page
+        sessionStorage.removeItem(pageKey);
+        return 0;
+      }
+      const v = parseInt(sessionStorage.getItem(pageKey), 10);
+      sessionStorage.removeItem(pageKey);
       return Number.isFinite(v) && v > 0 ? v : 0;
     } catch (_) {
       return 0;
@@ -126,6 +139,24 @@
     }, {
       threshold: 0.06,
       rootMargin: '0px 0px -30px 0px',
+    });
+
+    // Footer sits at the very bottom edge of the page; the -30px rootMargin
+    // above can leave .footer-bottom children never crossing the threshold.
+    // Observe the footer container and reveal all of its descendants at once.
+    document.querySelectorAll('.footer').forEach((footer) => {
+      const footerObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            footer.querySelectorAll('.reveal-head, .reveal-card, .reveal-fade, [data-reveal]').forEach((el) => {
+              el.classList.add('in');
+              if (revealObserver) revealObserver.unobserve(el);
+            });
+            footerObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.01 });
+      footerObserver.observe(footer);
     });
 
     observeReveals();
