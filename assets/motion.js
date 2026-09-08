@@ -106,12 +106,14 @@
       }, 250);
     }
 
-    // Restore saved scroll position after Lenis is ready (fixes F5 jumping to top)
+    // Restore saved scroll position after Lenis is ready (only on reload)
     const savedY = getSavedScrollPosition();
     if (savedY > 0) {
       window.scrollTo(0, savedY);
       lenisInstance.scrollTo(savedY, { immediate: true });
-      sessionStorage.removeItem(SCROLL_KEY);
+    } else if (!window.location.hash) {
+      window.scrollTo(0, 0);
+      lenisInstance.scrollTo(0, { immediate: true });
     }
 
     return lenisInstance;

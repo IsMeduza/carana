@@ -461,9 +461,31 @@ const CAR_DATABASE = {
 
 const DEFAULT_CAR_ID = 'dreznak-karov';
 
+const CAR_ALIASES = {
+  'veltora-seryn': 'veltora-e1',
+  'veltora': 'veltora-e1',
+  'krynox-zr-9': 'krynox-gt',
+  'krynox-zr9': 'krynox-gt',
+  'krynox': 'krynox-gt',
+  'dreznak': 'dreznak-karov',
+  'zethrux-infernum': 'zethrux-vantage',
+  'zethrux': 'zethrux-vantage',
+  'emblora': 'emblora-wyndcroft',
+  'aurvane-celeste': 'aurvane-solaris',
+  'aurvane': 'aurvane-solaris',
+  'soliven-brisa': 'soliven-corsa',
+  'soliven': 'soliven-corsa',
+  'pharyx-full': 'pharyx-phantom',
+  'pharyx': 'pharyx-phantom'
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
   let carId = urlParams.get('car') || DEFAULT_CAR_ID;
+
+  if (CAR_ALIASES[carId]) {
+    carId = CAR_ALIASES[carId];
+  }
 
   const path = window.location.pathname.toLowerCase();
   for (const key of Object.keys(CAR_DATABASE)) {
@@ -575,6 +597,14 @@ function populateCarData(car) {
   if (window.lucide && typeof window.lucide.createIcons === 'function') {
     window.lucide.createIcons();
   }
+
+  // Refresh height for any accordion that is currently open
+  document.querySelectorAll('.car-accordions-section .faq-item.open, .car-accordions-section .accordion-item.open').forEach(item => {
+    const body = item.querySelector('.faq-a, .accordion-body, .car-acc-body');
+    if (body) {
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  });
 }
 
 function setupCarousel() {
@@ -628,11 +658,19 @@ function setupCarousel() {
 }
 
 function setupAccordions(scope = document) {
+  if (window.EVO && typeof window.EVO.initAccordions === 'function') {
+    window.EVO.initAccordions(scope);
+    return;
+  }
+
   const accItems = scope.querySelectorAll('.faq-item, .accordion-item, .car-acc-item');
   accItems.forEach(item => {
-    const header = item.querySelector('.faq-q, .accordion-header, .car-acc-header');
-    const body = item.querySelector('.faq-a, .accordion-body, .car-acc-body');
+    const header = item.querySelector('.faq-q, .accordion-header, .accordion-q, .car-acc-header');
+    const body = item.querySelector('.faq-a, .accordion-body, .accordion-a, .car-acc-body');
     if (!header || !body) return;
+
+    if (header.dataset.accordionBound) return;
+    header.dataset.accordionBound = 'true';
 
     if (item.classList.contains('open')) {
       body.style.maxHeight = body.scrollHeight + 'px';
@@ -646,7 +684,7 @@ function setupAccordions(scope = document) {
         container.querySelectorAll('.faq-item.open, .accordion-item.open, .car-acc-item.open').forEach(other => {
           if (other !== item) {
             other.classList.remove('open');
-            const otherBody = other.querySelector('.faq-a, .accordion-body, .car-acc-body');
+            const otherBody = other.querySelector('.faq-a, .accordion-body, .accordion-a, .car-acc-body');
             if (otherBody) otherBody.style.maxHeight = null;
           }
         });

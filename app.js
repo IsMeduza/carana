@@ -38,6 +38,18 @@ if (window.EVO && window.EVO.lenis) {
   window.EVO.lenis.on('scroll', updateHeroParallax);
 }
 
+// ============ NAV BORDER ON SCROLL ============
+const navEl = document.getElementById('nav');
+function updateNavBorder() {
+  if (!navEl) return;
+  navEl.classList.toggle('nav-scrolled', (window.scrollY || window.pageYOffset) > 8);
+}
+window.addEventListener('scroll', updateNavBorder, { passive: true });
+if (window.EVO && window.EVO.lenis) {
+  window.EVO.lenis.on('scroll', updateNavBorder);
+}
+updateNavBorder();
+
 // ============ UNIFIED ACCORDION COMPONENT ============
 function setupAccordions(scope = document) {
   const accItems = scope.querySelectorAll('.faq-item, .accordion-item, .car-acc-item');
