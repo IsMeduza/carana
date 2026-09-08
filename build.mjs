@@ -1,6 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import JavaScriptObfuscator from 'javascript-obfuscator';
+import { minify as minifyHTML } from 'html-minifier-terser';
+import CleanCSS from 'clean-css';
 
 const ROOT = process.cwd();
 const DIST = path.join(ROOT, 'dist');
@@ -35,22 +37,44 @@ const OBFUSCATOR_OPTIONS = {
   unicodeEscapeSequence: false,
 };
 
+const HTML_MINIFY_OPTIONS = {
+  collapseWhitespace: true,
+  removeComments: true,
+  removeRedundantAttributes: true,
+  removeEmptyAttributes: true,
+  minifyCSS: true,
+  minifyJS: true,
+  collapseBooleanAttributes: true,
+  removeAttributeQuotes: false,
+  removeOptionalTags: false,
+  sortAttributes: true,
+  sortClassName: true,
+};
+
+const cleanCSS = new CleanCSS({
+  level: 2,
+  compatibility: '*',
+});
+
 function rm(dir) {
   if (fs.existsSync(dir)) fs.rmSync(dir, { recursive: true, force: true });
 }
 
-function copyAll(srcDir, distDir) {
+async function copyAll(srcDir, distDir) {
   for (const entry of fs.readdirSync(srcDir, { withFileTypes: true })) {
     const srcPath = path.join(srcDir, entry.name);
     const destPath = path.join(distDir, entry.name);
     if (entry.isDirectory()) {
       if (EXCLUDE_DIRS.has(entry.name)) continue;
       fs.mkdirSync(destPath, { recursive: true });
-      copyAll(srcPath, destPath);
+      await copyAll(srcPath, destPath);
     } else {
       if (EXCLUDE_FILES.has(entry.name)) continue;
       const rel = path.relative(ROOT, srcPath);
       const norm = rel.split(path.sep).join('/');
+      const ext = path.extname(entry.name).toLowerCase();
+
+      // Obfuscate JS
       if (OBFUSCATE_PATHS.includes(norm) && !rel.includes('dist')) {
         const code = fs.readFileSync(srcPath, 'utf8');
         let out;
@@ -62,7 +86,34 @@ function copyAll(srcDir, distDir) {
         }
         fs.writeFileSync(destPath, out);
         console.log(`[obfuscate] ${rel}`);
-      } else {
+      }
+      // Minify HTML
+      else if (ext === '.html') {
+        const html = fs.readFileSync(srcPath, 'utf8');
+        let out;
+        try {
+          out = await minifyHTML(html, HTML_MINIFY_OPTIONS);
+        } catch (err) {
+          console.error(`[minify-html] failed ${rel}: ${err.message}`);
+          out = html;
+        }
+        fs.writeFileSync(destPath, out);
+        console.log(`[minify-html] ${rel}`);
+      }
+      // Minify CSS
+      else if (ext === '.css') {
+        const css = fs.readFileSync(srcPath, 'utf8');
+        const result = cleanCSS.minify(css);
+        if (result.errors && result.errors.length > 0) {
+          console.error(`[minify-css] failed ${rel}: ${result.errors.join(', ')}`);
+          fs.copyFileSync(srcPath, destPath);
+        } else {
+          fs.writeFileSync(destPath, result.styles);
+          console.log(`[minify-css] ${rel}`);
+        }
+      }
+      // Copy everything else as-is
+      else {
         fs.copyFileSync(srcPath, destPath);
       }
     }
@@ -71,5 +122,5 @@ function copyAll(srcDir, distDir) {
 
 rm(DIST);
 fs.mkdirSync(DIST, { recursive: true });
-copyAll(ROOT, DIST);
+await copyAll(ROOT, DIST);
 console.log('build complete -> dist/');
