@@ -10,6 +10,26 @@
   // ============ 1. LENIS SMOOTH SCROLL SINGLETON ============
   let lenisInstance = null;
 
+  // Preserve scroll position across reloads (F5 / Ctrl+R)
+  const SCROLL_KEY = 'evo-move-scroll-y';
+  function saveScrollPosition() {
+    try {
+      sessionStorage.setItem(SCROLL_KEY, String(window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0));
+    } catch (_) {}
+  }
+  function getSavedScrollPosition() {
+    try {
+      const v = parseInt(sessionStorage.getItem(SCROLL_KEY), 10);
+      return Number.isFinite(v) && v > 0 ? v : 0;
+    } catch (_) {
+      return 0;
+    }
+  }
+  window.addEventListener('pagehide', saveScrollPosition);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveScrollPosition();
+  });
+
   function initSmoothScroll() {
     if (typeof Lenis === 'undefined') return null;
 
@@ -71,6 +91,14 @@
           lenisInstance.scrollTo(initialTarget, { offset: -75, duration: 1.0 });
         }
       }, 250);
+    }
+
+    // Restore saved scroll position after Lenis is ready (fixes F5 jumping to top)
+    const savedY = getSavedScrollPosition();
+    if (savedY > 0) {
+      window.scrollTo(0, savedY);
+      lenisInstance.scrollTo(savedY, { immediate: true });
+      sessionStorage.removeItem(SCROLL_KEY);
     }
 
     return lenisInstance;
@@ -190,8 +218,10 @@
     function toggleMenu(forceState) {
       const isCurrentlyOpen = navLinks.classList.contains('open');
       const shouldOpen = forceState !== undefined ? forceState : !isCurrentlyOpen;
+      const navHeader = document.getElementById('nav') || document.querySelector('.nav');
 
       if (shouldOpen) {
+        if (navHeader) navHeader.classList.add('open');
         navLinks.classList.add('open');
         burger.classList.add('active');
         document.body.classList.add('menu-open');
@@ -199,6 +229,7 @@
           window.lenis.stop();
         }
       } else {
+        if (navHeader) navHeader.classList.remove('open');
         navLinks.classList.remove('open');
         burger.classList.remove('active');
         document.body.classList.remove('menu-open');
@@ -420,6 +451,7 @@
     },
     refreshReveals: observeReveals,
     initDropdowns: initCustomDropdowns,
+    initAccordions: initAccordions,
     scrollTo: (target, offset = -75) => {
       const el = typeof target === 'string' ? document.querySelector(target) : target;
       if (el && lenisInstance) {
