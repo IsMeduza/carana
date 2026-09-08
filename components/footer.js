@@ -25,13 +25,13 @@ const footerTemplate = `
               </span>
             </span>
           </a>
-          <a class="footer-icon-btn" href="https://maps.google.com" target="_blank" rel="noopener" aria-label="Ubicación">
+          <a class="footer-icon-btn" href="https://maps.google.com/maps?q=Girona,+Espa%C3%B1a" target="_blank" rel="noopener" aria-label="Ubicación en Girona">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M 6.4 4.76 C 9.5 1.72 14.47 1.74 17.54 4.82 C 20.61 7.89 20.64 12.86 17.6 15.96 L 13.41 20.15 C 12.63 20.93 11.37 20.93 10.59 20.15 L 6.4 15.96 C 3.31 12.87 3.31 7.85 6.4 4.76 Z"/>
               <circle cx="12" cy="10.36" r="3"/>
             </svg>
           </a>
-          <a class="footer-icon-btn" href="tel:+123456789" aria-label="Llámanos">
+          <a class="footer-icon-btn" href="tel:+34972000000" aria-label="Llámanos al +34 972 00 00 00">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M 7.829 16.171 C 5.678 14.016 4.024 11.417 2.983 8.557 C 2.41 6.993 2.935 5.275 4.113 4.097 L 4.842 3.369 C 5.238 2.972 5.775 2.749 6.335 2.749 C 6.896 2.749 7.433 2.972 7.829 3.369 L 9.536 5.076 C 9.932 5.471 10.155 6.009 10.155 6.569 C 10.155 7.129 9.932 7.667 9.536 8.063 L 9.116 8.483 C 8.776 8.822 8.586 9.282 8.586 9.763 C 8.586 10.243 8.776 10.703 9.116 11.043 L 12.956 14.884 C 13.295 15.223 13.756 15.414 14.236 15.414 C 14.716 15.414 15.176 15.223 15.516 14.884 L 15.937 14.464 C 16.333 14.067 16.87 13.844 17.43 13.844 C 17.991 13.844 18.528 14.067 18.924 14.464 L 20.631 16.171 C 21.027 16.566 21.25 17.104 21.25 17.664 C 21.25 18.224 21.027 18.762 20.631 19.158 L 19.903 19.886 C 18.725 21.065 17.007 21.59 15.443 21.017 C 12.582 19.975 9.984 18.321 7.829 16.171 Z"/>
             </svg>

@@ -305,14 +305,14 @@ if (searchInput && searchDropdown) {
 // ============ TESTIMONIALS SLIDER INTERACTION ============
 const testimonialsData = [
   {
-    quote: '"Un servicio excepcional de principio a fin, un equipo verdaderamente profesional y una calidad del vehículo extraordinaria en todo momento"',
-    name: "James Mitchell - Propietario de Porsche 911",
-    img: "assets/img/testimonial.png"
+    quote: '"La gestión de importación y tramitación de placas definitivas con la DGT fue impecable. Coordinaron el peritaje técnico y el transporte seguro directamente a nuestras instalaciones."',
+    name: "Concesionario Colaborador B2B · Sector Automoción Girona",
+    img: "assets/img/avatar-placeholder.png"
   },
   {
-    quote: '"Comprar mi coche aquí superó todas las expectativas. Transparencia absoluta, atención impecable y entrega en un tiempo récord."',
-    name: "Carlos Rivera - Propietario de Audi RS6",
-    img: "assets/img/team-3.jpg"
+    quote: '"Buscábamos soluciones ágiles de renting y adquisición de flota europea para nuestra empresa. EVO MOVE nos ofreció un servicio 360° llave en mano con máxima transparencia."',
+    name: "Empresa de Movilidad y Logística · Girona",
+    img: "assets/img/avatar-placeholder.png"
   }
 ];
 let currentTestimonial = 0;
@@ -324,17 +324,20 @@ if (testiCard) {
   const prevBtn = testiCard.querySelector('.testi-prev');
   const nextBtn = testiCard.querySelector('.testi-next');
 
+  let testiSwitching = false;
   function updateTestimonial(idx) {
     if (!quoteEl || !nameEl || !imgEl) return;
-    testiCard.style.opacity = '0.5';
-    testiCard.style.transition = 'opacity 0.25s';
+    if (testiSwitching) return;
+    testiSwitching = true;
+    const t = testimonialsData[idx];
+    testiCard.classList.add('testi-swap');
     setTimeout(() => {
-      const t = testimonialsData[idx];
       quoteEl.textContent = t.quote;
       nameEl.textContent = t.name;
       imgEl.src = t.img;
-      testiCard.style.opacity = '1';
-    }, 200);
+      testiCard.classList.remove('testi-swap');
+      testiSwitching = false;
+    }, 220);
   }
 
   if (prevBtn) {

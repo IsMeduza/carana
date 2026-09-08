@@ -1263,6 +1263,20 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  height: 578px;
+}
+
+/* Smooth internal crossfade when switching testimonials (box stays in place) */
+.testi-photo img,
+.testi-quote,
+.testi-name {
+  transition: opacity 0.32s ease, filter 0.32s ease;
+}
+.testi-card.testi-swap .testi-photo img,
+.testi-card.testi-swap .testi-quote,
+.testi-card.testi-swap .testi-name {
+  opacity: 0;
+  filter: blur(6px);
 }
 .testi-photo {
   position: relative;
@@ -1310,6 +1324,10 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   padding: 24px 24px 16px;
   color: var(--ink);
   flex: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 .testi-name {
   font-size: 15px;
@@ -1323,6 +1341,15 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   flex: 1.15 0 0;
   min-width: 0;
   display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  align-self: stretch;
+}
+.testi-right-col {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
   align-items: flex-end;
   gap: 24px;
   align-self: stretch;
@@ -1356,8 +1383,10 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   min-height: 290px;
 }
 .testi-stat-2 {
-  height: 80%;
+  flex: 1 0 0;
   min-height: 390px;
+  width: 100%;
+  height: auto;
 }
 
 /* Google Rating (aligned to the right of 800+ card) */
@@ -1649,10 +1678,16 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   box-sizing: border-box;
 }
 
+.faq-item:first-child,
+.accordion-item:first-child,
+.car-acc-item:first-child {
+  border-top: none;
+}
+
 .faq-item:last-child,
 .accordion-item:last-child,
 .car-acc-item:last-child {
-  border-bottom: 1px solid var(--line);
+  border-bottom: none;
 }
 
 .faq-q,
@@ -1696,7 +1731,7 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   background: transparent !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  transform: rotate(90deg);
+  transform: rotate(0deg);
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -1715,7 +1750,7 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
 .faq-item.open .accordion-arrow,
 .accordion-item.open .accordion-arrow,
 .car-acc-item.open .accordion-arrow {
-  transform: rotate(-90deg);
+  transform: rotate(90deg);
   background: transparent !important;
   color: var(--ink);
 }
@@ -4885,6 +4920,10 @@ body.menu-open {
     width: 100%;
     flex: none !important;
   }
+  .testi-right-col {
+    width: 100%;
+    gap: 16px;
+  }
   .testi-stat-1,
   .testi-stat-2 {
     height: auto;
@@ -5353,7 +5392,8 @@ body.menu-open {
     font-weight: 500;
     color: #ffffff;
     margin: 0 0 24px 0;
-    max-width: 265px;
+    width: 100%;
+    max-width: none;
   }
   .hero-left .btn {
     display: inline-flex;
@@ -5383,7 +5423,8 @@ body.menu-open {
   .hero-stats {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
+    align-self: flex-end;
     gap: 10px;
     width: auto;
     margin-top: auto;
