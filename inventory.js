@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Filter Elements ---
   const searchInput = document.getElementById('filterSearchInput');
+  const searchClear = document.getElementById('filterSearchClear');
   const makeSelect = document.getElementById('filterMake');
   const conditionSelect = document.getElementById('filterCondition');
   const yearInput = document.getElementById('filterYear');
@@ -109,6 +110,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const noResults = document.getElementById('noResults');
 
   let currentCategory = 'all';
+
+  // --- Filter Search Clear Button ---
+  function updateFilterSearchClear() {
+    if (!searchInput || !searchClear) return;
+    const hasText = searchInput.value.length > 0;
+    searchClear.style.display = hasText ? 'flex' : 'none';
+    searchInput.style.paddingRight = hasText ? '46px' : '';
+  }
+
+  if (searchClear && searchInput) {
+    searchClear.addEventListener('click', () => {
+      searchInput.value = '';
+      updateFilterSearchClear();
+      searchInput.focus();
+      applyFilters(true);
+    });
+  }
 
   // Function to filter cars
   function applyFilters(isUserAction = false) {
@@ -217,7 +235,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Event Listeners for Live Inputs ---
   if (searchInput) {
-    searchInput.addEventListener('input', () => applyFilters(true));
+    searchInput.addEventListener('input', () => {
+      updateFilterSearchClear();
+      applyFilters(true);
+    });
   }
 
   if (makeSelect) {
@@ -290,6 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (searchParam && searchInput) {
     searchInput.value = searchParam;
+    updateFilterSearchClear();
   }
 
   if (catParam) {
