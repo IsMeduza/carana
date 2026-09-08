@@ -9,9 +9,14 @@ const EXCLUDE_FILES = new Set([
   'build.mjs', 'package.json', 'package-lock.json', 'wrangler.jsonc',
   'server.cjs', '.assetsignore', '.gitignore', 'README.md',
 ]);
-const OBFUSCATE_FILES = new Set([
-  'app.js', 'inventory.js', 'car.js',
-]);
+const OBFUSCATE_PATHS = [
+  'app.js',
+  'inventory.js',
+  'car.js',
+  'assets/motion.js',
+  'components/footer.js',
+  'components/services.js',
+];
 
 const OBFUSCATOR_OPTIONS = {
   compact: true,
@@ -45,8 +50,8 @@ function copyAll(srcDir, distDir) {
     } else {
       if (EXCLUDE_FILES.has(entry.name)) continue;
       const rel = path.relative(ROOT, srcPath);
-      const name = path.basename(rel);
-      if (OBFUSCATE_FILES.has(name) && !rel.includes('dist')) {
+      const norm = rel.split(path.sep).join('/');
+      if (OBFUSCATE_PATHS.includes(norm) && !rel.includes('dist')) {
         const code = fs.readFileSync(srcPath, 'utf8');
         let out;
         try {
