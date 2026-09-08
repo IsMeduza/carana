@@ -1,4 +1,4 @@
-﻿/* ============ FONTS ============ */
+/* ============ FONTS ============ */
 @font-face { font-family: 'Space Grotesk'; src: url('assets/fonts/SpaceGrotesk-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
 @font-face { font-family: 'Space Grotesk'; src: url('assets/fonts/SpaceGrotesk-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
 @font-face { font-family: 'Space Grotesk'; src: url('assets/fonts/SpaceGrotesk-600.woff2') format('woff2'); font-weight: 600; font-display: swap; }
@@ -16,8 +16,8 @@ html.lenis, html.lenis body { height: auto; }
   --bg: #f2f2f2;
   --surface: #fafafa;
   --ink: #0d0d0d;
-  --dark: #000000;
-  --dark-soft: var(--dark-soft);
+  --dark: #0a1930;
+  --dark-soft: #122a4d;
   --muted: #4d4d4d;
   --faint: #888;
   --line: #dcdcdc;
@@ -5344,6 +5344,21 @@ body.menu-open {
   .footer-nav { width: 100%; justify-content: flex-start; gap: 40px; flex-wrap: wrap; }
   .inv-layout { grid-template-columns: 1fr; gap: 32px; }
   .filters-sidebar { position: static; }
+  .category-tabs {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100%;
+    margin-bottom: 28px;
+  }
+  .cat-pill {
+    width: 100% !important;
+    flex: none !important;
+    height: 56px;
+    padding: 0 16px;
+    border-radius: 16px;
+    box-sizing: border-box;
+  }
   .inv-grid { grid-template-columns: 1fr 1fr; }
   .inv-hero-bottom { flex-direction: column; align-items: flex-start; }
   .inv-hero-stats { flex-direction: row; width: 100%; }
