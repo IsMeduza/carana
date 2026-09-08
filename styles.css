@@ -23,8 +23,8 @@ html.lenis, html.lenis body { height: auto; }
   --line: #dcdcdc;
 
   /* Color exclusivo de botones oscuros y acentos */
-  --btn-from: #1a1a1a;
-  --btn-to: #000000;
+  --btn-from: #181818;
+  --btn-to: #0d0d0d;
   --grad-dark: linear-gradient(145deg, var(--btn-from) 0%, var(--btn-to) 100%);
 
   --r: 16px;
@@ -157,8 +157,10 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   box-shadow: 
     0 4px 14px rgba(0, 0, 0, 0.18),
     inset -10px -10px 20px 0px rgba(255, 255, 255, 0.14);
+  transition: filter 0.25s ease, box-shadow 0.3s ease;
 }
 .btn-dark:hover {
+  filter: brightness(1.08);
   box-shadow: 
     0 6px 20px rgba(0, 0, 0, 0.24),
     inset -10px -10px 20px 0px rgba(255, 255, 255, 0.20);
@@ -1070,13 +1072,13 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16), inset -10px -10px 20px 0px rgba(255, 255, 255, 0.20);
   cursor: pointer;
-  transition: background 0.25s ease, box-shadow 0.25s ease;
+  transition: filter 0.25s ease, box-shadow 0.25s ease;
 }
 .cutout-btn:hover,
 .car-card:hover .car-arrow,
 .blog-card:hover .blog-arrow,
 .testi-nav:hover {
-  background: var(--dark-soft);
+  filter: brightness(1.12);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.24), inset -10px -10px 20px 0px rgba(255, 255, 255, 0.25);
 }
 .car-info { padding: 18px 4px 0; }

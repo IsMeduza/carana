@@ -15,8 +15,8 @@
       name: 'Rojo Ferrari Corsa',
       desc: 'Rojo de circuito de alta potencia',
       icon: '🔴',
-      from: '#ef4444',
-      to: '#7f1d1d',
+      from: '#dc2626',
+      to: '#b91c1c',
       angle: 145
     },
     {
@@ -25,8 +25,8 @@
       name: 'Azul Riviera / Bugatti',
       desc: 'Azul eléctrico de hiperdeportivo',
       icon: '🔵',
-      from: '#3b82f6',
-      to: '#172554',
+      from: '#2563eb',
+      to: '#1d4ed8',
       angle: 145
     },
     {
@@ -35,8 +35,8 @@
       name: 'Naranja Papaya McLaren',
       desc: 'Naranja vibrante GT de competición',
       icon: '🟠',
-      from: '#f97316',
-      to: '#7c2d12',
+      from: '#ea580c',
+      to: '#c2410c',
       angle: 145
     },
     {
@@ -45,8 +45,8 @@
       name: 'Verde Mamba GT3 RS',
       desc: 'Verde deportivo de competición',
       icon: '🟢',
-      from: '#22c55e',
-      to: '#064e3b',
+      from: '#16a34a',
+      to: '#15803d',
       angle: 145
     },
     {
@@ -55,8 +55,8 @@
       name: 'Amarillo Giallo Modena',
       desc: 'Amarillo deportivo Lamborghini',
       icon: '🟡',
-      from: '#f59e0b',
-      to: '#78350f',
+      from: '#d97706',
+      to: '#b45309',
       angle: 145
     },
     {
@@ -65,8 +65,8 @@
       name: 'Púrpura Ultraviolet',
       desc: 'Porsche 991 GT3 RS clásico',
       icon: '🟣',
-      from: '#a855f7',
-      to: '#4c1d95',
+      from: '#9333ea',
+      to: '#7e22ce',
       angle: 145
     },
 
@@ -77,8 +77,8 @@
       name: 'Azul Zafiro Real',
       desc: 'Rolls-Royce & Bentley Navy',
       icon: '🔷',
-      from: '#2563eb',
-      to: '#0f172a',
+      from: '#1d4ed8',
+      to: '#1e3a8a',
       angle: 145
     },
     {
@@ -87,8 +87,8 @@
       name: 'Rojo Borgoña / Vino',
       desc: 'Elegancia sobria Aston Martin',
       icon: '🍷',
-      from: '#be123c',
-      to: '#4c0519',
+      from: '#9f1239',
+      to: '#881337',
       angle: 145
     },
     {
@@ -97,8 +97,8 @@
       name: 'Verde British Racing',
       desc: 'Verde oscuro inglés de leyenda',
       icon: '🌲',
-      from: '#059669',
-      to: '#022c22',
+      from: '#047857',
+      to: '#065f46',
       angle: 145
     },
     {
@@ -107,8 +107,8 @@
       name: 'Café Bronce Habano',
       desc: 'Cuero Bentley Mulliner & Tabaco',
       icon: '🟤',
-      from: '#b45309',
-      to: '#3b1704',
+      from: '#78350f',
+      to: '#5f2b08',
       angle: 145
     },
     {
@@ -117,8 +117,8 @@
       name: 'Ciruela Velvet',
       desc: 'Exclusivo Mercedes-Maybach',
       icon: '🔮',
-      from: '#9333ea',
-      to: '#3b0764',
+      from: '#7e22ce',
+      to: '#6b21a8',
       angle: 145
     },
     {
@@ -127,8 +127,8 @@
       name: 'Azul Petrol / Teal',
       desc: 'Turquesa nórdico de alta gama',
       icon: '💠',
-      from: '#0891b2',
-      to: '#164e63',
+      from: '#0e7490',
+      to: '#155e75',
       angle: 145
     },
 
@@ -139,8 +139,8 @@
       name: 'Verde Ácido 918',
       desc: 'Pinzas híbridas Porsche 918',
       icon: '⚡',
-      from: '#84cc16',
-      to: '#1a2e05',
+      from: '#65a30d',
+      to: '#4d7c0f',
       angle: 145
     },
     {
@@ -149,8 +149,8 @@
       name: 'Rosa Ruby Star Neo',
       desc: 'Fucsia de carreras Porsche',
       icon: '💖',
-      from: '#f43f5e',
-      to: '#4c0519',
+      from: '#e11d48',
+      to: '#be123c',
       angle: 145
     },
     {
@@ -159,8 +159,8 @@
       name: 'Miami Cyan Eléctrico',
       desc: 'Cian brillante costero',
       icon: '🌊',
-      from: '#06b6d4',
-      to: '#082f49',
+      from: '#0284c7',
+      to: '#0369a1',
       angle: 145
     },
     {
@@ -169,8 +169,8 @@
       name: 'Cobre Solar Fundido',
       desc: 'Bronce supercar cálido',
       icon: '🏜️',
-      from: '#ea580c',
-      to: '#431407',
+      from: '#c2410c',
+      to: '#9a3412',
       angle: 145
     },
 
@@ -181,8 +181,8 @@
       name: 'Negro Obsidian (Original)',
       desc: 'El negro de fábrica puro y sobrio',
       icon: '🖤',
-      from: '#1a1a1a',
-      to: '#000000',
+      from: '#181818',
+      to: '#0d0d0d',
       angle: 145
     },
     {
@@ -191,8 +191,8 @@
       name: 'Grafito Gunmetal',
       desc: 'Carbón y metal pulido deportivo',
       icon: '🔘',
-      from: '#475569',
-      to: '#0f172a',
+      from: '#374151',
+      to: '#1f2937',
       angle: 145
     },
     {
@@ -202,7 +202,7 @@
       desc: 'Gris antracita con matiz frío',
       icon: '🐺',
       from: '#334155',
-      to: '#090d16',
+      to: '#1e293b',
       angle: 145
     },
     {
@@ -211,8 +211,8 @@
       name: 'Plata Acero Frost',
       desc: 'Metal cepillado contemporáneo',
       icon: '❄️',
-      from: '#64748b',
-      to: '#1e293b',
+      from: '#475569',
+      to: '#334155',
       angle: 145
     }
   ];
