@@ -182,6 +182,15 @@
   }
 
   function observeReveals() {
+    // Stagger direct children of blog article content so the body animates block by block
+    document.querySelectorAll('.blog-article-content').forEach((container) => {
+      [...container.children].forEach((child, idx) => {
+        if (child.classList.contains('reveal-head') || child.classList.contains('reveal-card') || child.hasAttribute('data-reveal')) return;
+        child.classList.add('reveal-head');
+        child.classList.add(`reveal-delay-${(idx % 4) + 1}`);
+      });
+    });
+
     // Auto-stagger grids without explicit delays so all pages animate like home
     const gridSelectors = [
       '.car-grid', '.services-grid', '.team-cards', '.blog-cards',
@@ -202,6 +211,74 @@
       '.reveal-head:not(.in), .reveal-card:not(.in), .reveal-fade:not(.in), [data-reveal]:not(.in)'
     );
     elements.forEach((el) => revealObserver.observe(el));
+  }
+
+  // ============ 2.5 NAV BORDER ON SCROLL (ALL PAGES) ============
+  function initNavBorder() {
+    const navEl = document.getElementById('nav');
+    if (!navEl) return;
+
+    function updateNavBorder() {
+      navEl.classList.toggle('nav-scrolled', (window.scrollY || window.pageYOffset) > 8);
+    }
+
+    window.addEventListener('scroll', updateNavBorder, { passive: true });
+    if (lenisInstance) lenisInstance.on('scroll', updateNavBorder);
+    updateNavBorder();
+  }
+
+  // ============ 2.6 STATS COUNT-UP (about-stats-grid) ============
+  function initStatCounters(scope = document) {
+    if (typeof IntersectionObserver === 'undefined') return;
+    const reduceMotion =
+      window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    scope.querySelectorAll('.about-stat-num').forEach((el) => {
+      if (el.dataset.counted) return;
+
+      const raw = el.textContent.trim();
+      const match = raw.match(/^([0-9][0-9.,]*)(.*)$/);
+      if (!match) return;
+
+      const target = parseFloat(match[1].replace(/,/g, '.'));
+      if (Number.isNaN(target)) return;
+
+      const suffix = match[2] || '';
+      el.dataset.counted = 'true';
+
+      if (reduceMotion) {
+        el.textContent = target + suffix;
+        return;
+      }
+
+      el.textContent = '0' + suffix;
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          io.unobserve(entry.target);
+
+          const duration = 1200;
+          const start = performance.now();
+
+          function tick(now) {
+            const p = Math.min(1, (now - start) / duration);
+            const eased = 1 - Math.pow(1 - p, 3);
+            const value = Math.round(target * eased);
+            el.textContent = value + suffix;
+            if (p < 1) {
+              requestAnimationFrame(tick);
+            } else {
+              el.textContent = target + suffix;
+            }
+          }
+
+          requestAnimationFrame(tick);
+        });
+      }, { threshold: 0.4 });
+
+      io.observe(el);
+    });
   }
 
   // ============ 3. MOBILE NAVIGATION TOGGLE ============
@@ -440,6 +517,8 @@
   function onPageReady() {
     initSmoothScroll();
     initRevealObserver();
+    initNavBorder();
+    initStatCounters();
     initMobileNav();
     initAccordions();
     initCustomDropdowns();
@@ -485,6 +564,7 @@
     refreshReveals: observeReveals,
     initDropdowns: initCustomDropdowns,
     initAccordions: initAccordions,
+    refreshCounters: (scope) => initStatCounters(scope || document),
     scrollTo: (target, offset = -75) => {
       const el = typeof target === 'string' ? document.querySelector(target) : target;
       if (el && lenisInstance) {
