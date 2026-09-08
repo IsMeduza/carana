@@ -1,0 +1,33 @@
+  <!-- ============ NAV HEADER COMPONENT ============ -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="{{root}}index.html" aria-label="AUTO JUNG">
+        <svg class="nav-logo-icon" viewBox="-10 -10 635 594" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M150 342.6C157.9 327.5 163.8 316.2 169.7 304.8C210.8 226.2 251.8 147.6 293.1 69.1C297.4 60.9 302.3 52.8 308 45.5C332.6 14.3 370.8 14.1 394.4 46.2C407.6 64.1 418.4 84 428.9 103.8C484.5 208.5 539.8 313.3 594.8 418.3C609.3 445.9 618.9 474.9 613.2 507.1C607.3 540.3 578.9 568.5 552.5 569.5C560.9 551.8 572.3 533.4 578.6 513.5C588.1 483.2 578.3 454.4 564.3 427.3C528.9 358.9 493.3 290.6 457.3 222.6C431.1 173.1 403.9 124.1 377.6 74.7C371.5 63.3 363.5 56.3 350.3 56.4C337.4 56.4 330.2 64.3 324.6 74.9C285.3 149.7 245.5 224.1 206.8 299.2C198.3 315.7 189.1 329.2 170 333.8C164.4 335.1 159.3 338.4 149.9 342.6H150Z" fill="currentColor" stroke="currentColor" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M0 517C22.3 533.4 46.8999 541.1 74.3999 540.7C102.2 540.3 125.6 529.8 148.1 514.2C176 494.9 203.4 473.5 234.2 460.1C296.5 433 357.4 443.3 414.3 479.3C426.1 486.8 437.2 495.4 448.4 503.8C462.2 514 475.9 514.8 486.7 505.6C496.8 497 498.8 483.4 491 468.6C443.4 378.2 396.5 287.5 347.2 198C335.7 177 335.8 161.5 351.7 144.1C353.4 146.3 355.6 148.4 357 151C410.1 251.6 463.4 352.2 515.9 453.2C522.1 465.2 527.1 479.8 526.6 492.9C525 533 483.2 555.7 445.2 537.9C434 532.6 423.9 524.5 413.9 516.9C340.3 461.1 263.1 462.3 191.1 520.4C180.2 529.2 169.6 538.4 158.3 546.6C127.7 568.5 93.8 578.2 56.5 570.4C27.4 564.3 8.8 545.8 0 517Z" fill="currentColor" stroke="currentColor" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M399.4 410.3C301.4 373.2 216.9 393 139.1 452.3C128.3 460.5 117.7 469 106.5 476.5C85.7 490.3 57.5 490.1 39.2 476.6C21.8 463.8 13.7 438.9 20.2 414.8C23.1 404.1 27.3 393.5 32.5 383.7C86.7 280.9 140.5 177.9 196.1 75.9C207.9 54.2 225.9 35.7 242.4 16.9C248.5 9.99996 258.5 6.5 269.2 0C252.4 30.9 236.8 58.7 222 86.9C166.3 193.1 110.8 299.4 55.5 405.8C51.7 413 46.9999 422.3 48.5999 429.2C50.5999 437.6 57.4 446.6 64.7 451.5C74.4 458.1 85.2001 453.8 94.3001 446.5C129.8 418.1 166.9 392.4 209.8 376.2C258.4 357.9 307.9 355.4 358.5 365.4C372.3 368.1 382.7 373.6 387.6 387.7C390 394.5 394.2 400.7 399.2 410.2L399.4 410.3Z" fill="currentColor" stroke="currentColor" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <span class="nav-logo-text">AUTO JUNG</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a class="nav-link {{active_inventario}}" href="{{root}}inventario.html">Inventario</a>
+        <a class="nav-link {{active_entrega}}" href="{{root}}entrega-tu-coche.html">Entrega tu coche</a>
+        <a class="nav-link {{active_financiacion}}" href="{{root}}financiacion.html">Financiación</a>
+        <a class="nav-link {{active_nosotros}}" href="{{root}}sobre-nosotros.html">Sobre nosotros</a>
+      </nav>
+      <div class="nav-right">
+        <a class="btn btn-dark" href="{{root}}contacto.html">
+          <span>Contactar</span>
+          <span class="btn-chip btn-chip-light">
+            <span class="btn-arrow-wrap">
+              <span class="btn-arrow-track">
+                <i data-lucide="arrow-right" class="arrow-svg"></i>
+                <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
+              </span>
+            </span>
+          </span>
+        </a>
+        <button class="nav-burger" id="navBurger" aria-label="Menú"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>

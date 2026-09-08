@@ -614,91 +614,151 @@ function setupCarousel() {
   const dotsContainer = document.getElementById('carouselDots');
   if (!track) return;
 
-  let currentIndex = 0;
+  // Clean up any old clones if setupCarousel runs again
+  track.querySelectorAll('.carousel-clone').forEach(el => el.remove());
 
-  function updateCarousel() {
-    const slides = track.querySelectorAll('.car-carousel-slide');
-    const totalSlides = slides.length;
-    if (totalSlides === 0) return;
+  const originalSlides = Array.from(track.querySelectorAll('.car-carousel-slide'));
+  const totalSlides = originalSlides.length;
+  if (totalSlides === 0) return;
 
-    if (currentIndex < 0) currentIndex = totalSlides - 1;
-    if (currentIndex >= totalSlides) currentIndex = 0;
+  if (totalSlides === 1) {
+    track.style.transform = 'translateX(0%)';
+    return;
+  }
 
-    track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+  // Create infinite loop clones
+  const firstClone = originalSlides[0].cloneNode(true);
+  firstClone.classList.add('carousel-clone');
+  firstClone.setAttribute('aria-hidden', 'true');
 
-    const dots = dotsContainer ? dotsContainer.querySelectorAll('.carousel-dot') : [];
+  const lastClone = originalSlides[totalSlides - 1].cloneNode(true);
+  lastClone.classList.add('carousel-clone');
+  lastClone.setAttribute('aria-hidden', 'true');
+
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, track.firstChild);
+
+  let currentIndex = 1;
+  let isTransitioning = false;
+  let transitionTimeout = null;
+  const TRANSITION_STYLE = 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)';
+
+  // Initial position at first real slide without transition
+  track.style.transition = 'none';
+  track.style.transform = 'translateX(-100%)';
+  void track.offsetHeight; // Force reflow
+
+  function updateDots(activeIdx) {
+    if (!dotsContainer) return;
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
     dots.forEach((dot, idx) => {
-      dot.classList.toggle('active', idx === currentIndex);
+      dot.classList.toggle('active', idx === activeIdx);
     });
   }
 
+  function getRealIndex(idx) {
+    if (idx === 0) return totalSlides - 1;
+    if (idx === totalSlides + 1) return 0;
+    return idx - 1;
+  }
+
+  function handleTransitionEnd() {
+    clearTimeout(transitionTimeout);
+    if (currentIndex === totalSlides + 1) {
+      track.style.transition = 'none';
+      currentIndex = 1;
+      track.style.transform = 'translateX(-100%)';
+      void track.offsetHeight;
+    } else if (currentIndex === 0) {
+      track.style.transition = 'none';
+      currentIndex = totalSlides;
+      track.style.transform = 'translateX(-' + (totalSlides * 100) + '%)';
+      void track.offsetHeight;
+    }
+    isTransitioning = false;
+  }
+
+  function goToSlide(index) {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    currentIndex = index;
+
+    track.style.transition = TRANSITION_STYLE;
+    track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+
+    updateDots(getRealIndex(currentIndex));
+
+    clearTimeout(transitionTimeout);
+    transitionTimeout = setTimeout(() => {
+      if (isTransitioning) {
+        handleTransitionEnd();
+      }
+    }, 500);
+  }
+
+  track.addEventListener('transitionend', (e) => {
+    if (e.target !== track || e.propertyName !== 'transform') return;
+    handleTransitionEnd();
+  });
+
   if (prevBtn) {
     prevBtn.addEventListener('click', () => {
-      currentIndex--;
-      updateCarousel();
+      goToSlide(currentIndex - 1);
     });
   }
 
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
-      currentIndex++;
-      updateCarousel();
+      goToSlide(currentIndex + 1);
     });
   }
 
   if (dotsContainer) {
     dotsContainer.addEventListener('click', (e) => {
       const dot = e.target.closest('.carousel-dot');
-      if (dot) {
-        currentIndex = parseInt(dot.getAttribute('data-index'), 10) || 0;
-        updateCarousel();
+      if (dot && !isTransitioning) {
+        const dotIndex = parseInt(dot.getAttribute('data-index'), 10) || 0;
+        if (getRealIndex(currentIndex) !== dotIndex) {
+          goToSlide(dotIndex + 1);
+        }
       }
     });
   }
+
+  // Touch swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  track.addEventListener('touchstart', (e) => {
+    if (isTransitioning || e.touches.length > 1) return;
+    touchStartX = e.touches[0].clientX;
+    touchEndX = touchStartX;
+  }, { passive: true });
+
+  track.addEventListener('touchmove', (e) => {
+    if (isTransitioning) return;
+    touchEndX = e.touches[0].clientX;
+  }, { passive: true });
+
+  track.addEventListener('touchend', () => {
+    if (isTransitioning) return;
+    const diff = touchEndX - touchStartX;
+    if (Math.abs(diff) > 45) {
+      if (diff < 0) {
+        goToSlide(currentIndex + 1);
+      } else {
+        goToSlide(currentIndex - 1);
+      }
+    }
+  });
 }
 
 function setupAccordions(scope = document) {
+  // Accordions are handled globally by motion.js (window.EVO.initAccordions),
+  // which loads on every page via @component scripts.
   if (window.EVO && typeof window.EVO.initAccordions === 'function') {
     window.EVO.initAccordions(scope);
-    return;
   }
-
-  const accItems = scope.querySelectorAll('.faq-item, .accordion-item, .car-acc-item');
-  accItems.forEach(item => {
-    const header = item.querySelector('.faq-q, .accordion-header, .accordion-q, .car-acc-header');
-    const body = item.querySelector('.faq-a, .accordion-body, .accordion-a, .car-acc-body');
-    if (!header || !body) return;
-
-    if (header.dataset.accordionBound) return;
-    header.dataset.accordionBound = 'true';
-
-    if (item.classList.contains('open')) {
-      body.style.maxHeight = body.scrollHeight + 'px';
-    }
-
-    header.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      const container = item.closest('.faq-list, .accordion-list');
-
-      if (container) {
-        container.querySelectorAll('.faq-item.open, .accordion-item.open, .car-acc-item.open').forEach(other => {
-          if (other !== item) {
-            other.classList.remove('open');
-            const otherBody = other.querySelector('.faq-a, .accordion-body, .accordion-a, .car-acc-body');
-            if (otherBody) otherBody.style.maxHeight = null;
-          }
-        });
-      }
-
-      if (isOpen) {
-        item.classList.remove('open');
-        body.style.maxHeight = null;
-      } else {
-        item.classList.add('open');
-        body.style.maxHeight = body.scrollHeight + 'px';
-      }
-    });
-  });
 }
 
 function setupCopyButtons(car) {

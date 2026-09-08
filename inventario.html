@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fafafa">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <!-- @component head-open -->
 
   <title>Inventario de Vehículos | AUTO JUNG - Soluciones Integrales 360°</title>
   <meta name="description" content="Catálogo exclusivo de vehículos de importación, ocasión premium y flotas seleccionadas con peritaje riguroso en Europa.">
@@ -25,48 +20,11 @@
   <meta name="twitter:title" content="Inventario de Vehículos | AUTO JUNG - Soluciones Integrales 360°">
   <meta name="twitter:description" content="Catálogo exclusivo de vehículos de importación, ocasión premium y flotas seleccionadas con peritaje riguroso en Europa.">
   <meta name="twitter:image" content="https://autojung.maxsm.workers.dev/assets/img/og-logo.png">
-  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-  
-  <link rel="preload" href="assets/fonts/SpaceGrotesk-500.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/SpaceGrotesk-700.woff2" as="font" type="font/woff2" crossorigin>
-  <script>document.documentElement.classList.add('js');</script>
-  <link rel="stylesheet" href="styles.css">
-  <script src="assets/lenis.min.js"></script>
-  <script src="assets/vendor/lucide.min.js"></script>
+
+  <!-- @component head-close -->
 </head>
 <body>
-  <!-- ============ NAV HEADER ============ -->
-  <header class="nav" id="nav">
-    <div class="nav-inner">
-      <a class="nav-logo" href="index.html" aria-label="Home">AUTO JUNG</a>
-      <nav class="nav-links" id="navLinks">
-        <a class="nav-link active" href="inventario.html">Inventario</a>
-        <a class="nav-link" href="entrega-tu-coche.html">Entrega tu coche</a>
-        <a class="nav-link" href="financiacion.html">Financiación</a>
-        <a class="nav-link" href="sobre-nosotros.html">Sobre nosotros</a>
-      </nav>
-      <div class="nav-right">
-        <a class="btn btn-dark" href="contacto.html">
-          <span>Contactar</span>
-          <span class="btn-chip btn-chip-light">
-            <span class="btn-arrow-wrap">
-              <span class="btn-arrow-track">
-                <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                </svg>
-                <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                </svg>
-              </span>
-            </span>
-          </span>
-        </a>
-        <button class="nav-burger" id="navBurger" aria-label="Menú">
-          <span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
+  <!-- @component header active="inventario" -->
 
   <!-- ============ INVENTORY HERO (COMPACT, NO GIANT VOID) ============ -->
   <section class="inv-hero">
@@ -571,76 +529,9 @@
     </div>
   </section>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="footer" id="contact">
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-left">
-          <h2 class="reveal-head">¿Listo para encontrar<br>tu próximo vehículo?</h2>
-          <p class="section-sub reveal-head reveal-delay-1">AUTO JUNG | Soluciones Integrales 360° en Automoción y Comercio Europeo desde Girona.</p>
-          <div class="footer-ctas">
-            <a class="btn btn-dark" href="contacto.html">
-              <span>Contactar</span>
-              <span class="btn-chip btn-chip-light">
-                <span class="btn-arrow-wrap">
-                  <span class="btn-arrow-track">
-                    <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                    </svg>
-                    <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                    </svg>
-                  </span>
-                </span>
-              </span>
-            </a>
-            <a class="footer-icon-btn" href="https://maps.google.com/maps?q=Girona,+Espa%C3%B1a&z=14" target="_blank" rel="noopener" aria-label="Ubicación en Girona">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M 6.4 4.76 C 9.5 1.72 14.47 1.74 17.54 4.82 C 20.61 7.89 20.64 12.86 17.6 15.96 L 13.41 20.15 C 12.63 20.93 11.37 20.93 10.59 20.15 L 6.4 15.96 C 3.31 12.87 3.31 7.85 6.4 4.76 Z"/>
-                <circle cx="12" cy="10.36" r="3"/>
-              </svg>
-            </a>
-            <a class="footer-icon-btn" href="tel:+34972000000" aria-label="Llámanos al +34 972 00 00 00">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M 7.829 16.171 C 5.678 14.016 4.024 11.417 2.983 8.557 C 2.41 6.993 2.935 5.275 4.113 4.097 L 4.842 3.369 C 5.238 2.972 5.775 2.749 6.335 2.749 C 6.896 2.749 7.433 2.972 7.829 3.369 L 9.536 5.076 C 9.932 5.471 10.155 6.009 10.155 6.569 C 10.155 7.129 9.932 7.667 9.536 8.063 L 9.116 8.483 C 8.776 8.822 8.586 9.282 8.586 9.763 C 8.586 10.243 8.776 10.703 9.116 11.043 L 12.956 14.884 C 13.295 15.223 13.756 15.414 14.236 15.414 C 14.716 15.414 15.176 15.223 15.516 14.884 L 15.937 14.464 C 16.333 14.067 16.87 13.844 17.43 13.844 C 17.991 13.844 18.528 14.067 18.924 14.464 L 20.631 16.171 C 21.027 16.566 21.25 17.104 21.25 17.664 C 21.25 18.224 21.027 18.762 20.631 19.158 L 19.903 19.886 C 18.725 21.065 17.007 21.59 15.443 21.017 C 12.582 19.975 9.984 18.321 7.829 16.171 Z"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-        <div class="footer-nav">
-          <nav class="footer-col">
-            <a href="index.html">Inicio</a>
-            <a href="inventario.html">Inventario</a>
-            <a href="entrega-tu-coche.html">Entrega tu coche</a>
-            <a href="financiacion.html">Financiación</a>
-          </nav>
-          <nav class="footer-col">
-            <a href="sobre-nosotros.html">Sobre nosotros</a>
-            <a href="contacto.html">Contacto</a>
-            <a href="blog.html">Blog</a>
-          </nav>
-        </div>
-      </div>
-      <div class="footer-giant reveal-head" aria-hidden="true">
-        <svg viewBox="0 35 726 122" style="display: block; width: 100%; height: auto; overflow: visible;">
-          <text x="0" y="148" textLength="726" lengthAdjust="spacing" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="150" fill="currentColor">AUTO JUNG</text>
-        </svg>
-      </div>
-      <div class="footer-bottom">
-        <p class="footer-copyright">© 2026 AUTO JUNG - TODOS LOS DERECHOS RESERVADOS</p>
-        <div class="footer-legal">
-          <a href="terminos-y-condiciones.html">Términos y condiciones</a>
-          <span class="footer-legal-sep">|</span>
-          <a href="politica-de-privacidad.html">Política de privacidad</a>
-          <span class="footer-legal-sep">|</span>
-          <a href="politica-de-cookies.html">Política de cookies</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <!-- @component footer title="¿Listo para encontrar<br>tu próximo vehículo?" sub="AUTO JUNG | Soluciones Integrales 360° en Automoción y Comercio Europeo desde Girona." -->
 
-  <script src="assets/lenis.min.js"></script>
-  <script src="assets/motion.js"></script>
+  <!-- @component scripts -->
   <script src="inventory.js"></script>
-<script src="assets/color-editor.js"></script>`n</body>
+</body>
 </html>

@@ -38,47 +38,6 @@ if (window.EVO && window.EVO.lenis) {
   window.EVO.lenis.on('scroll', updateHeroParallax);
 }
 
-// ============ UNIFIED ACCORDION COMPONENT ============
-function setupAccordions(scope = document) {
-  const accItems = scope.querySelectorAll('.faq-item, .accordion-item, .car-acc-item');
-  accItems.forEach(item => {
-    const header = item.querySelector('.faq-q, .accordion-header, .accordion-q, .car-acc-header');
-    const body = item.querySelector('.faq-a, .accordion-body, .accordion-a, .car-acc-body');
-    if (!header || !body) return;
-
-    if (header.dataset.accordionBound) return;
-    header.dataset.accordionBound = 'true';
-
-    if (item.classList.contains('open')) {
-      body.style.maxHeight = body.scrollHeight + 'px';
-    }
-
-    header.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      const container = item.closest('.faq-list, .accordion-list');
-
-      if (container) {
-        container.querySelectorAll('.faq-item.open, .accordion-item.open, .car-acc-item.open').forEach(other => {
-          if (other !== item) {
-            other.classList.remove('open');
-            const otherBody = other.querySelector('.faq-a, .accordion-body, .accordion-a, .car-acc-body');
-            if (otherBody) otherBody.style.maxHeight = null;
-          }
-        });
-      }
-
-      if (isOpen) {
-        item.classList.remove('open');
-        body.style.maxHeight = null;
-      } else {
-        item.classList.add('open');
-        body.style.maxHeight = body.scrollHeight + 'px';
-      }
-    });
-  });
-}
-setupAccordions();
-
 
 // ============ REPLICATED SEARCH COMPONENT ============
 const inventory = [

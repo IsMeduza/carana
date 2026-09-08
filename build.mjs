@@ -3,10 +3,12 @@ import path from 'node:path';
 import JavaScriptObfuscator from 'javascript-obfuscator';
 import { minify as minifyHTML } from 'html-minifier-terser';
 import CleanCSS from 'clean-css';
+import componentsPkg from './lib/components.cjs';
+const { resolveComponents } = componentsPkg;
 
 const ROOT = process.cwd();
 const DIST = path.join(ROOT, 'dist');
-const EXCLUDE_DIRS = new Set(['.git', '.wrangler', 'node_modules', 'src', 'dist']);
+const EXCLUDE_DIRS = new Set(['.git', '.wrangler', 'node_modules', 'src', 'dist', 'components', 'lib']);
 const EXCLUDE_FILES = new Set([
   'build.mjs', 'package.json', 'package-lock.json', 'wrangler.jsonc',
   'server.cjs', '.assetsignore', '.gitignore', 'README.md',
@@ -89,7 +91,8 @@ async function copyAll(srcDir, distDir) {
       }
       // Minify HTML
       else if (ext === '.html') {
-        const html = fs.readFileSync(srcPath, 'utf8');
+        const rawHtml = fs.readFileSync(srcPath, 'utf8');
+        const html = resolveComponents(rawHtml, srcPath);
         let out;
         try {
           out = await minifyHTML(html, HTML_MINIFY_OPTIONS);

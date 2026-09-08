@@ -1,6 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const { resolveComponents } = require('./lib/components.cjs');
 
 const mime = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.mjs': 'text/javascript',
@@ -92,13 +93,20 @@ http.createServer((req, res) => {
     if (err) {
       const notFoundPage = path.join(__dirname, '404.html');
       if (fs.existsSync(notFoundPage)) {
+        const nfContent = fs.readFileSync(notFoundPage, 'utf8');
         res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-        return res.end(fs.readFileSync(notFoundPage));
+        return res.end(resolveComponents(nfContent, notFoundPage));
       }
       res.writeHead(404); return res.end('not found');
     }
     const base = path.basename(file).split('@')[0];
-    res.writeHead(200, { 'Content-Type': mime[path.extname(base).toLowerCase()] || 'application/octet-stream' });
+    const ext = path.extname(base).toLowerCase();
+    if (ext === '.html') {
+      const htmlStr = resolveComponents(data.toString('utf8'), file);
+      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+      return res.end(htmlStr);
+    }
+    res.writeHead(200, { 'Content-Type': mime[ext] || 'application/octet-stream' });
     res.end(data);
   });
 }).listen(8765, () => console.log('serving on http://localhost:8765'));
