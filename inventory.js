@@ -279,7 +279,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // Reset custom dropdowns display
       customDropdowns.forEach(dd => {
         const valueSpan = dd.querySelector('.custom-dropdown-value');
-        if (valueSpan) valueSpan.textContent = 'All';
+        const defaultOpt = dd.querySelector('.custom-dropdown-option[data-value="all"]');
+        if (valueSpan) valueSpan.textContent = defaultOpt ? defaultOpt.textContent.trim() : 'Todos';
         const options = dd.querySelectorAll('.custom-dropdown-option');
         options.forEach(opt => {
           if (opt.dataset.value === 'all') {

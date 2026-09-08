@@ -163,7 +163,7 @@
             </div>
             <!-- Visually hidden native select for full filtering compatibility -->
             <select class="visually-hidden-select" id="filterMake" tabindex="-1" aria-hidden="true">
-              <option value="all">All</option>
+              <option value="all">Todas</option>
               <option value="Aston Martin">Aston Martin</option>
               <option value="Audi">Audi</option>
               <option value="BMW">BMW</option>
@@ -178,17 +178,17 @@
 
         <!-- CONDITION SELECT (CUSTOM DROPDOWN) -->
         <div class="filter-group reveal-card reveal-delay-2">
-          <label class="filter-label" id="labelCondition">Condition</label>
+          <label class="filter-label" id="labelCondition">Estado</label>
           <div class="custom-dropdown" id="dropdownCondition" data-select="filterCondition" data-lenis-prevent>
             <button type="button" class="custom-dropdown-trigger" id="btnDropdownCondition" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="labelCondition btnDropdownCondition">
-              <span class="custom-dropdown-value">All</span>
+              <span class="custom-dropdown-value">Todos</span>
               <span class="select-arrow">
                 <i data-lucide="chevron-down"></i>
               </span>
             </button>
             <div class="custom-dropdown-menu" role="listbox" data-lenis-prevent>
               <div class="custom-dropdown-option selected" data-value="all" role="option" aria-selected="true">
-                <span>All</span>
+                <span>Todos</span>
                 <i data-lucide="check" class="opt-check"></i>
               </div>
               <div class="custom-dropdown-option" data-value="Nuevo" role="option">
@@ -202,7 +202,7 @@
             </div>
             <!-- Visually hidden native select for full filtering compatibility -->
             <select class="visually-hidden-select" id="filterCondition" tabindex="-1" aria-hidden="true">
-              <option value="all">All</option>
+              <option value="all">Todos</option>
               <option value="Nuevo">Nuevo</option>
               <option value="De ocasión">De ocasión</option>
             </select>
@@ -212,12 +212,12 @@
         <!-- YEAR & MILEAGE -->
         <div class="filter-row-inputs reveal-card reveal-delay-3">
           <div class="filter-group">
-            <label class="filter-label" for="filterYear">Year</label>
-            <input class="filter-input-small" id="filterYear" type="number" placeholder="Year..." min="2010" max="2026">
+            <label class="filter-label" for="filterYear">Año</label>
+            <input class="filter-input-small" id="filterYear" type="number" placeholder="Año..." min="2010" max="2026">
           </div>
           <div class="filter-group">
-            <label class="filter-label" for="filterMileage">Max Mileage</label>
-            <input class="filter-input-small" id="filterMileage" type="number" placeholder="Max..." min="0" step="1000">
+            <label class="filter-label" for="filterMileage">Km máx.</label>
+            <input class="filter-input-small" id="filterMileage" type="number" placeholder="Máx..." min="0" step="1000">
           </div>
         </div>
 
@@ -254,7 +254,7 @@
       <main class="inv-main">
         <!-- CATEGORY TABS (SPAN FULL WIDTH) -->
         <div class="category-tabs reveal-head reveal-delay-1" id="categoryTabs">
-          <button class="cat-pill active" data-cat="all" type="button">All</button>
+          <button class="cat-pill active" data-cat="all" type="button">Todos</button>
           <button class="cat-pill" data-cat="suv" type="button">SUV</button>
           <button class="cat-pill" data-cat="coupe" type="button">Coupé</button>
           <button class="cat-pill" data-cat="descapotable" type="button">Descapotable</button>
