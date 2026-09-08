@@ -4627,12 +4627,12 @@ body.menu-open {
   }
 
   .nav-logo {
-    font-size: 23px !important;
-    gap: 9px !important;
+    font-size: 28px !important;
+    gap: 10px !important;
   }
   .nav-logo-icon {
-    width: 22px !important;
-    height: 20px !important;
+    width: 27px !important;
+    height: 25px !important;
   }
 
   .nav-burger {
