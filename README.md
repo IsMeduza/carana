@@ -67,15 +67,32 @@ La web incluye una herramienta oculta de retoque visual en tiempo real para cali
 ### Funcionalidades:
 * **Selectores de color en vivo**: Modifica cualquier token con el selector de color o introduciendo el código hexadecimal.
 * **Control de gradiente**: Ajusta el ángulo del degradado (0° a 360°) con previsualización inmediata.
-* **Temas Oscuros de 1-Clic**: Preserva tus tonos claros (fondo, superficie y líneas) y cambia al instante los tonos negros y gradientes con variantes de lujo automovilístico:
-  * 🖤 **Negro Obsidian**: El contraste puro y sigiloso original.
-  * 🔵 **Azul Midnight**: Azul noche alpino de alta gama.
-  * 🔴 **Rojo Carmine**: Tono burdeos profundo y fibra deportiva.
-  * 🟢 **Verde British**: Verde clásico de competición (estilo Aston Martin).
-  * 🟣 **Púrpura Imperial**: Amatista oscura y exótica.
-  * 🔘 **Grafito Titanio**: Estética de metal carbón e industrial.
-  * 🟤 **Café Espresso**: Cuero tostado y bronce sobrio.
-  * 🟠 **Cobre Solar**: Ámbar cálido y cobre oscuro.
+* **20 Temas de Color Reales de 1-Clic**: Preserva tus tonos claros (fondo, superficie y líneas) y transforma completamente los botones, textos destacados y gradientes con colores vivos y de alto contraste inspirados en el mundo del automovilismo:
+  * 🏎️ **Deportivos / GT Racing**:
+    * 🔴 **Rojo Corsa**: Ferrari Rosso & Porsche GT3
+    * 🔵 **Azul Riviera**: Porsche Riviera Blue & Bugatti
+    * 🟠 **Naranja Papaya**: McLaren F1 Heritage
+    * 🟢 **Verde Mamba**: AMG Green Hell & Porsche RS
+    * 🟡 **Amarillo Modena**: Lamborghini Giallo Corsa
+    * 🟣 **Ultraviolet**: Porsche 991 GT3 RS
+  * 💎 **Lujo Ejecutivo & Gran Turismo**:
+    * 🔷 **Azul Zafiro Real**: Rolls-Royce & Bentley Deep Blue
+    * 🍷 **Rojo Borgoña**: Vino tinto & Aston Martin Minotaur
+    * 🌲 **Verde British**: Jaguar & Aston Martin Racing Green
+    * 🟤 **Café Habano**: Cuero Bentley Mulliner & Tabaco
+    * 🔮 **Ciruela Velvet**: Mercedes-Maybach Exclusivo
+    * 💠 **Azul Petrol Teal**: Turquesa nórdico sobrio
+  * ⚡ **Exóticos & Hypercar**:
+    * ⚡ **Verde Ácido 918**: Pinzas de freno híbridas Porsche 918
+    * 💖 **Ruby Star Neo**: Rosa fucsia vibrante de competición
+    * 🌊 **Miami Cyan**: Azul cian eléctrico estilo Miami Blue
+    * 🏜️ **Cobre Líquido**: Bronce supercar fundido
+  * 🖤 **Monocromáticos & Metal**:
+    * 🖤 **Negro Obsidian**: Negro puro original & stealth
+    * 🔘 **Grafito Gunmetal**: Carbón y metal pulido
+    * 🐺 **Titanio AMG**: Gris noche azulado deportivo
+    * ❄️ **Plata Glaciar**: Acero frío contemporáneo
+* **Pestañas de filtrado**: Filtra por categoría ("Todos", "Deportivos", "Lujo GT", "Neón/Exóticos", "Monocromo").
 * **📋 Copiar :root**: Genera y copia al portapapeles el bloque CSS listo para pegar en `styles.css`.
 * **↩️ Reset**: Restablece los valores originales de la hoja de estilos.
 
