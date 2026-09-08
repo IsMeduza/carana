@@ -109,7 +109,69 @@ document.addEventListener('DOMContentLoaded', () => {
   const carCards = document.querySelectorAll('.car-card');
   const noResults = document.getElementById('noResults');
 
+  // Mobile filter elements
+  const filtersSidebar = document.getElementById('filtersSidebar');
+  const mobileFiltersTrigger = document.getElementById('mobileFiltersTrigger');
+  const filtersBadge = document.getElementById('filtersBadge');
+  const mobileFilterApplyBtn = document.getElementById('mobileFilterApplyBtn');
+  const mobileFilterApplyText = document.getElementById('mobileFilterApplyText');
+
   let currentCategory = 'all';
+
+  // --- Mobile Filter Toggle & Apply ---
+  if (mobileFiltersTrigger && filtersSidebar) {
+    mobileFiltersTrigger.addEventListener('click', () => {
+      const isOpen = filtersSidebar.classList.toggle('filters-open');
+      mobileFiltersTrigger.classList.toggle('active', isOpen);
+      mobileFiltersTrigger.setAttribute('aria-expanded', String(isOpen));
+    });
+  }
+
+  if (mobileFilterApplyBtn && filtersSidebar) {
+    mobileFilterApplyBtn.addEventListener('click', () => {
+      filtersSidebar.classList.remove('filters-open');
+      if (mobileFiltersTrigger) {
+        mobileFiltersTrigger.classList.remove('active');
+        mobileFiltersTrigger.setAttribute('aria-expanded', 'false');
+      }
+      const catalogEl = document.getElementById('catalog');
+      if (catalogEl) {
+        if (window.lenis && typeof window.lenis.scrollTo === 'function') {
+          window.lenis.scrollTo(catalogEl, { offset: -84 });
+        } else {
+          const topPos = catalogEl.getBoundingClientRect().top + window.pageYOffset - 84;
+          window.scrollTo({ top: Math.max(0, topPos), behavior: 'smooth' });
+        }
+      }
+    });
+  }
+
+  function updateActiveFilterBadge(visibleCount) {
+    if (!filtersBadge || !mobileFiltersTrigger) return;
+
+    let activeCount = 0;
+    if (makeSelect && makeSelect.value !== 'all') activeCount++;
+    if (conditionSelect && conditionSelect.value !== 'all') activeCount++;
+    if (yearInput && yearInput.value.trim() !== '') activeCount++;
+    if (mileageInput && mileageInput.value.trim() !== '') activeCount++;
+
+    let hasPrice = false;
+    priceCheckboxes.forEach(cb => { if (cb.checked) hasPrice = true; });
+    if (hasPrice) activeCount++;
+
+    if (activeCount > 0) {
+      filtersBadge.textContent = String(activeCount);
+      filtersBadge.style.display = 'inline-flex';
+      mobileFiltersTrigger.classList.add('has-active');
+    } else {
+      filtersBadge.style.display = 'none';
+      mobileFiltersTrigger.classList.remove('has-active');
+    }
+
+    if (mobileFilterApplyText) {
+      mobileFilterApplyText.textContent = `Ver ${visibleCount} vehículo${visibleCount === 1 ? '' : 's'}`;
+    }
+  }
 
   // --- Filter Search Clear Button ---
   function updateFilterSearchClear() {
@@ -217,6 +279,8 @@ document.addEventListener('DOMContentLoaded', () => {
         card.classList.add('filter-animate', 'in');
       });
     }
+
+    updateActiveFilterBadge(visibleCount);
 
     if (window.EVO && typeof window.EVO.refreshReveals === 'function') {
       window.EVO.refreshReveals();

@@ -307,12 +307,12 @@ const testimonialsData = [
   {
     quote: '"La gestión de importación y tramitación de placas definitivas con la DGT fue impecable. Coordinaron el peritaje técnico y el transporte seguro directamente a nuestras instalaciones."',
     name: "Concesionario Colaborador B2B · Sector Automoción Girona",
-    img: "assets/img/avatar-placeholder.png"
+    img: "assets/img/testimonial.png"
   },
   {
     quote: '"Buscábamos soluciones ágiles de renting y adquisición de flota europea para nuestra empresa. AUTO JUNG nos ofreció un servicio 360° llave en mano con máxima transparencia."',
     name: "Empresa de Movilidad y Logística · Girona",
-    img: "assets/img/avatar-placeholder.png"
+    img: "assets/img/team-3.jpg"
   }
 ];
 let currentTestimonial = 0;

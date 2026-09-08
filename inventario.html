@@ -10,6 +10,22 @@
 
   <title>Inventario de Vehículos | AUTO JUNG - Soluciones Integrales 360°</title>
   <meta name="description" content="Catálogo exclusivo de vehículos de importación, ocasión premium y flotas seleccionadas con peritaje riguroso en Europa.">
+  <meta property="og:title" content="Inventario de Vehículos | AUTO JUNG - Soluciones Integrales 360°">
+  <meta property="og:description" content="Catálogo exclusivo de vehículos de importación, ocasión premium y flotas seleccionadas con peritaje riguroso en Europa.">
+  <meta property="og:image" content="https://autojung.maxsm.workers.dev/assets/img/og-logo.png">
+  <meta property="og:image:secure_url" content="https://autojung.maxsm.workers.dev/assets/img/og-logo.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="600">
+  <meta property="og:image:height" content="600">
+  <meta property="og:image:alt" content="AUTO JUNG">
+  <meta property="og:url" content="https://autojung.maxsm.workers.dev/inventario.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AUTO JUNG">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Inventario de Vehículos | AUTO JUNG - Soluciones Integrales 360°">
+  <meta name="twitter:description" content="Catálogo exclusivo de vehículos de importación, ocasión premium y flotas seleccionadas con peritaje riguroso en Europa.">
+  <meta name="twitter:image" content="https://autojung.maxsm.workers.dev/assets/img/og-logo.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   
   <link rel="preload" href="assets/fonts/SpaceGrotesk-500.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/SpaceGrotesk-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -93,159 +109,195 @@
   <section class="inv-section" id="catalog">
     <div class="inv-layout">
       <!-- FILTERS SIDEBAR -->
-      <aside class="filters-sidebar reveal-card reveal-delay-1">
-        <div class="filters-header reveal-card reveal-delay-1">
-          <span class="filters-title">Filtros</span>
-          <button class="filters-clear-btn" id="clearFiltersBtn" type="button">Limpiar</button>
-        </div>
+      <aside class="filters-sidebar" id="filtersSidebar">
+        <!-- TOP BAR: Search + Mobile Filter Toggle Button -->
+        <div class="filters-top-bar">
+          <div class="filter-search-box">
+            <span class="filter-search-icon">
+              <i data-lucide="search"></i>
+            </span>
+            <input class="filter-search-input" id="filterSearchInput" type="text" placeholder="Buscar vehículo..." autocomplete="off">
+            <button type="button" class="filter-search-clear" id="filterSearchClear" aria-label="Borrar búsqueda" style="display: none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
 
-        <!-- SEARCH INPUT -->
-        <div class="filter-search-box reveal-card reveal-delay-1">
-          <span class="filter-search-icon">
-            <i data-lucide="search"></i>
-          </span>
-          <input class="filter-search-input" id="filterSearchInput" type="text" placeholder="Buscar vehículo..." autocomplete="off">
-          <button type="button" class="filter-search-clear" id="filterSearchClear" aria-label="Borrar búsqueda" style="display: none;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
+          <button class="mobile-filters-trigger" id="mobileFiltersTrigger" type="button" aria-expanded="false" aria-controls="filtersCollapsible">
+            <svg class="mobile-filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" y1="21" x2="4" y2="14"></line>
+              <line x1="4" y1="10" x2="4" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12" y2="3"></line>
+              <line x1="20" y1="21" x2="20" y2="16"></line>
+              <line x1="20" y1="12" x2="20" y2="3"></line>
+              <line x1="1" y1="14" x2="7" y2="14"></line>
+              <line x1="9" y1="8" x2="15" y2="8"></line>
+              <line x1="17" y1="16" x2="23" y2="16"></line>
             </svg>
+            <span>Filtros</span>
+            <span class="filters-badge" id="filtersBadge" style="display: none;">0</span>
           </button>
         </div>
 
-        <!-- MAKE SELECT (CUSTOM DROPDOWN) -->
-        <div class="filter-group reveal-card reveal-delay-2">
-          <label class="filter-label" id="labelMake">Marca</label>
-          <div class="custom-dropdown" id="dropdownMake" data-select="filterMake" data-lenis-prevent>
-            <button type="button" class="custom-dropdown-trigger" id="btnDropdownMake" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="labelMake btnDropdownMake">
-              <span class="custom-dropdown-value">Todas</span>
-              <span class="select-arrow">
-                <i data-lucide="chevron-down"></i>
+        <!-- COLLAPSIBLE FILTERS (Desktop: always visible / Mobile: toggled) -->
+        <div class="filters-collapsible" id="filtersCollapsible">
+          <div class="filters-header">
+            <span class="filters-title">Filtros</span>
+            <button class="filters-clear-btn" id="clearFiltersBtn" type="button">Limpiar</button>
+          </div>
+
+          <!-- MAKE SELECT (CUSTOM DROPDOWN) -->
+          <div class="filter-group">
+            <label class="filter-label" id="labelMake">Marca</label>
+            <div class="custom-dropdown" id="dropdownMake" data-select="filterMake" data-lenis-prevent>
+              <button type="button" class="custom-dropdown-trigger" id="btnDropdownMake" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="labelMake btnDropdownMake">
+                <span class="custom-dropdown-value">Todas</span>
+                <span class="select-arrow">
+                  <i data-lucide="chevron-down"></i>
+                </span>
+              </button>
+              <div class="custom-dropdown-menu" role="listbox" data-lenis-prevent>
+                <div class="custom-dropdown-option selected" data-value="all" role="option" aria-selected="true">
+                  <span>Todas</span>
+                  <i data-lucide="check" class="opt-check"></i>
+                </div>
+                <div class="custom-dropdown-option" data-value="Aston Martin" role="option">
+                  <span>Aston Martin</span>
+                  <i data-lucide="check" class="opt-check"></i>
+                </div>
+                <div class="custom-dropdown-option" data-value="Audi" role="option">
+                  <span>Audi</span>
+                  <i data-lucide="check" class="opt-check"></i>
+                </div>
+                <div class="custom-dropdown-option" data-value="BMW" role="option">
+                  <span>BMW</span>
+                  <i data-lucide="check" class="opt-check"></i>
+                </div>
+                <div class="custom-dropdown-option" data-value="Lamborghini" role="option">
+                  <span>Lamborghini</span>
+                  <i data-lucide="check" class="opt-check"></i>
+                </div>
+                <div class="custom-dropdown-option" data-value="Land Rover" role="option">
+                  <span>Land Rover</span>
+                  <i data-lucide="check" class="opt-check"></i>
+                </div>
+                <div class="custom-dropdown-option" data-value="McLaren" role="option">
+                  <span>McLaren</span>
+                  <i data-lucide="check" class="opt-check"></i>
+                </div>
+                <div class="custom-dropdown-option" data-value="Mercedes-Benz" role="option">
+                  <span>Mercedes-Benz</span>
+                  <i data-lucide="check" class="opt-check"></i>
+                </div>
+                <div class="custom-dropdown-option" data-value="Porsche" role="option">
+                  <span>Porsche</span>
+                  <i data-lucide="check" class="opt-check"></i>
+                </div>
+              </div>
+              <!-- Visually hidden native select for full filtering compatibility -->
+              <select class="visually-hidden-select" id="filterMake" tabindex="-1" aria-hidden="true">
+                <option value="all">Todas</option>
+                <option value="Aston Martin">Aston Martin</option>
+                <option value="Audi">Audi</option>
+                <option value="BMW">BMW</option>
+                <option value="Lamborghini">Lamborghini</option>
+                <option value="Land Rover">Land Rover</option>
+                <option value="McLaren">McLaren</option>
+                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                <option value="Porsche">Porsche</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- CONDITION SELECT (CUSTOM DROPDOWN) -->
+          <div class="filter-group">
+            <label class="filter-label" id="labelCondition">Estado</label>
+            <div class="custom-dropdown" id="dropdownCondition" data-select="filterCondition" data-lenis-prevent>
+              <button type="button" class="custom-dropdown-trigger" id="btnDropdownCondition" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="labelCondition btnDropdownCondition">
+                <span class="custom-dropdown-value">Todos</span>
+                <span class="select-arrow">
+                  <i data-lucide="chevron-down"></i>
+                </span>
+              </button>
+              <div class="custom-dropdown-menu" role="listbox" data-lenis-prevent>
+                <div class="custom-dropdown-option selected" data-value="all" role="option" aria-selected="true">
+                  <span>Todos</span>
+                  <i data-lucide="check" class="opt-check"></i>
+                </div>
+                <div class="custom-dropdown-option" data-value="Nuevo" role="option">
+                  <span>Nuevo</span>
+                  <i data-lucide="check" class="opt-check"></i>
+                </div>
+                <div class="custom-dropdown-option" data-value="De ocasión" role="option">
+                  <span>De ocasión</span>
+                  <i data-lucide="check" class="opt-check"></i>
+                </div>
+              </div>
+              <!-- Visually hidden native select for full filtering compatibility -->
+              <select class="visually-hidden-select" id="filterCondition" tabindex="-1" aria-hidden="true">
+                <option value="all">Todos</option>
+                <option value="Nuevo">Nuevo</option>
+                <option value="De ocasión">De ocasión</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- YEAR & MILEAGE -->
+          <div class="filter-row-inputs">
+            <div class="filter-group">
+              <label class="filter-label" for="filterYear">Año</label>
+              <input class="filter-input-small" id="filterYear" type="number" placeholder="Año..." min="2010" max="2026">
+            </div>
+            <div class="filter-group">
+              <label class="filter-label" for="filterMileage">Km máx.</label>
+              <input class="filter-input-small" id="filterMileage" type="number" placeholder="Máx..." min="0" step="1000">
+            </div>
+          </div>
+
+          <!-- PRICE RANGE CHECKBOXES (PRO CUSTOM DESIGN) -->
+          <div class="filter-group">
+            <span class="filter-label">Rango de precios</span>
+            <div class="filter-checkboxes">
+              <label class="filter-check-item">
+                <input type="checkbox" name="priceRange" value="50-100">
+                <span class="custom-checkbox">
+                  <i data-lucide="check" class="check-icon"></i>
+                </span>
+                <span>50k-100k</span>
+              </label>
+              <label class="filter-check-item">
+                <input type="checkbox" name="priceRange" value="100-200">
+                <span class="custom-checkbox">
+                  <i data-lucide="check" class="check-icon"></i>
+                </span>
+                <span>100k-200k</span>
+              </label>
+              <label class="filter-check-item">
+                <input type="checkbox" name="priceRange" value="200+">
+                <span class="custom-checkbox">
+                  <i data-lucide="check" class="check-icon"></i>
+                </span>
+                <span>más de 200k</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- MOBILE APPLY BUTTON -->
+          <div class="mobile-filter-apply-wrap">
+            <button class="btn btn-dark mobile-filter-apply-btn" id="mobileFilterApplyBtn" type="button">
+              <span id="mobileFilterApplyText">Ver vehículos</span>
+              <span class="btn-chip btn-chip-light">
+                <span class="btn-arrow-wrap">
+                  <span class="btn-arrow-track">
+                    <i data-lucide="arrow-right" class="arrow-svg"></i>
+                    <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
+                  </span>
+                </span>
               </span>
             </button>
-            <div class="custom-dropdown-menu" role="listbox" data-lenis-prevent>
-              <div class="custom-dropdown-option selected" data-value="all" role="option" aria-selected="true">
-                <span>Todas</span>
-                <i data-lucide="check" class="opt-check"></i>
-              </div>
-              <div class="custom-dropdown-option" data-value="Aston Martin" role="option">
-                <span>Aston Martin</span>
-                <i data-lucide="check" class="opt-check"></i>
-              </div>
-              <div class="custom-dropdown-option" data-value="Audi" role="option">
-                <span>Audi</span>
-                <i data-lucide="check" class="opt-check"></i>
-              </div>
-              <div class="custom-dropdown-option" data-value="BMW" role="option">
-                <span>BMW</span>
-                <i data-lucide="check" class="opt-check"></i>
-              </div>
-              <div class="custom-dropdown-option" data-value="Lamborghini" role="option">
-                <span>Lamborghini</span>
-                <i data-lucide="check" class="opt-check"></i>
-              </div>
-              <div class="custom-dropdown-option" data-value="Land Rover" role="option">
-                <span>Land Rover</span>
-                <i data-lucide="check" class="opt-check"></i>
-              </div>
-              <div class="custom-dropdown-option" data-value="McLaren" role="option">
-                <span>McLaren</span>
-                <i data-lucide="check" class="opt-check"></i>
-              </div>
-              <div class="custom-dropdown-option" data-value="Mercedes-Benz" role="option">
-                <span>Mercedes-Benz</span>
-                <i data-lucide="check" class="opt-check"></i>
-              </div>
-              <div class="custom-dropdown-option" data-value="Porsche" role="option">
-                <span>Porsche</span>
-                <i data-lucide="check" class="opt-check"></i>
-              </div>
-            </div>
-            <!-- Visually hidden native select for full filtering compatibility -->
-            <select class="visually-hidden-select" id="filterMake" tabindex="-1" aria-hidden="true">
-              <option value="all">Todas</option>
-              <option value="Aston Martin">Aston Martin</option>
-              <option value="Audi">Audi</option>
-              <option value="BMW">BMW</option>
-              <option value="Lamborghini">Lamborghini</option>
-              <option value="Land Rover">Land Rover</option>
-              <option value="McLaren">McLaren</option>
-              <option value="Mercedes-Benz">Mercedes-Benz</option>
-              <option value="Porsche">Porsche</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- CONDITION SELECT (CUSTOM DROPDOWN) -->
-        <div class="filter-group reveal-card reveal-delay-2">
-          <label class="filter-label" id="labelCondition">Estado</label>
-          <div class="custom-dropdown" id="dropdownCondition" data-select="filterCondition" data-lenis-prevent>
-            <button type="button" class="custom-dropdown-trigger" id="btnDropdownCondition" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="labelCondition btnDropdownCondition">
-              <span class="custom-dropdown-value">Todos</span>
-              <span class="select-arrow">
-                <i data-lucide="chevron-down"></i>
-              </span>
-            </button>
-            <div class="custom-dropdown-menu" role="listbox" data-lenis-prevent>
-              <div class="custom-dropdown-option selected" data-value="all" role="option" aria-selected="true">
-                <span>Todos</span>
-                <i data-lucide="check" class="opt-check"></i>
-              </div>
-              <div class="custom-dropdown-option" data-value="Nuevo" role="option">
-                <span>Nuevo</span>
-                <i data-lucide="check" class="opt-check"></i>
-              </div>
-              <div class="custom-dropdown-option" data-value="De ocasión" role="option">
-                <span>De ocasión</span>
-                <i data-lucide="check" class="opt-check"></i>
-              </div>
-            </div>
-            <!-- Visually hidden native select for full filtering compatibility -->
-            <select class="visually-hidden-select" id="filterCondition" tabindex="-1" aria-hidden="true">
-              <option value="all">Todos</option>
-              <option value="Nuevo">Nuevo</option>
-              <option value="De ocasión">De ocasión</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- YEAR & MILEAGE -->
-        <div class="filter-row-inputs reveal-card reveal-delay-3">
-          <div class="filter-group">
-            <label class="filter-label" for="filterYear">Año</label>
-            <input class="filter-input-small" id="filterYear" type="number" placeholder="Año..." min="2010" max="2026">
-          </div>
-          <div class="filter-group">
-            <label class="filter-label" for="filterMileage">Km máx.</label>
-            <input class="filter-input-small" id="filterMileage" type="number" placeholder="Máx..." min="0" step="1000">
-          </div>
-        </div>
-
-        <!-- PRICE RANGE CHECKBOXES (PRO CUSTOM DESIGN) -->
-        <div class="filter-group reveal-card reveal-delay-3">
-          <span class="filter-label">Rango de precios</span>
-          <div class="filter-checkboxes">
-            <label class="filter-check-item">
-              <input type="checkbox" name="priceRange" value="50-100">
-              <span class="custom-checkbox">
-                <i data-lucide="check" class="check-icon"></i>
-              </span>
-              <span>50k-100k</span>
-            </label>
-            <label class="filter-check-item">
-              <input type="checkbox" name="priceRange" value="100-200">
-              <span class="custom-checkbox">
-                <i data-lucide="check" class="check-icon"></i>
-              </span>
-              <span>100k-200k</span>
-            </label>
-            <label class="filter-check-item">
-              <input type="checkbox" name="priceRange" value="200+">
-              <span class="custom-checkbox">
-                <i data-lucide="check" class="check-icon"></i>
-              </span>
-              <span>más de 200k</span>
-            </label>
           </div>
         </div>
       </aside>
