@@ -354,11 +354,39 @@
       toggleMenu();
     });
 
-    // Close when clicking any link inside navLinks
+    // Close when clicking internal anchors or current page links, but keep
+    // menu open during navigation to another page so it transitions directly.
     navLinks.addEventListener('click', (e) => {
       const link = e.target.closest('a');
-      if (link) {
+      if (!link) return;
+
+      const href = link.getAttribute('href');
+      if (!href) return;
+
+      // External protocols
+      if (href.startsWith('tel:') || href.startsWith('mailto:') || href.startsWith('javascript:')) {
         toggleMenu(false);
+        return;
+      }
+
+      try {
+        const targetUrl = new URL(link.href, window.location.href);
+        const currentUrl = new URL(window.location.href);
+
+        const isSamePath = (
+          targetUrl.origin === currentUrl.origin &&
+          targetUrl.pathname.replace(/\/index\.html$|\/$/, '') === currentUrl.pathname.replace(/\/index\.html$|\/$/, '')
+        );
+
+        if (isSamePath) {
+          // If staying on the same page (e.g. anchor link or current page), close menu
+          toggleMenu(false);
+        }
+        // If navigating to another page, keep menu open until new page loads
+      } catch (err) {
+        if (href.startsWith('#')) {
+          toggleMenu(false);
+        }
       }
     });
 
@@ -374,6 +402,16 @@
       if (e.key === 'Escape' && navLinks.classList.contains('open')) {
         toggleMenu(false);
       }
+    });
+
+    // Reset menu state if restored via back/forward cache (bfcache)
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted) {
+        toggleMenu(false);
+      }
+    });
+    window.addEventListener('pagehide', () => {
+      toggleMenu(false);
     });
   }
 

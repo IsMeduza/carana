@@ -1,333 +1,225 @@
 /* ============================================================
-   EVO MOVE — Color Editor (dev-only)
+   EVO MOVE — Button Color Studio (dev-only)
    Activar:  Ctrl + Shift + E   o   ?dev en la URL
    ============================================================ */
 (function () {
   const KEY_COMBO = (e) => e.ctrlKey && e.shiftKey && e.code === 'KeyE';
   const URL_FLAG = /[?&]dev\b/.test(location.search);
 
-  const TOKENS = [
-    { key: '--bg',        label: 'Fondo',        def: '#f2f2f2' },
-    { key: '--surface',   label: 'Superficie',   def: '#fafafa' },
-    { key: '--ink',       label: 'Tinta / Texto',def: '#0d0d0d' },
-    { key: '--dark',      label: 'Oscuro Base',  def: '#000000' },
-    { key: '--dark-soft', label: 'Color Botón',  def: '#1a1a1a' },
-    { key: '--muted',     label: 'Texto suave',  def: '#4d4d4d' },
-    { key: '--faint',     label: 'Texto tenue',  def: '#888888' },
-    { key: '--line',      label: 'Líneas',       def: '#dcdcdc' },
-  ];
-
-  const DARK_THEMES = [
-    // --- 1. DEPORTIVOS / GT RACING ---
+  // 20+ Real Luxury & Sport Button Color Themes
+  const BUTTON_THEMES = [
+    // --- DEPORTIVOS / RACING ---
     {
       id: 'rosso-corsa',
       cat: 'sport',
-      name: 'Rojo Corsa',
-      desc: 'Ferrari & Porsche GT3',
+      name: 'Rojo Ferrari Corsa',
+      desc: 'Rojo de circuito de alta potencia',
       icon: '🔴',
-      colors: {
-        '--dark-soft': '#dc2626',
-        '--ink': '#991b1b',
-        '--dark': '#580c0c',
-        '--muted': '#78353d',
-        '--faint': '#b26e78',
-      },
+      from: '#ef4444',
+      to: '#7f1d1d',
       angle: 145
     },
     {
       id: 'riviera-blue',
       cat: 'sport',
-      name: 'Azul Riviera',
-      desc: 'Porsche Riviera & Bugatti',
+      name: 'Azul Riviera / Bugatti',
+      desc: 'Azul eléctrico de hiperdeportivo',
       icon: '🔵',
-      colors: {
-        '--dark-soft': '#2563eb',
-        '--ink': '#1d4ed8',
-        '--dark': '#0f2b5c',
-        '--muted': '#3b587d',
-        '--faint': '#7392bc',
-      },
+      from: '#3b82f6',
+      to: '#172554',
       angle: 145
     },
     {
       id: 'papaya-orange',
       cat: 'sport',
-      name: 'Naranja Papaya',
-      desc: 'McLaren F1 & GT',
+      name: 'Naranja Papaya McLaren',
+      desc: 'Naranja vibrante GT de competición',
       icon: '🟠',
-      colors: {
-        '--dark-soft': '#ea580c',
-        '--ink': '#c2410c',
-        '--dark': '#6c2207',
-        '--muted': '#7a442e',
-        '--faint': '#b57a62',
-      },
+      from: '#f97316',
+      to: '#7c2d12',
       angle: 145
     },
     {
       id: 'mamba-green',
       cat: 'sport',
-      name: 'Verde Mamba',
-      desc: 'AMG Green Hell & Porsche',
+      name: 'Verde Mamba GT3 RS',
+      desc: 'Verde deportivo de competición',
       icon: '🟢',
-      colors: {
-        '--dark-soft': '#16a34a',
-        '--ink': '#15803d',
-        '--dark': '#0a3d1c',
-        '--muted': '#2f5c3e',
-        '--faint': '#6d9c7d',
-      },
+      from: '#22c55e',
+      to: '#064e3b',
       angle: 145
     },
     {
-      id: 'giallo-speed',
+      id: 'giallo-modena',
       cat: 'sport',
-      name: 'Amarillo Modena',
-      desc: 'Lamborghini Giallo Corsa',
+      name: 'Amarillo Giallo Modena',
+      desc: 'Amarillo deportivo Lamborghini',
       icon: '🟡',
-      colors: {
-        '--dark-soft': '#d97706',
-        '--ink': '#b45309',
-        '--dark': '#522302',
-        '--muted': '#714d2a',
-        '--faint': '#ad865b',
-      },
+      from: '#f59e0b',
+      to: '#78350f',
       angle: 145
     },
     {
       id: 'ultraviolet',
       cat: 'sport',
-      name: 'Ultraviolet',
-      desc: 'Porsche 991 GT3 RS',
+      name: 'Púrpura Ultraviolet',
+      desc: 'Porsche 991 GT3 RS clásico',
       icon: '🟣',
-      colors: {
-        '--dark-soft': '#9333ea',
-        '--ink': '#7e22ce',
-        '--dark': '#3b0764',
-        '--muted': '#5e387e',
-        '--faint': '#9b73bd',
-      },
+      from: '#a855f7',
+      to: '#4c1d95',
       angle: 145
     },
 
-    // --- 2. LUJO EJECUTIVO & GRAN TURISMO ---
+    // --- LUJO EJECUTIVO & GRAN TURISMO ---
     {
       id: 'royal-navy',
       cat: 'luxury',
       name: 'Azul Zafiro Real',
-      desc: 'Rolls-Royce & Bentley Blue',
+      desc: 'Rolls-Royce & Bentley Navy',
       icon: '🔷',
-      colors: {
-        '--dark-soft': '#1e40af',
-        '--ink': '#1e3a8a',
-        '--dark': '#0b1736',
-        '--muted': '#384e72',
-        '--faint': '#6e85aa',
-      },
+      from: '#2563eb',
+      to: '#0f172a',
       angle: 145
     },
     {
       id: 'deep-wine',
       cat: 'luxury',
-      name: 'Rojo Borgoña',
-      desc: 'Vino tinto & Aston Martin',
+      name: 'Rojo Borgoña / Vino',
+      desc: 'Elegancia sobria Aston Martin',
       icon: '🍷',
-      colors: {
-        '--dark-soft': '#9f1239',
-        '--ink': '#881337',
-        '--dark': '#3f0414',
-        '--muted': '#683443',
-        '--faint': '#9f6777',
-      },
+      from: '#be123c',
+      to: '#4c0519',
       angle: 145
     },
     {
       id: 'british-racing',
       cat: 'luxury',
-      name: 'Verde British',
-      desc: 'Jaguar & Aston Martin Racing',
+      name: 'Verde British Racing',
+      desc: 'Verde oscuro inglés de leyenda',
       icon: '🌲',
-      colors: {
-        '--dark-soft': '#047857',
-        '--ink': '#065f46',
-        '--dark': '#02291e',
-        '--muted': '#274f41',
-        '--faint': '#5f8779',
-      },
+      from: '#059669',
+      to: '#022c22',
       angle: 145
     },
     {
       id: 'habano-espresso',
       cat: 'luxury',
-      name: 'Café Habano',
-      desc: 'Cuero Bentley Mulliner',
+      name: 'Café Bronce Habano',
+      desc: 'Cuero Bentley Mulliner & Tabaco',
       icon: '🟤',
-      colors: {
-        '--dark-soft': '#78350f',
-        '--ink': '#602a0a',
-        '--dark': '#2f1203',
-        '--muted': '#5f4534',
-        '--faint': '#927663',
-      },
+      from: '#b45309',
+      to: '#3b1704',
       angle: 145
     },
     {
       id: 'velvet-plum',
       cat: 'luxury',
       name: 'Ciruela Velvet',
-      desc: 'Mercedes-Maybach Exclusivo',
+      desc: 'Exclusivo Mercedes-Maybach',
       icon: '🔮',
-      colors: {
-        '--dark-soft': '#6b21a8',
-        '--ink': '#581c87',
-        '--dark': '#25053f',
-        '--muted': '#523769',
-        '--faint': '#886b9f',
-      },
+      from: '#9333ea',
+      to: '#3b0764',
       angle: 145
     },
     {
-      id: 'deep-teal',
+      id: 'petrol-teal',
       cat: 'luxury',
-      name: 'Azul Petrol Teal',
-      desc: 'Turquesa nórdico sobrio',
+      name: 'Azul Petrol / Teal',
+      desc: 'Turquesa nórdico de alta gama',
       icon: '💠',
-      colors: {
-        '--dark-soft': '#0e7490',
-        '--ink': '#155e75',
-        '--dark': '#082c37',
-        '--muted': '#2e5864',
-        '--faint': '#65919e',
-      },
+      from: '#0891b2',
+      to: '#164e63',
       angle: 145
     },
 
-    // --- 3. MONOCROMÁTICO & METÁLICO ---
+    // --- EXÓTICOS & HYPERCAR ---
+    {
+      id: 'acid-green',
+      cat: 'neon',
+      name: 'Verde Ácido 918',
+      desc: 'Pinzas híbridas Porsche 918',
+      icon: '⚡',
+      from: '#84cc16',
+      to: '#1a2e05',
+      angle: 145
+    },
+    {
+      id: 'ruby-star',
+      cat: 'neon',
+      name: 'Rosa Ruby Star Neo',
+      desc: 'Fucsia de carreras Porsche',
+      icon: '💖',
+      from: '#f43f5e',
+      to: '#4c0519',
+      angle: 145
+    },
+    {
+      id: 'miami-cyan',
+      cat: 'neon',
+      name: 'Miami Cyan Eléctrico',
+      desc: 'Cian brillante costero',
+      icon: '🌊',
+      from: '#06b6d4',
+      to: '#082f49',
+      angle: 145
+    },
+    {
+      id: 'liquid-copper',
+      cat: 'neon',
+      name: 'Cobre Solar Fundido',
+      desc: 'Bronce supercar cálido',
+      icon: '🏜️',
+      from: '#ea580c',
+      to: '#431407',
+      angle: 145
+    },
+
+    // --- MONOCROMÁTICO & METÁLICO ---
     {
       id: 'obsidian',
       cat: 'mono',
-      name: 'Negro Obsidian',
-      desc: 'Negro puro original & stealth',
+      name: 'Negro Obsidian (Original)',
+      desc: 'El negro de fábrica puro y sobrio',
       icon: '🖤',
-      colors: {
-        '--dark-soft': '#1a1a1a',
-        '--ink': '#0d0d0d',
-        '--dark': '#000000',
-        '--muted': '#4d4d4d',
-        '--faint': '#888888',
-      },
+      from: '#1a1a1a',
+      to: '#000000',
       angle: 145
     },
     {
       id: 'gunmetal',
       cat: 'mono',
       name: 'Grafito Gunmetal',
-      desc: 'Carbón y metal pulido',
+      desc: 'Carbón y metal pulido deportivo',
       icon: '🔘',
-      colors: {
-        '--dark-soft': '#374151',
-        '--ink': '#1f2937',
-        '--dark': '#0a0e14',
-        '--muted': '#4e5866',
-        '--faint': '#8792a0',
-      },
+      from: '#475569',
+      to: '#0f172a',
       angle: 145
     },
     {
       id: 'amg-titanium',
       cat: 'mono',
-      name: 'Titanio AMG',
-      desc: 'Gris noche azulado deportivo',
+      name: 'Titanio AMG Night',
+      desc: 'Gris antracita con matiz frío',
       icon: '🐺',
-      colors: {
-        '--dark-soft': '#334155',
-        '--ink': '#1e293b',
-        '--dark': '#080d16',
-        '--muted': '#475569',
-        '--faint': '#8392a5',
-      },
+      from: '#334155',
+      to: '#090d16',
       angle: 145
     },
     {
       id: 'silver-frost',
       cat: 'mono',
-      name: 'Plata Glaciar',
-      desc: 'Acero frío contemporáneo',
+      name: 'Plata Acero Frost',
+      desc: 'Metal cepillado contemporáneo',
       icon: '❄️',
-      colors: {
-        '--dark-soft': '#4b5563',
-        '--ink': '#29313d',
-        '--dark': '#11161d',
-        '--muted': '#546071',
-        '--faint': '#8e99a8',
-      },
-      angle: 145
-    },
-
-    // --- 4. EXÓTICOS & HYPERCAR ---
-    {
-      id: 'acid-green',
-      cat: 'neon',
-      name: 'Verde Ácido 918',
-      desc: 'Pinzas freno híbridas Porsche',
-      icon: '⚡',
-      colors: {
-        '--dark-soft': '#65a30d',
-        '--ink': '#4d7c0f',
-        '--dark': '#1b3102',
-        '--muted': '#4b632d',
-        '--faint': '#839e62',
-      },
-      angle: 145
-    },
-    {
-      id: 'ruby-star',
-      cat: 'neon',
-      name: 'Ruby Star Neo',
-      desc: 'Rosa fucsia de competición',
-      icon: '💖',
-      colors: {
-        '--dark-soft': '#e11d48',
-        '--ink': '#be123c',
-        '--dark': '#4c0519',
-        '--muted': '#7a2b3f',
-        '--faint': '#b76277',
-      },
-      angle: 145
-    },
-    {
-      id: 'electric-cyan',
-      cat: 'neon',
-      name: 'Miami Cyan',
-      desc: 'Porsche Miami Blue eléctrico',
-      icon: '🌊',
-      colors: {
-        '--dark-soft': '#0284c7',
-        '--ink': '#0369a1',
-        '--dark': '#042c44',
-        '--muted': '#2d566f',
-        '--faint': '#6c98b2',
-      },
-      angle: 145
-    },
-    {
-      id: 'liquid-copper',
-      cat: 'neon',
-      name: 'Cobre Líquido',
-      desc: 'Bronce fundido supercar',
-      icon: '🏜️',
-      colors: {
-        '--dark-soft': '#b45309',
-        '--ink': '#92400e',
-        '--dark': '#3a1703',
-        '--muted': '#68452e',
-        '--faint': '#a07b62',
-      },
+      from: '#64748b',
+      to: '#1e293b',
       angle: 145
     }
   ];
 
   let panel = null;
+  let btnFrom = '#1a1a1a';
+  let btnTo = '#000000';
   let gradAngle = 145;
   let activeThemeId = 'obsidian';
   let activeCat = 'all';
@@ -341,11 +233,29 @@
     document.documentElement.style.setProperty(key, val);
   }
 
-  function updateGrad() {
-    const ds = getCurrent('--dark-soft', '#1a1a1a');
-    const ink = getCurrent('--ink', '#0d0d0d');
-    const dk = getCurrent('--dark', '#000000');
-    setVar('--grad-dark', `linear-gradient(${gradAngle}deg, ${ds} 0%, ${ink} 50%, ${dk} 100%)`);
+  function applyButtonGradient() {
+    const grad = `linear-gradient(${gradAngle}deg, ${btnFrom} 0%, ${btnTo} 100%)`;
+    setVar('--btn-from', btnFrom);
+    setVar('--btn-to', btnTo);
+    setVar('--grad-dark', grad);
+
+    // Ensure texts remain 100% untouched black/ink
+    setVar('--ink', '#0d0d0d');
+    setVar('--dark', '#000000');
+    setVar('--dark-soft', '#1a1a1a');
+
+    updateMiniPreview();
+  }
+
+  function updateMiniPreview() {
+    const bar = document.getElementById('evoBtnGradBar');
+    const demoBtn = document.getElementById('evoBtnDemo');
+    const demoArrow = document.getElementById('evoBtnDemoArrow');
+    const grad = `linear-gradient(${gradAngle}deg, ${btnFrom} 0%, ${btnTo} 100%)`;
+
+    if (bar) bar.style.background = grad;
+    if (demoBtn) demoBtn.style.background = grad;
+    if (demoArrow) demoArrow.style.color = btnTo;
   }
 
   function buildPanel() {
@@ -360,12 +270,15 @@
       return;
     }
 
+    btnFrom = getCurrent('--btn-from', '#1a1a1a');
+    btnTo = getCurrent('--btn-to', '#000000');
+
     panel = document.createElement('div');
     panel.id = 'evo-color-editor';
     panel.innerHTML = `
       <style>
         #evo-color-editor {
-          position: fixed; top: 0; right: 0; bottom: 0; width: 345px; z-index: 99999;
+          position: fixed; top: 0; right: 0; bottom: 0; width: 350px; z-index: 99999;
           background: rgba(255,255,255,0.98); backdrop-filter: blur(24px);
           border-left: 1px solid #e2e2e2; box-shadow: -8px 0 35px rgba(0,0,0,0.12);
           display: flex; flex-direction: column; font-family: 'Space Grotesk', system-ui, sans-serif;
@@ -388,41 +301,73 @@
         .evo-ce-body { flex: 1; overflow-y: auto; padding: 12px 16px 20px; }
         .evo-ce-body::-webkit-scrollbar { width: 5px; }
         .evo-ce-body::-webkit-scrollbar-thumb { background: #d0d0d0; border-radius: 4px; }
+
+        .evo-ce-notice {
+          background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+          padding: 8px 11px; margin-bottom: 12px; font-size: 11px; color: #475569;
+          line-height: 1.35;
+        }
+        .evo-ce-notice strong { color: #0f172a; }
+
         .evo-ce-section {
           font-size: 11px; font-weight: 700; text-transform: uppercase;
-          letter-spacing: 0.08em; color: #888; padding: 10px 0 6px;
+          letter-spacing: 0.08em; color: #888; padding: 8px 0 6px;
           border-bottom: 1px solid #f0f0f0; margin-bottom: 8px;
           display: flex; justify-content: space-between; align-items: center;
         }
         .evo-ce-section span.badge {
           font-size: 9px; font-weight: 600; text-transform: none; letter-spacing: 0;
-          background: #eef2ff; color: #4338ca; padding: 2px 7px; border-radius: 6px;
+          background: #ecfdf5; color: #047857; padding: 2px 7px; border-radius: 6px;
         }
-        .evo-ce-row {
-          display: grid; grid-template-columns: 32px 1fr 80px; gap: 8px;
-          align-items: center; padding: 4px 0;
+
+        /* Demo Button in panel */
+        .evo-demo-wrap {
+          display: flex; align-items: center; justify-content: center;
+          padding: 12px; background: #f2f2f2; border-radius: 14px; margin-bottom: 12px;
+          border: 1px solid #e5e5e5;
+        }
+        .evo-demo-btn {
+          display: inline-flex; align-items: center; gap: 12px;
+          padding: 4px 4px 4px 18px; border-radius: 14px; font-size: 13.5px; font-weight: 600;
+          color: #fff; text-decoration: none; cursor: pointer;
+          box-shadow: 0 4px 14px rgba(0,0,0,0.18), inset -10px -10px 20px rgba(255,255,255,0.16);
+          transition: background 0.2s ease;
+        }
+        .evo-demo-chip {
+          display: grid; place-items: center; width: 36px; height: 36px;
+          border-radius: 10px; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Pickers row */
+        .evo-ce-pickers {
+          display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px;
+        }
+        .evo-ce-picker-card {
+          border: 1px solid #e5e5e5; border-radius: 10px; padding: 8px;
+          background: #fafafa; display: flex; flex-direction: column; gap: 6px;
+        }
+        .evo-ce-picker-label { font-size: 11px; font-weight: 600; color: #555; }
+        .evo-ce-picker-inner {
+          display: flex; align-items: center; gap: 8px;
         }
         .evo-ce-swatch {
-          width: 32px; height: 32px; border-radius: 8px; border: 2px solid #e0e0e0;
-          cursor: pointer; position: relative; overflow: hidden;
-          transition: transform 0.15s;
+          width: 30px; height: 30px; border-radius: 7px; border: 2px solid #ddd;
+          cursor: pointer; position: relative; overflow: hidden; flex: none;
         }
-        .evo-ce-swatch:hover { transform: scale(1.05); }
         .evo-ce-swatch input {
           position: absolute; inset: -6px; width: 44px; height: 44px;
           border: none; cursor: pointer; opacity: 0;
         }
-        .evo-ce-label { font-size: 12px; font-weight: 600; color: #333; }
         .evo-ce-hex {
           font-family: 'SF Mono', 'Fira Code', monospace; font-size: 11px;
-          padding: 4px 8px; border-radius: 6px; border: 1px solid #e0e0e0;
-          background: #fafafa; width: 80px; text-align: center; color: #333;
+          padding: 4px 6px; border-radius: 6px; border: 1px solid #ddd;
+          background: #fff; width: 100%; text-align: center; color: #222;
         }
-        .evo-ce-hex:focus { outline: none; border-color: #999; background: #fff; }
+
         .evo-ce-slider-row {
-          display: flex; align-items: center; gap: 8px; padding: 6px 0;
+          display: flex; align-items: center; gap: 8px; padding: 4px 0 10px;
         }
-        .evo-ce-slider-row label { font-size: 12px; font-weight: 600; color: #333; width: 50px; }
+        .evo-ce-slider-row label { font-size: 11.5px; font-weight: 600; color: #444; width: 50px; }
         .evo-ce-slider-row input[type="range"] {
           flex: 1; height: 5px; -webkit-appearance: none; border-radius: 3px;
           background: linear-gradient(90deg, #ddd, #666);
@@ -432,8 +377,9 @@
           background: #fff; border: 2px solid #777; cursor: pointer;
         }
         .evo-ce-slider-row span { font-size: 11px; font-family: monospace; width: 34px; text-align: right; color: #555; }
+
         .evo-ce-grad-preview {
-          height: 32px; border-radius: 10px; margin: 4px 0 10px;
+          height: 28px; border-radius: 8px; margin: 0 0 12px;
           box-shadow: inset -10px -10px 20px 0px rgba(255,255,255,0.18), 0 2px 8px rgba(0,0,0,0.12);
           transition: background 0.2s ease;
         }
@@ -441,7 +387,7 @@
         /* Category Filter Tabs */
         .evo-ce-cats {
           display: flex; gap: 4px; overflow-x: auto; padding: 4px 0 8px;
-          margin-bottom: 4px;
+          margin-bottom: 6px;
         }
         .evo-ce-cats::-webkit-scrollbar { display: none; }
         .evo-ce-cat-btn {
@@ -454,7 +400,7 @@
           background: #111; color: #fff; border-color: #111;
         }
 
-        /* Temas oscuros Grid */
+        /* Themes Grid */
         .evo-ce-themes-grid {
           display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; margin-top: 4px;
         }
@@ -474,12 +420,12 @@
           display: flex; align-items: center; justify-content: space-between;
         }
         .evo-ce-theme-name {
-          font-size: 11.5px; font-weight: 700; color: #111;
+          font-size: 11px; font-weight: 700; color: #111;
         }
         .evo-ce-theme-bar {
-          height: 16px; border-radius: 6px; width: 100%;
+          height: 18px; border-radius: 6px; width: 100%;
           border: 1px solid rgba(0,0,0,0.1);
-          box-shadow: inset -6px -6px 12px rgba(255,255,255,0.2);
+          box-shadow: inset -6px -6px 12px rgba(255,255,255,0.22);
         }
         .evo-ce-theme-desc {
           font-size: 9.5px; color: #777; line-height: 1.2;
@@ -498,7 +444,7 @@
         .evo-ce-btn-dark { background: #0d0d0d; color: #fff; border-color: #0d0d0d; }
         .evo-ce-btn-dark:hover { background: #222; }
         .evo-ce-toast {
-          position: fixed; bottom: 20px; right: 360px; background: #111; color: #fff;
+          position: fixed; bottom: 20px; right: 365px; background: #111; color: #fff;
           padding: 8px 18px; border-radius: 10px; font-size: 12px; font-weight: 600;
           opacity: 0; transition: opacity 0.2s; pointer-events: none; z-index: 100000;
           font-family: 'Space Grotesk', system-ui, sans-serif; box-shadow: 0 4px 16px rgba(0,0,0,0.2);
@@ -507,106 +453,140 @@
       </style>
 
       <div class="evo-ce-head">
-        <h3>🎨 Color Studio</h3>
+        <h3>🎨 Studio Color de Botones</h3>
         <button class="evo-ce-close" id="evoCeClose" title="Cerrar (Ctrl+Shift+E)">✕</button>
       </div>
       <div class="evo-ce-body">
-        <div class="evo-ce-section">
-          <span>Tokens Base</span>
-          <span class="badge">Blanco & Gris OK</span>
+        <div class="evo-ce-notice">
+          <strong>Textos y fondos fijos</strong>: Los textos siguen siendo <strong>negro puro (#0d0d0d)</strong> y los fondos gris/blanco. Aquí pruebas colores <strong>únicamente para los botones</strong>.
         </div>
-        <div id="evoCeTokens"></div>
 
-        <div class="evo-ce-section" style="margin-top:10px;">
-          <span>Gradiente Botones</span>
+        <!-- Live Demo in panel -->
+        <div class="evo-demo-wrap">
+          <div class="evo-demo-btn" id="evoBtnDemo">
+            <span>Contactar</span>
+            <div class="evo-demo-chip">
+              <svg id="evoBtnDemoArrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L19.88 12M13.75 18.75L19.44 13.06C19.73 12.77 19.88 12.38 19.88 12M13.75 5.25L19.44 10.94C19.73 11.23 19.88 11.62 19.88 12"/></svg>
+            </div>
+          </div>
         </div>
+
+        <!-- Custom Pickers -->
+        <div class="evo-ce-section">
+          <span>Gradiente Personalizado</span>
+          <span class="badge">En vivo</span>
+        </div>
+        <div class="evo-ce-pickers">
+          <div class="evo-ce-picker-card">
+            <span class="evo-ce-picker-label">Color Inicio</span>
+            <div class="evo-ce-picker-inner">
+              <div class="evo-ce-swatch" id="evoSwatchFrom" style="background:${btnFrom}">
+                <input type="color" value="${btnFrom}" id="evoPickFrom">
+              </div>
+              <input type="text" class="evo-ce-hex" value="${btnFrom}" id="evoHexFrom">
+            </div>
+          </div>
+          <div class="evo-ce-picker-card">
+            <span class="evo-ce-picker-label">Color Fin</span>
+            <div class="evo-ce-picker-inner">
+              <div class="evo-ce-swatch" id="evoSwatchTo" style="background:${btnTo}">
+                <input type="color" value="${btnTo}" id="evoPickTo">
+              </div>
+              <input type="text" class="evo-ce-hex" value="${btnTo}" id="evoHexTo">
+            </div>
+          </div>
+        </div>
+
         <div class="evo-ce-slider-row">
           <label>Ángulo</label>
           <input type="range" min="0" max="360" value="145" id="evoCeAngle">
           <span id="evoCeAngleVal">145°</span>
         </div>
-        <div class="evo-ce-grad-preview" id="evoCeGradPreview"></div>
+        <div class="evo-ce-grad-preview" id="evoBtnGradBar"></div>
 
-        <div class="evo-ce-section" style="margin-top:8px;">
-          <span>20 Temas de Color Reales</span>
+        <!-- Themes section -->
+        <div class="evo-ce-section" style="margin-top:10px;">
+          <span>20 Colores de Botón Reales</span>
           <span class="badge">1-Clic</span>
         </div>
-        <p style="font-size:10.5px; color:#777; margin: 0 0 6px 0; line-height:1.35;">
-          Elige un color real (rojo, azul, verde, naranja, etc.). Se actualiza la web entera al instante.
-        </p>
 
-        <!-- Category tabs -->
+        <!-- Category filter tabs -->
         <div class="evo-ce-cats">
           <button class="evo-ce-cat-btn active" data-cat="all">Todos (20)</button>
           <button class="evo-ce-cat-btn" data-cat="sport">Deportivos</button>
           <button class="evo-ce-cat-btn" data-cat="luxury">Lujo GT</button>
-          <button class="evo-ce-cat-btn" data-cat="neon">Neón/Exóticos</button>
+          <button class="evo-ce-cat-btn" data-cat="neon">Exóticos</button>
           <button class="evo-ce-cat-btn" data-cat="mono">Monocromo</button>
         </div>
 
         <div class="evo-ce-themes-grid" id="evoCeThemes"></div>
       </div>
       <div class="evo-ce-foot">
-        <button class="evo-ce-btn evo-ce-btn-dark" id="evoCeCopy">📋 Copiar :root</button>
-        <button class="evo-ce-btn" id="evoCeReset">↩️ Reset</button>
+        <button class="evo-ce-btn evo-ce-btn-dark" id="evoCeCopy">📋 Copiar CSS Botones</button>
+        <button class="evo-ce-btn" id="evoCeReset">↩️ Reset (Negro)</button>
       </div>
       <div class="evo-ce-toast" id="evoCeToast"></div>
     `;
 
     document.body.appendChild(panel);
 
-    // Build token rows
-    const tokenInputs = {};
-    const container = document.getElementById('evoCeTokens');
-    TOKENS.forEach(({ key, label, def }) => {
-      const val = getCurrent(key, def);
-      const row = document.createElement('div');
-      row.className = 'evo-ce-row';
-      row.innerHTML = `
-        <div class="evo-ce-swatch" style="background:${val}">
-          <input type="color" value="${val}" data-key="${key}">
-        </div>
-        <span class="evo-ce-label">${label}</span>
-        <input type="text" class="evo-ce-hex" value="${val}" data-key="${key}">
-      `;
-      container.appendChild(row);
+    // Pickers elements
+    const pickFrom = document.getElementById('evoPickFrom');
+    const hexFrom = document.getElementById('evoHexFrom');
+    const swatchFrom = document.getElementById('evoSwatchFrom');
 
-      const picker = row.querySelector('input[type="color"]');
-      const hex = row.querySelector('.evo-ce-hex');
-      const swatch = row.querySelector('.evo-ce-swatch');
+    const pickTo = document.getElementById('evoPickTo');
+    const hexTo = document.getElementById('evoHexTo');
+    const swatchTo = document.getElementById('evoSwatchTo');
 
-      tokenInputs[key] = { picker, hex, swatch };
+    const slider = document.getElementById('evoCeAngle');
+    const angleVal = document.getElementById('evoCeAngleVal');
 
-      picker.addEventListener('input', (e) => {
-        setVar(key, e.target.value);
-        hex.value = e.target.value;
-        swatch.style.background = e.target.value;
-        updateGrad();
-        updateGradPreview();
-        clearActiveTheme();
-      });
+    function updateFrom(val) {
+      btnFrom = val;
+      pickFrom.value = val;
+      hexFrom.value = val;
+      swatchFrom.style.background = val;
+      applyButtonGradient();
+      clearActiveTheme();
+    }
 
-      hex.addEventListener('input', (e) => {
-        let v = e.target.value.trim();
-        if (!v.startsWith('#')) v = '#' + v;
-        if (/^#[0-9a-fA-F]{6}$/.test(v)) {
-          setVar(key, v);
-          picker.value = v;
-          swatch.style.background = v;
-          updateGrad();
-          updateGradPreview();
-          clearActiveTheme();
-        }
-      });
+    function updateTo(val) {
+      btnTo = val;
+      pickTo.value = val;
+      hexTo.value = val;
+      swatchTo.style.background = val;
+      applyButtonGradient();
+      clearActiveTheme();
+    }
+
+    pickFrom.addEventListener('input', (e) => updateFrom(e.target.value));
+    hexFrom.addEventListener('input', (e) => {
+      let v = e.target.value.trim();
+      if (!v.startsWith('#')) v = '#' + v;
+      if (/^#[0-9a-fA-F]{6}$/.test(v)) updateFrom(v);
     });
 
-    // Build Themes Grid
+    pickTo.addEventListener('input', (e) => updateTo(e.target.value));
+    hexTo.addEventListener('input', (e) => {
+      let v = e.target.value.trim();
+      if (!v.startsWith('#')) v = '#' + v;
+      if (/^#[0-9a-fA-F]{6}$/.test(v)) updateTo(v);
+    });
+
+    slider.addEventListener('input', (e) => {
+      gradAngle = parseInt(e.target.value);
+      angleVal.textContent = gradAngle + '°';
+      applyButtonGradient();
+    });
+
+    // Themes Grid
     const themesContainer = document.getElementById('evoCeThemes');
     function renderThemes(cat) {
       themesContainer.innerHTML = '';
-      const list = cat === 'all' ? DARK_THEMES : DARK_THEMES.filter(t => t.cat === cat);
+      const list = cat === 'all' ? BUTTON_THEMES : BUTTON_THEMES.filter(t => t.cat === cat);
       list.forEach((theme) => {
-        const gradStyle = `linear-gradient(${theme.angle}deg, ${theme.colors['--dark-soft']} 0%, ${theme.colors['--ink']} 50%, ${theme.colors['--dark']} 100%)`;
+        const gradStyle = `linear-gradient(${theme.angle}deg, ${theme.from} 0%, ${theme.to} 100%)`;
         const card = document.createElement('div');
         card.className = `evo-ce-theme-card ${theme.id === activeThemeId ? 'active' : ''}`;
         card.dataset.themeId = theme.id;
@@ -619,7 +599,7 @@
         `;
 
         card.addEventListener('click', () => {
-          applyDarkTheme(theme);
+          applyTheme(theme);
         });
 
         themesContainer.appendChild(card);
@@ -643,41 +623,30 @@
       activeThemeId = null;
     }
 
-    function applyDarkTheme(theme) {
+    function applyTheme(theme) {
       activeThemeId = theme.id;
       document.querySelectorAll('.evo-ce-theme-card').forEach(c => {
         c.classList.toggle('active', c.dataset.themeId === theme.id);
       });
 
-      // Apply each color in theme
-      for (const [key, val] of Object.entries(theme.colors)) {
-        setVar(key, val);
-        if (tokenInputs[key]) {
-          tokenInputs[key].picker.value = val;
-          tokenInputs[key].hex.value = val;
-          tokenInputs[key].swatch.style.background = val;
-        }
-      }
-
+      btnFrom = theme.from;
+      btnTo = theme.to;
       gradAngle = theme.angle || 145;
+
+      pickFrom.value = btnFrom;
+      hexFrom.value = btnFrom;
+      swatchFrom.style.background = btnFrom;
+
+      pickTo.value = btnTo;
+      hexTo.value = btnTo;
+      swatchTo.style.background = btnTo;
+
       slider.value = gradAngle;
-      angleLabel.textContent = gradAngle + '°';
+      angleVal.textContent = gradAngle + '°';
 
-      updateGrad();
-      updateGradPreview();
-      toast(`✨ ${theme.icon} ${theme.name} aplicado`);
+      applyButtonGradient();
+      toast(`✨ Botones cambiados a "${theme.name}"`);
     }
-
-    // Gradient angle
-    const slider = document.getElementById('evoCeAngle');
-    const angleLabel = document.getElementById('evoCeAngleVal');
-    slider.addEventListener('input', (e) => {
-      gradAngle = parseInt(e.target.value);
-      angleLabel.textContent = gradAngle + '°';
-      updateGrad();
-      updateGradPreview();
-    });
-    updateGradPreview();
 
     // Close
     document.getElementById('evoCeClose').addEventListener('click', () => {
@@ -685,40 +654,43 @@
       setTimeout(() => { panel.style.display = 'none'; }, 280);
     });
 
-    // Copy
+    // Copy CSS
     document.getElementById('evoCeCopy').addEventListener('click', () => {
-      const lines = [':root {'];
-      TOKENS.forEach(({ key }) => {
-        lines.push(`  ${key}: ${getCurrent(key, '')};`);
-      });
-      lines.push(`  --grad-dark: linear-gradient(${gradAngle}deg, ${getCurrent('--dark-soft','')} 0%, ${getCurrent('--ink','')} 50%, ${getCurrent('--dark','')} 100%);`);
-      lines.push('}');
-      copyText(lines.join('\n'));
-      toast('📋 :root copiado al portapapeles');
+      const css = [
+        `  --btn-from: ${btnFrom};`,
+        `  --btn-to: ${btnTo};`,
+        `  --grad-dark: linear-gradient(${gradAngle}deg, var(--btn-from) 0%, var(--btn-to) 100%);`
+      ].join('\n');
+      copyText(css);
+      toast('📋 CSS de botones copiado');
     });
 
     // Reset
     document.getElementById('evoCeReset').addEventListener('click', () => {
-      TOKENS.forEach(({ key, def }) => {
-        document.documentElement.style.removeProperty(key);
-      });
+      btnFrom = '#1a1a1a';
+      btnTo = '#000000';
       gradAngle = 145;
+      document.documentElement.style.removeProperty('--btn-from');
+      document.documentElement.style.removeProperty('--btn-to');
       document.documentElement.style.removeProperty('--grad-dark');
-      panel.remove();
-      panel = null;
-      buildPanel();
-      toast('↩️ Reset a valores iniciales');
-    });
-  }
 
-  function updateGradPreview() {
-    const el = document.getElementById('evoCeGradPreview');
-    if (el) {
-      const ds = getCurrent('--dark-soft', '#1a1a1a');
-      const ink = getCurrent('--ink', '#0d0d0d');
-      const dk = getCurrent('--dark', '#000000');
-      el.style.background = `linear-gradient(${gradAngle}deg, ${ds} 0%, ${ink} 50%, ${dk} 100%)`;
-    }
+      pickFrom.value = btnFrom;
+      hexFrom.value = btnFrom;
+      swatchFrom.style.background = btnFrom;
+
+      pickTo.value = btnTo;
+      hexTo.value = btnTo;
+      swatchTo.style.background = btnTo;
+
+      slider.value = gradAngle;
+      angleVal.textContent = gradAngle + '°';
+
+      updateMiniPreview();
+      clearActiveTheme();
+      toast('↩️ Botones restablecidos a Negro original');
+    });
+
+    updateMiniPreview();
   }
 
   function copyText(text) {
