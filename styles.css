@@ -275,8 +275,6 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
 }
 .nav-inner {
   width: 100%;
@@ -583,6 +581,10 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   border-color: #d9d9d9; /* Only visible when pressed/focused */
 }
 .search-clear-btn {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -602,7 +604,7 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   color: var(--ink);
 }
 .search-clear-btn:active {
-  transform: scale(0.92);
+  transform: translateY(-50%) scale(0.92);
 }
 .search-clear-btn svg {
   width: 15px;
@@ -4508,6 +4510,26 @@ body.menu-open {
   display: none !important;
 }
 @media (max-width: 900px) {
+  /* Barra superior: tono blanco sólido idéntico, sin transparencias */
+  .nav {
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    height: 70px;
+    z-index: 1000;
+  }
+
+  /* Barra inferior móvil: mismo tono blanco */
+  .footer {
+    background: #ffffff !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-top: 20px;
+  }
+
   .nav-burger {
     display: flex;
   }
@@ -4516,33 +4538,34 @@ body.menu-open {
   }
   .nav-links {
     position: fixed;
-    top: 0;
+    top: 70px;
     left: 0;
     right: 0;
     bottom: 0;
     width: 100vw;
-    height: 100vh;
-    height: 100dvh;
+    height: calc(100vh - 70px);
+    height: calc(100dvh - 70px);
     background: var(--bg);
     display: flex !important;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 12px;
-    padding: 84px 24px 32px;
+    padding: 24px 24px max(32px, env(safe-area-inset-bottom));
     box-sizing: border-box;
     z-index: 998;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     
-    /* Animation: slide down when opening, slide up when closing */
+    /* Animation: baja y sube a partir del header */
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.3s ease,
-                visibility 0.45s;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.25s ease,
+                visibility 0.4s;
   }
   .nav-links.open {
     transform: translateY(0);

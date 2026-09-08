@@ -82,18 +82,19 @@ setupAccordions();
 
 // ============ REPLICATED SEARCH COMPONENT ============
 const inventory = [
-  { name: 'Veltora Seryn', id: 'veltora-seryn' },
-  { name: 'Krynox ZR-9', id: 'krynox-zr-9' },
-  { name: 'Dreznak Karov', id: 'dreznak-karov' },
-  { name: 'Zethrux Infernum', id: 'zethrux-infernum' },
-  { name: 'Emblora Wyndcroft', id: 'emblora-wyndcroft' },
-  { name: 'Aurvane Celeste', id: 'aurvane-celeste' },
-  { name: 'Soliven Brisa', id: 'soliven-brisa' },
-  { name: 'Pharyx Full', id: 'pharyx-full' },
+  { name: 'Veltora Seryn', slug: 'veltora-e1' },
+  { name: 'Krynox ZR-9', slug: 'krynox-gt' },
+  { name: 'Dreznak Karov', slug: 'dreznak-karov' },
+  { name: 'Zethrux Infernum', slug: 'zethrux-vantage' },
+  { name: 'Emblora Wyndcroft', slug: 'emblora-wyndcroft' },
+  { name: 'Aurvane Celeste', slug: 'aurvane-solaris' },
+  { name: 'Soliven Brisa', slug: 'soliven-corsa' },
+  { name: 'Pharyx Full', slug: 'pharyx-phantom' },
 ];
 
 const searchWrap = document.getElementById('searchWrap');
 const searchInput = document.getElementById('searchInput');
+const searchClearBtn = document.getElementById('searchClearBtn');
 const searchBtn = document.getElementById('searchBtn');
 const searchDropdown = document.getElementById('searchDropdown');
 const searchResultsList = document.getElementById('searchResultsList');
@@ -102,23 +103,102 @@ const returnArrowSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColo
   <path d="M 19.75 18.219 C 19.75 15.867 19.75 14.692 19.367 13.764 C 18.853 12.522 17.866 11.535 16.624 11.021 C 15.696 10.638 14.521 10.638 12.169 10.638 L 3.871 10.638 M 8.107 5.781 L 4.31 9.577 C 4.017 9.87 3.87 10.254 3.87 10.638 M 8.106 15.495 L 4.31 11.699 C 4.028 11.418 3.87 11.036 3.87 10.638"/>
 </svg>`;
 
+let currentSearchToken = 0;
+
+function updateClearBtn() {
+  if (!searchClearBtn || !searchInput) return;
+  const hasText = searchInput.value.length > 0;
+  if (hasText) {
+    searchClearBtn.style.display = 'flex';
+    searchInput.style.paddingRight = '40px';
+    if (searchWrap) searchWrap.classList.add('has-text');
+  } else {
+    searchClearBtn.style.display = 'none';
+    searchInput.style.paddingRight = '';
+    if (searchWrap) searchWrap.classList.remove('has-text');
+  }
+}
+
 function renderSearchResults(items) {
+  if (!searchResultsList) return;
+  const token = ++currentSearchToken;
+
   if (!items || items.length === 0) {
-    searchResultsList.innerHTML = `<div style="padding: 8px 10px; font-size: 14px; color: #888;">No se encontraron resultados</div>`;
+    const existing = Array.from(searchResultsList.querySelectorAll('.search-item:not(.leaving)'));
+    if (existing.length > 0) {
+      existing.forEach(el => el.classList.add('leaving'));
+      setTimeout(() => {
+        if (token !== currentSearchToken) return;
+        searchResultsList.innerHTML = `<div class="search-no-results">No se encontraron resultados</div>`;
+      }, 200);
+    } else {
+      searchResultsList.innerHTML = `<div class="search-no-results">No se encontraron resultados</div>`;
+    }
     return;
   }
-  searchResultsList.innerHTML = items.map(car => `
-    <a class="search-item" href="inventario.html?search=${encodeURIComponent(car.name)}" data-name="${car.name}">
-      ${returnArrowSvg}
-      <span>${car.name}</span>
-    </a>
-  `).join('');
 
-  searchResultsList.querySelectorAll('.search-item').forEach(item => {
-    item.addEventListener('click', (e) => {
-      searchDropdown.classList.remove('open');
-      // allow default link navigation to inventario.html?search=...
-    });
+  // Remove existing empty notice if present
+  const noResultsEl = searchResultsList.querySelector('.search-no-results');
+  if (noResultsEl) {
+    noResultsEl.remove();
+  }
+
+  const existingMap = new Map();
+  const existingItems = Array.from(searchResultsList.querySelectorAll('.search-item:not(.leaving)'));
+  existingItems.forEach(el => {
+    existingMap.set(el.getAttribute('data-name'), el);
+  });
+
+  const newNames = new Set(items.map(c => c.name));
+
+  // Animate leaving items
+  existingItems.forEach(el => {
+    const name = el.getAttribute('data-name');
+    if (!newNames.has(name)) {
+      el.classList.add('leaving');
+      setTimeout(() => {
+        el.remove();
+      }, 220);
+    }
+  });
+
+  // Add or preserve items with smooth enter animation and direct link to coche.html
+  let previousSibling = null;
+  items.forEach((car, index) => {
+    let itemEl = existingMap.get(car.name);
+    if (!itemEl) {
+      itemEl = document.createElement('a');
+      itemEl.className = 'search-item entering';
+      itemEl.href = `coche.html?car=${car.slug}`;
+      itemEl.setAttribute('data-name', car.name);
+      itemEl.style.animationDelay = `${index * 0.04}s`;
+      itemEl.innerHTML = `
+        ${returnArrowSvg}
+        <span>${car.name}</span>
+      `;
+      itemEl.addEventListener('click', () => {
+        if (searchDropdown) searchDropdown.classList.remove('open');
+      });
+
+      if (previousSibling && previousSibling.nextSibling) {
+        searchResultsList.insertBefore(itemEl, previousSibling.nextSibling);
+      } else if (!previousSibling && searchResultsList.firstChild) {
+        searchResultsList.insertBefore(itemEl, searchResultsList.firstChild);
+      } else {
+        searchResultsList.appendChild(itemEl);
+      }
+
+      setTimeout(() => {
+        itemEl.classList.remove('entering');
+      }, 280);
+    } else {
+      itemEl.classList.remove('leaving');
+      itemEl.href = `coche.html?car=${car.slug}`;
+      if (previousSibling && itemEl.previousElementSibling !== previousSibling) {
+        searchResultsList.insertBefore(itemEl, previousSibling.nextSibling);
+      }
+    }
+    previousSibling = itemEl;
   });
 }
 
@@ -128,15 +208,24 @@ function showInitialSuggestions() {
 
 function goToInventorySearch() {
   const query = searchInput ? searchInput.value.trim() : '';
-  if (query) {
-    window.location.href = `inventario.html?search=${encodeURIComponent(query)}`;
-  } else {
+  if (!query) {
     window.location.href = 'inventario.html';
+    return;
+  }
+  const qLower = query.toLowerCase();
+  const match = inventory.find(c => c.name.toLowerCase() === qLower) ||
+                inventory.find(c => c.name.toLowerCase().includes(qLower));
+  if (match) {
+    window.location.href = `coche.html?car=${match.slug}`;
+  } else {
+    window.location.href = `inventario.html?search=${encodeURIComponent(query)}`;
   }
 }
 
 if (searchInput && searchDropdown) {
   searchInput.addEventListener('focus', () => {
+    updateClearBtn();
+    if (searchWrap) searchWrap.classList.add('expanded');
     if (!searchInput.value.trim()) {
       showInitialSuggestions();
     }
@@ -144,6 +233,8 @@ if (searchInput && searchDropdown) {
   });
 
   searchInput.addEventListener('input', () => {
+    updateClearBtn();
+    if (searchWrap) searchWrap.classList.add('expanded');
     const q = searchInput.value.trim().toLowerCase();
     if (!q) {
       showInitialSuggestions();
@@ -160,6 +251,18 @@ if (searchInput && searchDropdown) {
       goToInventorySearch();
     }
   });
+
+  if (searchClearBtn) {
+    searchClearBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      searchInput.value = '';
+      updateClearBtn();
+      searchInput.focus();
+      showInitialSuggestions();
+      searchDropdown.classList.add('open');
+    });
+  }
 
   if (searchBtn) {
     searchBtn.addEventListener('click', (e) => {
@@ -182,6 +285,9 @@ if (searchInput && searchDropdown) {
   document.addEventListener('click', (e) => {
     if (searchWrap && !searchWrap.contains(e.target)) {
       searchDropdown.classList.remove('open');
+      if (!searchInput.value.trim()) {
+        searchWrap.classList.remove('expanded');
+      }
     }
   });
 
@@ -189,6 +295,9 @@ if (searchInput && searchDropdown) {
     if (e.key === 'Escape' && searchDropdown) {
       searchDropdown.classList.remove('open');
       searchInput.blur();
+      if (!searchInput.value.trim()) {
+        searchWrap.classList.remove('expanded');
+      }
     }
   });
 }
