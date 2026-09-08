@@ -4,6 +4,38 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // --- Render catalog cards from single source (assets/catalog.js) ---
+  const invGrid = document.getElementById('invGrid');
+  if (invGrid && window.CAR_CATALOG && window.CAR_CATALOG.length) {
+    const arrowSvg = '<i data-lucide="arrow-right" class="arrow-svg"></i>' +
+      '<i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>';
+    invGrid.innerHTML = window.CAR_CATALOG.map((car, idx) => {
+      const delay = (idx % 3) + 1;
+      return '<a class="car-card reveal-card reveal-delay-' + delay + '" href="coche.html?car=' + car.slug + '"' +
+        ' data-name="' + car.name + '"' +
+        ' data-make="' + car.make + '"' +
+        ' data-category="' + car.category + '"' +
+        ' data-condition="' + car.condition + '"' +
+        ' data-year="' + car.year + '"' +
+        ' data-price="' + car.price + '"' +
+        ' data-mileage="' + car.mileage + '">' +
+        '<div class="car-img">' +
+        '<img src="' + car.image + '" alt="' + car.alt + '" loading="lazy">' +
+        '<div class="corner-cutout corner-cutout--bottom-right car-cutout">' +
+        '<span class="cutout-btn car-arrow">' +
+        '<span class="btn-arrow-wrap">' +
+        '<span class="btn-arrow-track">' + arrowSvg + '</span>' +
+        '</span></span></div></div>' +
+        '<div class="car-info">' +
+        '<div class="car-row"><span class="car-name">' + car.name + '</span><span class="car-price">' + car.priceLabel + '</span></div>' +
+        '<div class="car-row"><span class="car-meta">' + car.year + '</span><span class="car-meta"></span></div>' +
+        '</div></a>';
+    }).join('\n');
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons();
+    }
+  }
+
   // --- Filter Elements ---
   const searchInput = document.getElementById('filterSearchInput');
   const searchClear = document.getElementById('filterSearchClear');
@@ -44,8 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       const catalogEl = document.getElementById('catalog');
       if (catalogEl) {
-        if (window.lenis && typeof window.lenis.scrollTo === 'function') {
-          window.lenis.scrollTo(catalogEl, { offset: -84 });
+        if (window.EVO && window.EVO.lenis && typeof window.EVO.lenis.scrollTo === 'function') {
+          window.EVO.lenis.scrollTo(catalogEl, { offset: -84 });
         } else {
           const topPos = catalogEl.getBoundingClientRect().top + window.pageYOffset - 84;
           window.scrollTo({ top: Math.max(0, topPos), behavior: 'smooth' });

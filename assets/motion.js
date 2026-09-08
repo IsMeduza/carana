@@ -335,16 +335,16 @@
         navLinks.classList.add('open');
         burger.classList.add('active');
         document.body.classList.add('menu-open');
-        if (window.lenis && typeof window.lenis.stop === 'function') {
-          window.lenis.stop();
+        if (window.EVO && window.EVO.lenis && typeof window.EVO.lenis.stop === 'function') {
+          window.EVO.lenis.stop();
         }
       } else {
         if (navHeader) navHeader.classList.remove('open');
         navLinks.classList.remove('open');
         burger.classList.remove('active');
         document.body.classList.remove('menu-open');
-        if (window.lenis && typeof window.lenis.start === 'function') {
-          window.lenis.start();
+        if (window.EVO && window.EVO.lenis && typeof window.EVO.lenis.start === 'function') {
+          window.EVO.lenis.start();
         }
       }
     }
@@ -603,6 +603,28 @@
     initDropdowns: initCustomDropdowns,
     initAccordions: initAccordions,
     refreshCounters: (scope) => initStatCounters(scope || document),
+    initLeadForm: (cfg) => {
+      const form = document.getElementById(cfg.form);
+      const feedback = document.getElementById(cfg.feedback);
+      const submitBtn = document.getElementById(cfg.submit);
+      if (!form || !feedback || !submitBtn) return;
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        feedback.classList.add('success');
+        submitBtn.style.opacity = '0.7';
+        submitBtn.textContent = cfg.successText;
+        form.reset();
+        form.querySelectorAll('.custom-dropdown-value').forEach((v) => {
+          v.classList.add('placeholder');
+          v.textContent = cfg.placeholderText;
+        });
+        setTimeout(() => {
+          submitBtn.style.opacity = '1';
+          submitBtn.textContent = cfg.restoreText;
+        }, 5000);
+      });
+    },
     scrollTo: (target, offset = -75) => {
       const el = typeof target === 'string' ? document.querySelector(target) : target;
       if (el && lenisInstance) {

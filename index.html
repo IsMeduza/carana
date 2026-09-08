@@ -44,28 +44,7 @@
             </h1>
             
             <!-- HERO SEARCH COMPONENT -->
-            <div class="hero-search" id="searchWrap">
-              <div class="hero-search-box" id="searchBox">
-                <input type="text" id="searchInput" placeholder="Buscar..." autocomplete="off">
-                <button type="button" class="search-clear-btn" id="searchClearBtn" aria-label="Borrar búsqueda" style="display: none;">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
-                <button class="hero-search-btn" id="searchBtn" aria-label="Buscar">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 15.553 15.553 C 18.31 12.796 18.31 8.325 15.553 5.568 C 12.796 2.811 8.325 2.811 5.568 5.568 C 2.811 8.325 2.811 12.796 5.568 15.553 C 8.325 18.31 12.796 18.31 15.553 15.553 M 15.553 15.553 L 20 20"/>
-                  </svg>
-                </button>
-              </div>
-              <div class="hero-search-dropdown" id="searchDropdown">
-                <div class="hero-search-list" id="searchResultsList"></div>
-                <div class="search-dots">
-                  <span></span><span></span><span></span>
-                </div>
-              </div>
-            </div>
+            <!-- @component hero-search -->
           </div>
           <div class="hero-bottom">
             <div class="hero-left">
@@ -76,16 +55,7 @@
               <a class="btn btn-light" href="inventario.html">
                 <span>Ver inventario</span>
                 <span class="btn-chip btn-chip-dark">
-                  <span class="btn-arrow-wrap">
-                    <span class="btn-arrow-track">
-                      <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                      </svg>
-                      <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                      </svg>
-                    </span>
-                  </span>
+                  <!-- @component btn-arrow -->
                 </span>
               </a>
             </div>
@@ -128,156 +98,17 @@
         <a class="btn btn-dark" href="inventario.html">
           <span>Ver inventario</span>
           <span class="btn-chip btn-chip-light">
-            <span class="btn-arrow-wrap">
-              <span class="btn-arrow-track">
-                <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                </svg>
-                <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                </svg>
-              </span>
-            </span>
+            <!-- @component btn-arrow -->
           </span>
         </a>
         <p class="section-sub">Seleccionados a mano de nuestra colección. Cada uno representa hoy la excelencia automovilística en su máxima expresión.</p>
       </div>
     </div>
-    <div class="car-grid">
-      <a class="car-card reveal-card reveal-delay-1" href="coche.html?car=dreznak-karov">
-        <div class="car-img">
-          <img src="assets/img/car-dreznak.png" alt="Black Range Rover Sport P530 SV in studio">
-          <div class="corner-cutout corner-cutout--bottom-right car-cutout">
-            <span class="cutout-btn car-arrow">
-              <span class="btn-arrow-wrap">
-                <span class="btn-arrow-track">
-                  <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                  <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                </span>
-              </span>
-            </span>
-          </div>
-        </div>
-        <div class="car-info">
-          <div class="car-row"><span class="car-name">Dreznak Karov</span><span class="car-price">$145,000</span></div>
-          <div class="car-row"><span class="car-meta">2024</span><span class="car-meta"></span></div>
-        </div>
-      </a>
-      <a class="car-card reveal-card reveal-delay-2" href="coche.html?car=zethrux-vantage">
-        <div class="car-img">
-          <img src="assets/img/car-zethrux.webp" alt="Silver Porsche GT3 RS with large rear wing and diffuser">
-          <div class="corner-cutout corner-cutout--bottom-right car-cutout">
-            <span class="cutout-btn car-arrow">
-              <span class="btn-arrow-wrap">
-                <span class="btn-arrow-track">
-                  <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                  <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                </span>
-              </span>
-            </span>
-          </div>
-        </div>
-        <div class="car-info">
-          <div class="car-row"><span class="car-name">Zethrux Infernum</span><span class="car-price">$241,350</span></div>
-          <div class="car-row"><span class="car-meta">2023</span><span class="car-meta">Icono del rendimiento</span></div>
-        </div>
-      </a>
-      <a class="car-card reveal-card reveal-delay-3" href="coche.html?car=emblora-wyndcroft">
-        <div class="car-img">
-          <img src="assets/img/car-emblora.webp" alt="Matte black Lamborghini Urus SUV, front view.">
-          <div class="corner-cutout corner-cutout--bottom-right car-cutout">
-            <span class="cutout-btn car-arrow">
-              <span class="btn-arrow-wrap">
-                <span class="btn-arrow-track">
-                  <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                  <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                </span>
-              </span>
-            </span>
-          </div>
-        </div>
-        <div class="car-info">
-          <div class="car-row"><span class="car-name">Emblora Wyndcroft</span><span class="car-price">$239,950</span></div>
-          <div class="car-row"><span class="car-meta">2024</span><span class="car-meta">Nueva incorporación</span></div>
-        </div>
-      </a>
-    </div>
+    <div class="car-grid" id="homeCarGrid"></div>
   </section>
 
   <!-- ============ SERVICES ============ -->
-  <section class="section services">
-    <div class="services-left reveal-head">
-      <div class="services-header">
-        <p class="tag">Servicios 360°</p>
-        <h2>Soluciones Integrales<br>en Automoción Europea</h2>
-      </div>
-      <div class="services-cta">
-        <p class="section-sub">Centralizamos todo el ciclo del vehículo: compra-venta internacional, matriculación DGT, logística Door-to-Door, leasing, seguros y servicio de taller.</p>
-        <a class="btn btn-dark" href="contacto.html">
-          <span>Solicitar asesoramiento</span>
-          <span class="btn-chip btn-chip-light">
-            <span class="btn-arrow-wrap">
-              <span class="btn-arrow-track">
-                <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                </svg>
-                <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                </svg>
-              </span>
-            </span>
-          </span>
-        </a>
-      </div>
-    </div>
-    <div class="services-grid">
-      <div class="svc-col">
-        <div class="svc-card svc-card-img reveal-card reveal-delay-1">
-          <img src="assets/img/svc-inspection.webp" alt="Inspección técnica y peritaje riguroso">
-          <p>Inspección técnica y peritaje riguroso</p>
-        </div>
-        <div class="svc-card svc-card-img reveal-card reveal-delay-2">
-          <img src="assets/img/svc-detailing.webp" alt="Gestoría DGT, aduanas y matriculación">
-          <p>Gestoría DGT, aduanas y matriculación</p>
-        </div>
-      </div>
-      <div class="svc-col">
-        <div class="svc-card svc-card-brands reveal-card reveal-delay-1">
-          <div class="svc-brands-wheel">
-            <div class="svc-brand-badge"><img src="assets/img/brand-framer-1.svg" alt="Brand emblem 1"></div>
-            <div class="svc-brand-badge"><img src="assets/img/brand-framer-2.svg" alt="Brand emblem 2"></div>
-            <div class="svc-brand-badge"><img src="assets/img/brand-framer-3.svg" alt="Brand emblem 3"></div>
-            <div class="svc-brand-badge"><img src="assets/img/brand-framer-4.svg" alt="Brand emblem 4"></div>
-            <div class="svc-brand-badge"><img src="assets/img/brand-framer-5.svg" alt="Brand emblem 5"></div>
-            <div class="svc-brand-badge"><img src="assets/img/brand-framer-6.svg" alt="Brand emblem 6"></div>
-            <div class="svc-brand-badge"><img src="assets/img/brand-framer-7.svg" alt="Brand emblem 7"></div>
-            <div class="svc-brand-badge"><img src="assets/img/brand-framer-8.svg" alt="Brand emblem 8"></div>
-          </div>
-          <p>Transporte Door-to-Door<br>a toda Europa</p>
-        </div>
-        <div class="svc-card svc-card-img reveal-card reveal-delay-2">
-          <img src="assets/img/svc-warranty.webp" alt="Seguros en tránsito y taller por cuota">
-          <p>Seguros en tránsito y taller por cuota</p>
-        </div>
-        <div class="svc-card svc-card-img reveal-card reveal-delay-3">
-          <img src="assets/img/svc-leasing.jpg" alt="Leasing, Renting y créditos a medida">
-          <p>Leasing, Renting y créditos a medida</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- @component services -->
 
   <!-- ============ TESTIMONIALS ============ -->
   <section class="section testimonials">
@@ -290,16 +121,7 @@
         <a class="btn btn-dark" href="contacto.html">
           <span>Consultar servicios</span>
           <span class="btn-chip btn-chip-light">
-            <span class="btn-arrow-wrap">
-              <span class="btn-arrow-track">
-                <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                </svg>
-                <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                </svg>
-              </span>
-            </span>
+            <!-- @component btn-arrow -->
           </span>
         </a>
         <p class="section-sub">Respuestas integrales para concesionarios, flotas de empresa <br>y compradores particulares en Girona y toda Europa.</p>
@@ -311,30 +133,12 @@
           <img src="assets/img/testimonial.png" alt="Cliente y vehículo verificado" style="object-fit: cover; object-position: center 20%;">
           <div class="corner-cutout corner-cutout--top-left testi-cutout-left">
             <button class="cutout-btn testi-nav testi-prev" aria-label="Anterior">
-              <span class="btn-arrow-wrap">
-                <span class="btn-arrow-track">
-                  <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg)">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                  <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg)">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                </span>
-              </span>
+              <!-- @component btn-arrow -->
             </button>
           </div>
           <div class="corner-cutout corner-cutout--top-right testi-cutout-right">
             <button class="cutout-btn testi-nav testi-next" aria-label="Siguiente">
-              <span class="btn-arrow-wrap">
-                <span class="btn-arrow-track">
-                  <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                  <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                </span>
-              </span>
+              <!-- @component btn-arrow -->
             </button>
           </div>
         </div>
@@ -398,16 +202,7 @@
       <a class="btn btn-dark" href="sobre-nosotros.html">
         <span>Conoce nuestra operativa</span>
         <span class="btn-chip btn-chip-light">
-          <span class="btn-arrow-wrap">
-            <span class="btn-arrow-track">
-              <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-              </svg>
-              <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-              </svg>
-            </span>
-          </span>
+          <!-- @component btn-arrow -->
         </span>
       </a>
     </div>
@@ -422,16 +217,7 @@
       <a class="btn btn-dark" href="blog.html">
         <span>Ver todas las guías</span>
         <span class="btn-chip btn-chip-light">
-          <span class="btn-arrow-wrap">
-            <span class="btn-arrow-track">
-              <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-              </svg>
-              <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-              </svg>
-            </span>
-          </span>
+          <!-- @component btn-arrow -->
         </span>
       </a>
     </div>
@@ -440,16 +226,7 @@
         <img src="assets/img/blog-urus.webp" alt="Guía técnica para importar un vehículo desde Europa">
         <div class="corner-cutout corner-cutout--top-right blog-cutout">
           <span class="cutout-btn blog-arrow">
-            <span class="btn-arrow-wrap">
-              <span class="btn-arrow-track">
-                <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                </svg>
-                <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                </svg>
-              </span>
-            </span>
+            <!-- @component btn-arrow -->
           </span>
         </div>
         <div class="blog-card-text">
@@ -461,16 +238,7 @@
         <img src="assets/img/blog-leasing.webp" alt="Leasing vs Renting para empresas">
         <div class="corner-cutout corner-cutout--top-right blog-cutout">
           <span class="cutout-btn blog-arrow">
-            <span class="btn-arrow-wrap">
-              <span class="btn-arrow-track">
-                <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                </svg>
-                <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                </svg>
-              </span>
-            </span>
+            <!-- @component btn-arrow -->
           </span>
         </div>
         <div class="blog-card-text">
@@ -492,12 +260,7 @@
         <a class="btn btn-light" href="contacto.html">
           <span>Contactar con nuestro equipo</span>
           <span class="btn-chip btn-chip-dark">
-            <span class="btn-arrow-wrap">
-              <span class="btn-arrow-track">
-                <i data-lucide="arrow-right" class="arrow-svg"></i>
-                <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
-              </span>
-            </span>
+            <!-- @component btn-arrow -->
           </span>
         </a>
       </div>
@@ -574,6 +337,7 @@
 <!-- @component footer -->
 
 <!-- @component scripts -->
+<script src="assets/catalog.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

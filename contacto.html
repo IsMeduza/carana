@@ -286,24 +286,14 @@
   <!-- ============ GLOBAL MOTION & SCROLL COMPONENT ============ -->
   <!-- @component scripts -->
   <script>
-    const form = document.getElementById('contactPageForm');
-    const feedback = document.getElementById('contactFeedback');
-    const submitBtn = document.getElementById('contactSubmitBtn');
-    if (form && feedback && submitBtn) {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        feedback.classList.add('success');
-        submitBtn.style.opacity = '0.7';
-        submitBtn.textContent = '¡Mensaje enviado!';
-        form.reset();
-        form.querySelectorAll('.custom-dropdown-value').forEach(v => {
-          v.classList.add('placeholder');
-          v.textContent = 'Seleccionar servicio…';
-        });
-        setTimeout(() => {
-          submitBtn.style.opacity = '1';
-          submitBtn.textContent = 'Contactar';
-        }, 5000);
+    if (window.EVO && typeof window.EVO.initLeadForm === 'function') {
+      window.EVO.initLeadForm({
+        form: 'contactPageForm',
+        feedback: 'contactFeedback',
+        submit: 'contactSubmitBtn',
+        successText: '¡Mensaje enviado!',
+        placeholderText: 'Seleccionar servicio…',
+        restoreText: 'Contactar',
       });
     }
   </script>

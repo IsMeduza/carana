@@ -38,16 +38,7 @@
           <a class="btn btn-dark" href="#valuation-form">
             <span>Obtener tasación</span>
             <span class="btn-chip btn-chip-light">
-              <span class="btn-arrow-wrap">
-                <span class="btn-arrow-track">
-                  <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                  <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                </span>
-              </span>
+              <!-- @component btn-arrow -->
             </span>
           </a>
         </div>
@@ -126,16 +117,7 @@
           <a class="btn btn-light" href="#valuation-form">
             <span>Obtener tasación</span>
             <span class="btn-chip btn-chip-dark">
-              <span class="btn-arrow-wrap">
-                <span class="btn-arrow-track">
-                  <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                  <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                </span>
-              </span>
+              <!-- @component btn-arrow -->
             </span>
           </a>
         </div>
@@ -384,24 +366,14 @@
   <!-- ============ GLOBAL MOTION & SCROLL COMPONENT ============ -->
   <!-- @component scripts -->
   <script>
-    const form = document.getElementById('tradeValuationForm');
-    const feedback = document.getElementById('formFeedback');
-    const submitBtn = document.getElementById('submitBtn');
-    if (form && feedback && submitBtn) {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        feedback.classList.add('success');
-        submitBtn.style.opacity = '0.7';
-        submitBtn.textContent = '¡Tasación solicitada!';
-        form.reset();
-        form.querySelectorAll('.custom-dropdown-value').forEach(v => {
-          v.classList.add('placeholder');
-          v.textContent = 'Seleccionar…';
-        });
-        setTimeout(() => {
-          submitBtn.style.opacity = '1';
-          submitBtn.textContent = 'Solicitar tasación gratuita';
-        }, 5000);
+    if (window.EVO && typeof window.EVO.initLeadForm === 'function') {
+      window.EVO.initLeadForm({
+        form: 'tradeValuationForm',
+        feedback: 'formFeedback',
+        submit: 'submitBtn',
+        successText: '¡Tasación solicitada!',
+        placeholderText: 'Seleccionar…',
+        restoreText: 'Solicitar tasación gratuita',
       });
     }
   </script>

@@ -37,12 +37,7 @@
         <a class="btn btn-dark" href="#catalog">
           <span>Ver inventario</span>
           <span class="btn-chip btn-chip-light">
-            <span class="btn-arrow-wrap">
-              <span class="btn-arrow-track">
-                <i data-lucide="arrow-right" class="arrow-svg"></i>
-                <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
-              </span>
-            </span>
+            <!-- @component btn-arrow -->
           </span>
         </a>
       </div>
@@ -248,12 +243,7 @@
             <button class="btn btn-dark mobile-filter-apply-btn" id="mobileFilterApplyBtn" type="button">
               <span id="mobileFilterApplyText">Ver vehículos</span>
               <span class="btn-chip btn-chip-light">
-                <span class="btn-arrow-wrap">
-                  <span class="btn-arrow-track">
-                    <i data-lucide="arrow-right" class="arrow-svg"></i>
-                    <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
-                  </span>
-                </span>
+                <!-- @component btn-arrow -->
               </span>
             </button>
           </div>
@@ -273,230 +263,6 @@
 
         <!-- CARS GRID -->
         <div class="inv-grid" id="invGrid">
-          <!-- CAR 1: Veltora Seryn -->
-          <a class="car-card reveal-card reveal-delay-1" href="coche.html?car=veltora-e1"
-             data-name="Veltora Seryn"
-             data-make="Audi"
-             data-category="familiar"
-             data-condition="Nuevo"
-             data-year="2024"
-             data-price="119500"
-             data-mileage="4200">
-            <div class="car-img">
-              <img src="assets/img/car-veltora.png" alt="Audi RS6 Avant, gris con llantas negras" loading="lazy">
-              <div class="corner-cutout corner-cutout--bottom-right car-cutout">
-                <span class="cutout-btn car-arrow">
-                  <span class="btn-arrow-wrap">
-                    <span class="btn-arrow-track">
-                      <i data-lucide="arrow-right" class="arrow-svg"></i>
-                      <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
-                    </span>
-                  </span>
-                </span>
-              </div>
-            </div>
-            <div class="car-info">
-              <div class="car-row"><span class="car-name">Veltora Seryn</span><span class="car-price">$119,500</span></div>
-              <div class="car-row"><span class="car-meta">2024</span><span class="car-meta"></span></div>
-            </div>
-          </a>
-
-          <!-- CAR 2: Krynox ZR-9 -->
-          <a class="car-card reveal-card reveal-delay-2" href="coche.html?car=krynox-gt"
-             data-name="Krynox ZR-9"
-             data-make="McLaren"
-             data-category="descapotable"
-             data-condition="De ocasión"
-             data-year="2023"
-             data-price="299000"
-             data-mileage="1800">
-            <div class="car-img">
-              <img src="assets/img/car-krynox.png" alt="McLaren 720S Spider deportivo descapotable naranja" loading="lazy">
-              <div class="corner-cutout corner-cutout--bottom-right car-cutout">
-                <span class="cutout-btn car-arrow">
-                  <span class="btn-arrow-wrap">
-                    <span class="btn-arrow-track">
-                      <i data-lucide="arrow-right" class="arrow-svg"></i>
-                      <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
-                    </span>
-                  </span>
-                </span>
-              </div>
-            </div>
-            <div class="car-info">
-              <div class="car-row"><span class="car-name">Krynox ZR-9</span><span class="car-price">$299,000</span></div>
-              <div class="car-row"><span class="car-meta">2023</span><span class="car-meta">Exclusivo</span></div>
-            </div>
-          </a>
-
-          <!-- CAR 3: Dreznak Karov -->
-          <a class="car-card reveal-card reveal-delay-1" href="coche.html?car=dreznak-karov"
-             data-name="Dreznak Karov"
-             data-make="Land Rover"
-             data-category="suv"
-             data-condition="Nuevo"
-             data-year="2024"
-             data-price="145000"
-             data-mileage="3500">
-            <div class="car-img">
-              <img src="assets/img/car-dreznak.png" alt="Range Rover Sport SUV negro lujo" loading="lazy">
-              <div class="corner-cutout corner-cutout--bottom-right car-cutout">
-                <span class="cutout-btn car-arrow">
-                  <span class="btn-arrow-wrap">
-                    <span class="btn-arrow-track">
-                      <i data-lucide="arrow-right" class="arrow-svg"></i>
-                      <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
-                    </span>
-                  </span>
-                </span>
-              </div>
-            </div>
-            <div class="car-info">
-              <div class="car-row"><span class="car-name">Dreznak Karov</span><span class="car-price">$145,000</span></div>
-              <div class="car-row"><span class="car-meta">2024</span><span class="car-meta"></span></div>
-            </div>
-          </a>
-
-          <!-- CAR 4: Aurvane Celeste -->
-          <a class="car-card reveal-card reveal-delay-2" href="coche.html?car=aurvane-solaris"
-             data-name="Aurvane Celeste"
-             data-make="BMW"
-             data-category="coupe"
-             data-condition="De ocasión"
-             data-year="2023"
-             data-price="82500"
-             data-mileage="8400">
-            <div class="car-img">
-              <img src="assets/img/car-aurvane.png" alt="BMW M4 Coupé verde metalizado" loading="lazy">
-              <div class="corner-cutout corner-cutout--bottom-right car-cutout">
-                <span class="cutout-btn car-arrow">
-                  <span class="btn-arrow-wrap">
-                    <span class="btn-arrow-track">
-                      <i data-lucide="arrow-right" class="arrow-svg"></i>
-                      <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
-                    </span>
-                  </span>
-                </span>
-              </div>
-            </div>
-            <div class="car-info">
-              <div class="car-row"><span class="car-name">Aurvane Celeste</span><span class="car-price">$82,500</span></div>
-              <div class="car-row"><span class="car-meta">2023</span><span class="car-meta"></span></div>
-            </div>
-          </a>
-
-          <!-- CAR 5: Soliven Brisa -->
-          <a class="car-card reveal-card reveal-delay-1" href="coche.html?car=soliven-corsa"
-             data-name="Soliven Brisa"
-             data-make="Aston Martin"
-             data-category="coupe"
-             data-condition="Nuevo"
-             data-year="2024"
-             data-price="195000"
-             data-mileage="2100">
-            <div class="car-img">
-              <img src="assets/img/car-soliven.png" alt="Aston Martin DB12 gran turismo plata" loading="lazy">
-              <div class="corner-cutout corner-cutout--bottom-right car-cutout">
-                <span class="cutout-btn car-arrow">
-                  <span class="btn-arrow-wrap">
-                    <span class="btn-arrow-track">
-                      <i data-lucide="arrow-right" class="arrow-svg"></i>
-                      <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
-                    </span>
-                  </span>
-                </span>
-              </div>
-            </div>
-            <div class="car-info">
-              <div class="car-row"><span class="car-name">Soliven Brisa</span><span class="car-price">$195,000</span></div>
-              <div class="car-row"><span class="car-meta">2024</span><span class="car-meta"></span></div>
-            </div>
-          </a>
-
-          <!-- CAR 6: Pharyx Full -->
-          <a class="car-card reveal-card reveal-delay-2" href="coche.html?car=pharyx-phantom"
-             data-name="Pharyx Full"
-             data-make="Mercedes-Benz"
-             data-category="suv"
-             data-condition="De ocasión"
-             data-year="2024"
-             data-price="179000"
-             data-mileage="5600">
-            <div class="car-img">
-              <img src="assets/img/car-pharyx.png" alt="Mercedes-AMG G 63 Clase G SUV negro" loading="lazy">
-              <div class="corner-cutout corner-cutout--bottom-right car-cutout">
-                <span class="cutout-btn car-arrow">
-                  <span class="btn-arrow-wrap">
-                    <span class="btn-arrow-track">
-                      <i data-lucide="arrow-right" class="arrow-svg"></i>
-                      <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
-                    </span>
-                  </span>
-                </span>
-              </div>
-            </div>
-            <div class="car-info">
-              <div class="car-row"><span class="car-name">Pharyx Full</span><span class="car-price">$179,000</span></div>
-              <div class="car-row"><span class="car-meta">2024</span><span class="car-meta">Recién llegado</span></div>
-            </div>
-          </a>
-
-          <!-- CAR 7: Zethrux Infernum -->
-          <a class="car-card reveal-card reveal-delay-1" href="coche.html?car=zethrux-vantage"
-             data-name="Zethrux Infernum"
-             data-make="Porsche"
-             data-category="coupe"
-             data-condition="De ocasión"
-             data-year="2023"
-             data-price="241350"
-             data-mileage="950">
-            <div class="car-img">
-              <img src="assets/img/car-zethrux.webp" alt="Porsche 911 GT3 RS superdeportivo plata" loading="lazy">
-              <div class="corner-cutout corner-cutout--bottom-right car-cutout">
-                <span class="cutout-btn car-arrow">
-                  <span class="btn-arrow-wrap">
-                    <span class="btn-arrow-track">
-                      <i data-lucide="arrow-right" class="arrow-svg"></i>
-                      <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
-                    </span>
-                  </span>
-                </span>
-              </div>
-            </div>
-            <div class="car-info">
-              <div class="car-row"><span class="car-name">Zethrux Infernum</span><span class="car-price">$241,350</span></div>
-              <div class="car-row"><span class="car-meta">2023</span><span class="car-meta">Icono del rendimiento</span></div>
-            </div>
-          </a>
-
-          <!-- CAR 8: Emblora Wyndcroft -->
-          <a class="car-card reveal-card reveal-delay-2" href="coche.html?car=emblora-wyndcroft"
-             data-name="Emblora Wyndcroft"
-             data-make="Lamborghini"
-             data-category="suv"
-             data-condition="Nuevo"
-             data-year="2024"
-             data-price="239950"
-             data-mileage="1200">
-            <div class="car-img">
-              <img src="assets/img/car-emblora.webp" alt="Lamborghini Urus Performante SUV de superlujo gris mate" loading="lazy">
-              <div class="corner-cutout corner-cutout--bottom-right car-cutout">
-                <span class="cutout-btn car-arrow">
-                  <span class="btn-arrow-wrap">
-                    <span class="btn-arrow-track">
-                      <i data-lucide="arrow-right" class="arrow-svg"></i>
-                      <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
-                    </span>
-                  </span>
-                </span>
-              </div>
-            </div>
-            <div class="car-info">
-              <div class="car-row"><span class="car-name">Emblora Wyndcroft</span><span class="car-price">$239,950</span></div>
-              <div class="car-row"><span class="car-meta">2024</span><span class="car-meta">Nueva incorporación</span></div>
-            </div>
-          </a>
-
           <!-- NO RESULTS PLACEHOLDER -->
           <div class="no-results" id="noResults" style="display: none;">
             <p>No se encontraron vehículos que coincidan con los filtros seleccionados.</p>
@@ -507,31 +273,12 @@
   </section>
 
   <!-- ============ CTA OVERLAY COMPONENT (REUSABLE) ============ -->
-  <section class="cta inv-cta">
-    <div class="cta-frame reveal-card">
-      <img class="cta-bg" src="assets/img/cta-bg.png" alt="Coche deportivo de lujo con luces traseras rojas" loading="lazy">
-      <div class="cta-overlay"></div>
-      <div class="cta-content">
-        <h2>¿Listo para vivir la experiencia<br>de tu coche soñado?</h2>
-        <p>Reserva una prueba privada y descubre qué significa el verdadero rendimiento.<br>Todos los vehículos están disponibles para verlos de inmediato.</p>
-        <a class="btn btn-light" href="contacto.html">
-          <span>Programar prueba de conducción</span>
-          <span class="btn-chip btn-chip-dark">
-            <span class="btn-arrow-wrap">
-              <span class="btn-arrow-track">
-                <i data-lucide="arrow-right" class="arrow-svg"></i>
-                <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
-              </span>
-            </span>
-          </span>
-        </a>
-      </div>
-    </div>
-  </section>
+  <!-- @component cta title="¿Listo para vivir la experiencia<br>de tu coche soñado?" sub="Reserva una prueba privada y descubre qué significa el verdadero rendimiento.<br>Todos los vehículos están disponibles para verlos de inmediato." btn="Programar prueba de conducción" link="contacto.html" -->
 
   <!-- @component footer title="¿Listo para encontrar<br>tu próximo vehículo?" sub="AUTO JUNG | Soluciones Integrales 360° en Automoción y Comercio Europeo desde Girona." -->
 
   <!-- @component scripts -->
+  <script src="assets/catalog.js"></script>
   <script src="inventory.js"></script>
 </body>
 </html>

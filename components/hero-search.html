@@ -1,0 +1,23 @@
+<!-- ============ HERO SEARCH COMPONENT ============ -->
+  <div class="hero-search" id="searchWrap">
+    <div class="hero-search-box" id="searchBox">
+      <input type="text" id="searchInput" placeholder="Buscar..." autocomplete="off">
+      <button type="button" class="search-clear-btn" id="searchClearBtn" aria-label="Borrar búsqueda" style="display: none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <button class="hero-search-btn" id="searchBtn" aria-label="Buscar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M 15.553 15.553 C 18.31 12.796 18.31 8.325 15.553 5.568 C 12.796 2.811 8.325 2.811 5.568 5.568 C 2.811 8.325 2.811 12.796 5.568 15.553 C 8.325 18.31 12.796 18.31 15.553 15.553 M 15.553 15.553 L 20 20"/>
+        </svg>
+      </button>
+    </div>
+    <div class="hero-search-dropdown" id="searchDropdown">
+      <div class="hero-search-list" id="searchResultsList"></div>
+      <div class="search-dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>

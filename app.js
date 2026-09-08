@@ -40,16 +40,8 @@ if (window.EVO && window.EVO.lenis) {
 
 
 // ============ REPLICATED SEARCH COMPONENT ============
-const inventory = [
-  { name: 'Veltora Seryn', slug: 'veltora-e1' },
-  { name: 'Krynox ZR-9', slug: 'krynox-gt' },
-  { name: 'Dreznak Karov', slug: 'dreznak-karov' },
-  { name: 'Zethrux Infernum', slug: 'zethrux-vantage' },
-  { name: 'Emblora Wyndcroft', slug: 'emblora-wyndcroft' },
-  { name: 'Aurvane Celeste', slug: 'aurvane-solaris' },
-  { name: 'Soliven Brisa', slug: 'soliven-corsa' },
-  { name: 'Pharyx Full', slug: 'pharyx-phantom' },
-];
+// Search uses the single catalog source (assets/catalog.js)
+const inventory = (window.CAR_CATALOG || []).map(c => ({ name: c.name, slug: c.slug }));
 
 const searchWrap = document.getElementById('searchWrap');
 const searchInput = document.getElementById('searchInput');
@@ -312,3 +304,39 @@ if (testiCard) {
     });
   }
 }
+
+// ============ HOME FEATURED CARS (from catalog.js) ============
+(function renderHomeCars() {
+  const grid = document.getElementById('homeCarGrid');
+  if (!grid) return;
+  const catalog = window.CAR_CATALOG || [];
+  if (!catalog.length) return;
+
+  const featured = ['dreznak-karov', 'zethrux-vantage', 'emblora-wyndcroft'];
+  const cars = featured
+    .map(slug => catalog.find(c => c.slug === slug))
+    .filter(Boolean);
+
+  const arrowSvg = '<svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' +
+    '<path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/></svg>' +
+    '<svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' +
+    '<path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/></svg>';
+
+  grid.innerHTML = cars.map((car, idx) =>
+    '<a class="car-card reveal-card reveal-delay-' + (idx + 1) + '" href="coche.html?car=' + car.slug + '">' +
+    '<div class="car-img">' +
+    '<img src="' + car.image + '" alt="' + car.alt + '">' +
+    '<div class="corner-cutout corner-cutout--bottom-right car-cutout">' +
+    '<span class="cutout-btn car-arrow">' +
+    '<span class="btn-arrow-wrap"><span class="btn-arrow-track">' + arrowSvg + '</span></span>' +
+    '</span></div></div>' +
+    '<div class="car-info">' +
+    '<div class="car-row"><span class="car-name">' + car.name + '</span><span class="car-price">' + car.priceLabel + '</span></div>' +
+    '<div class="car-row"><span class="car-meta">' + car.year + '</span><span class="car-meta"></span></div>' +
+    '</div></a>'
+  ).join('\n');
+
+  if (window.EVO && typeof window.EVO.refreshReveals === 'function') {
+    window.EVO.refreshReveals();
+  }
+})();

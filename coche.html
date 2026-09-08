@@ -25,12 +25,7 @@
           <a class="btn btn-dark" href="contacto.html">
             <span>Contactar con ventas</span>
             <span class="btn-chip btn-chip-light">
-              <span class="btn-arrow-wrap">
-                <span class="btn-arrow-track">
-                  <i data-lucide="arrow-right" class="arrow-svg"></i>
-                  <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
-                </span>
-              </span>
+              <!-- @component btn-arrow -->
             </span>
           </a>
 
@@ -130,30 +125,12 @@
       <!-- Prev / Next Controls (Corner cutouts like testimonials) -->
       <div class="corner-cutout corner-cutout--top-left testi-cutout-left">
         <button class="cutout-btn testi-nav testi-prev" id="carouselPrev" type="button" aria-label="Anterior">
-          <span class="btn-arrow-wrap">
-            <span class="btn-arrow-track">
-              <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg)">
-                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-              </svg>
-              <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg)">
-                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-              </svg>
-            </span>
-          </span>
+          <!-- @component btn-arrow -->
         </button>
       </div>
       <div class="corner-cutout corner-cutout--top-right testi-cutout-right">
         <button class="cutout-btn testi-nav testi-next" id="carouselNext" type="button" aria-label="Siguiente">
-          <span class="btn-arrow-wrap">
-            <span class="btn-arrow-track">
-              <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-              </svg>
-              <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-              </svg>
-            </span>
-          </span>
+          <!-- @component btn-arrow -->
         </button>
       </div>
 
@@ -357,27 +334,7 @@
   </section>
 
   <!-- ============ 4. CTA OVERLAY COMPONENT ============ -->
-  <section class="cta inv-cta">
-    <div class="cta-frame reveal-card">
-      <img class="cta-bg" src="assets/img/cta-bg.png" alt="Coche deportivo de lujo con luces traseras rojas" loading="lazy">
-      <div class="cta-overlay"></div>
-      <div class="cta-content">
-        <h2>¿Listo para vivir la experiencia<br>de tu coche soñado?</h2>
-        <p>Reserva una prueba privada y descubre qué significa el verdadero rendimiento.<br>Todos los vehículos están disponibles para verlos de inmediato.</p>
-        <a class="btn btn-light" href="contacto.html">
-          <span>Programar prueba de conducción</span>
-          <span class="btn-chip btn-chip-dark">
-            <span class="btn-arrow-wrap">
-              <span class="btn-arrow-track">
-                <i data-lucide="arrow-right" class="arrow-svg"></i>
-                <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
-              </span>
-            </span>
-          </span>
-        </a>
-      </div>
-    </div>
-  </section>
+  <!-- @component cta title="¿Listo para vivir la experiencia<br>de tu coche soñado?" sub="Reserva una prueba privada y descubre qué significa el verdadero rendimiento.<br>Todos los vehículos están disponibles para verlos de inmediato." btn="Programar prueba de conducción" link="contacto.html" -->
 
   <!-- ============ 5. RELATED CARS SECTION ============ -->
   <section class="related-cars-section">
@@ -390,117 +347,20 @@
         <a class="btn btn-dark" href="inventario.html">
           <span>Ver inventario</span>
           <span class="btn-chip btn-chip-light">
-            <span class="btn-arrow-wrap">
-              <span class="btn-arrow-track">
-                <i data-lucide="arrow-right" class="arrow-svg"></i>
-                <i data-lucide="arrow-right" class="arrow-svg arrow-clone"></i>
-              </span>
-            </span>
+            <!-- @component btn-arrow -->
           </span>
         </a>
         <p class="section-sub">Seleccionados a mano de nuestra colección. Cada uno representa hoy la excelencia automovilística en su máxima expresión.</p>
       </div>
     </div>
 
-    <div class="related-grid">
-      <!-- Related 1: Veltora E1 -->
-      <a class="car-card reveal-card reveal-delay-1" href="coche.html?car=veltora-e1">
-        <div class="car-img">
-          <img src="assets/img/car-veltora.png" alt="Veltora E1" loading="lazy">
-          <div class="corner-cutout corner-cutout--bottom-right car-cutout">
-            <span class="cutout-btn car-arrow">
-              <span class="btn-arrow-wrap">
-                <span class="btn-arrow-track">
-                  <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                  <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                </span>
-              </span>
-            </span>
-          </div>
-        </div>
-        <div class="car-info">
-          <div class="car-row">
-            <span class="car-name">Veltora E1</span>
-            <span class="car-price">$89,900</span>
-          </div>
-          <div class="car-row">
-            <span class="car-meta">2024</span>
-            <span class="car-meta">Eléctrico</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Related 2: Krynox GT-R -->
-      <a class="car-card reveal-card reveal-delay-2" href="coche.html?car=krynox-gt">
-        <div class="car-img">
-          <img src="assets/img/car-krynox.png" alt="Krynox GT-R" loading="lazy">
-          <div class="corner-cutout corner-cutout--bottom-right car-cutout">
-            <span class="cutout-btn car-arrow">
-              <span class="btn-arrow-wrap">
-                <span class="btn-arrow-track">
-                  <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                  <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                </span>
-              </span>
-            </span>
-          </div>
-        </div>
-        <div class="car-info">
-          <div class="car-row">
-            <span class="car-name">Krynox GT-R</span>
-            <span class="car-price">$178,500</span>
-          </div>
-          <div class="car-row">
-            <span class="car-meta">2023</span>
-            <span class="car-meta">Gasolina</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Related 3: Aurvane Solaris -->
-      <a class="car-card reveal-card reveal-delay-3" href="coche.html?car=aurvane-solaris">
-        <div class="car-img">
-          <img src="assets/img/car-aurvane.png" alt="Aurvane Solaris" loading="lazy">
-          <div class="corner-cutout corner-cutout--bottom-right car-cutout">
-            <span class="cutout-btn car-arrow">
-              <span class="btn-arrow-wrap">
-                <span class="btn-arrow-track">
-                  <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                  <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                  </svg>
-                </span>
-              </span>
-            </span>
-          </div>
-        </div>
-        <div class="car-info">
-          <div class="car-row">
-            <span class="car-name">Aurvane Solaris</span>
-            <span class="car-price">$112,000</span>
-          </div>
-          <div class="car-row">
-            <span class="car-meta">2024</span>
-            <span class="car-meta">Híbrido</span>
-          </div>
-        </div>
-      </a>
-    </div>
+    <div class="related-grid" id="relatedGrid"></div>
   </section>
 
   <!-- @component footer title="¿Listo para encontrar<br>tu próximo vehículo?" sub="AUTO JUNG | Soluciones Integrales 360° en Automoción y Comercio Europeo desde Girona." -->
 
   <!-- @component scripts -->
+  <script src="assets/catalog.js"></script>
   <script src="car.js"></script>
 </body>
 </html>

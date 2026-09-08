@@ -314,7 +314,7 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
 }
 .nav-logo {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 31px;
+  font-size: 33px;
   font-weight: 700;
   letter-spacing: -0.015em;
   text-transform: uppercase;
@@ -322,7 +322,7 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 11px;
+  gap: 10px;
   line-height: 1;
   user-select: none;
   white-space: nowrap;
@@ -331,17 +331,13 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   transition: opacity 0.2s ease;
 }
 .nav-logo:hover {
-  opacity: 0.8;
+  opacity: 0.75;
 }
 .nav-logo-icon {
-  width: 27px;
-  height: 25px;
+  width: 24px;
+  height: 22px;
   display: block;
   flex-shrink: 0;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.nav-logo:hover .nav-logo-icon {
-  transform: scale(1.06);
 }
 .nav-links { display: flex; gap: 6px; }
 .nav-links a {
@@ -370,7 +366,8 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   background: #ebebeb;
   font-weight: 600;
 }
-.nav-links a::after {
+.nav-links a::after,
+.footer-col a::after {
   content: "";
   position: absolute;
   top: -45px;
@@ -391,10 +388,12 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   z-index: 1;
   transition: left 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.footer-col a:hover::after {
   left: calc(100% + 55px);
 }
-.nav-links a:hover {
+.nav-links a:hover,
+.footer-col a:hover {
   background: #ededed;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
   transform: none !important; /* Do not lift */
@@ -515,7 +514,10 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
 .hero-desc-mobile {
   display: none !important;
 }
-.hero-stats {
+.hero-stats,
+.inv-hero-stats,
+.trade-hero-stats,
+.about-hero-stats {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -1329,13 +1331,6 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
 
 /* Dual corner cutouts on testimonial photo handled by .corner-cutout component */
 
-.testi-next:hover .btn-arrow-track {
-  transform: translateX(20px);
-}
-.testi-next:hover .arrow-clone {
-  opacity: 1;
-}
-
 /* Left pointing arrow slide for prev button */
 .testi-prev .arrow-clone {
   left: 20px;
@@ -1591,12 +1586,6 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
 }
 /* Blog corner cutout handled by .corner-cutout component */
 
-.blog-card:hover .btn-arrow-track {
-  transform: translateX(20px);
-}
-.blog-card:hover .arrow-clone {
-  opacity: 1;
-}
 .blog-card-text {
   position: absolute;
   left: 24px;
@@ -1826,36 +1815,6 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
 .footer-left {
   max-width: 520px;
 }
-.footer-brand-mark {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: var(--ink);
-  margin-bottom: 24px;
-  transition: opacity 0.2s ease;
-}
-.footer-brand-mark:hover {
-  opacity: 0.75;
-}
-.footer-brand-icon {
-  width: 32px;
-  height: 30px;
-  display: block;
-  flex-shrink: 0;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.footer-brand-mark:hover .footer-brand-icon {
-  transform: scale(1.05);
-}
-.footer-brand-name {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: -0.015em;
-  text-transform: uppercase;
-  color: var(--ink);
-}
 .footer-left h2 { font-size: 36px; margin-bottom: 20px; }
 .footer-left .section-sub { margin-bottom: 28px; }
 .footer-ctas { display: flex; gap: 10px; align-items: center; }
@@ -1932,35 +1891,6 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
     inset 0 0 0 1px rgba(0, 0, 0, 0.06);
   transition: background 0.25s ease, box-shadow 0.25s ease, color 0.2s ease;
 }
-.footer-col a::after {
-  content: "";
-  position: absolute;
-  top: -45px;
-  bottom: -45px;
-  left: -55px;
-  width: 28px;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(235, 242, 255, 0.75) 20%,
-    #ffffff 50%,
-    rgba(235, 242, 255, 0.75) 80%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  box-shadow: 0 0 14px 3px rgba(255, 255, 255, 1), 0 0 3px rgba(0, 0, 0, 0.12);
-  transform: rotate(25deg);
-  pointer-events: none;
-  z-index: 1;
-  transition: left 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.footer-col a:hover::after {
-  left: calc(100% + 55px);
-}
-.footer-col a:hover {
-  background: #ededed;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  transform: none !important;
-}
 .footer-giant {
   width: 100%;
   margin-bottom: 36px;
@@ -2005,12 +1935,14 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
 }
 
 /* ============ INVENTORY PAGE ============ */
-.inv-hero {
+.inv-hero,
+.trade-hero {
   padding: 120px 32px 32px;
   max-width: var(--max-w);
   margin: 0 auto;
 }
-.inv-hero-top {
+.inv-hero-top,
+.trade-hero-top {
   margin-bottom: 24px;
 }
 .inv-hero-top h1 {
@@ -2022,7 +1954,8 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   color: var(--ink);
   margin: 0;
 }
-.inv-hero-bottom {
+.inv-hero-bottom,
+.trade-hero-bottom {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -2035,17 +1968,12 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   align-items: flex-start;
   gap: 20px;
 }
-.inv-hero-left p {
+.inv-hero-left p,
+.trade-hero-left p {
   font-size: 16px;
   color: var(--muted);
   line-height: 1.5;
   margin: 0;
-}
-.inv-hero-stats {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
 }
 
 /* Catalog & Filters Section */
@@ -3268,14 +3196,6 @@ html.js.loaded .car-hero-section .reveal-card {
 }
 
 /* ============ TRADE-IN (ENTREGA TU COCHE) PAGE STYLES ============ */
-.trade-hero {
-  padding: 120px 32px 32px;
-  max-width: var(--max-w);
-  margin: 0 auto;
-}
-.trade-hero-top {
-  margin-bottom: 24px;
-}
 .trade-hero-top h1 {
   font-size: clamp(36px, 4.4vw, 56px);
   font-weight: 700;
@@ -3285,30 +3205,12 @@ html.js.loaded .car-hero-section .reveal-card {
   color: var(--ink);
   margin: 0;
 }
-.trade-hero-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 36px;
-}
 .trade-hero-left {
   max-width: 480px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
-}
-.trade-hero-left p {
-  font-size: 16px;
-  color: var(--muted);
-  line-height: 1.5;
-  margin: 0;
-}
-.trade-hero-stats {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
 }
 
 /* Steps Section (CÃ³mo Funciona) */
@@ -4313,15 +4215,9 @@ a.dealership-info-val:hover {
 }
 .about-hero-left p {
   font-size: 16px;
-  line-height: 1.55;
   color: var(--muted);
+  line-height: 1.5;
   margin: 0;
-}
-.about-hero-stats {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
 }
 
 /* Mission section */

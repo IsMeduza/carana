@@ -18,8 +18,6 @@ const OBFUSCATE_PATHS = [
   'inventory.js',
   'car.js',
   'assets/motion.js',
-  'components/footer.js',
-  'components/services.js',
 ];
 
 const OBFUSCATOR_OPTIONS = {
@@ -126,4 +124,16 @@ async function copyAll(srcDir, distDir) {
 rm(DIST);
 fs.mkdirSync(DIST, { recursive: true });
 await copyAll(ROOT, DIST);
+
+// Regenerate _redirects from the single source of truth (lib/redirects.cjs)
+// so the deployed edge redirects never diverge from the map.
+const { REDIRECTS } = await import('./lib/redirects.cjs');
+const redirectLines = ['# Auto-generated from lib/redirects.cjs (single source of truth)'];
+for (const [from, to] of Object.entries(REDIRECTS)) {
+  redirectLines.push(`${from} ${to} 301`);
+}
+redirectLines.push('/inventory/* /inventario/:splat 301');
+fs.writeFileSync(path.join(DIST, '_redirects'), redirectLines.join('\n') + '\n', 'utf8');
+console.log('[redirects] _redirects regenerated');
+
 console.log('build complete -> dist/');
