@@ -499,6 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   populateCarData(carData);
   setupCarousel();
+  setupLightbox(carData);
   setupAccordions();
   setupCopyButtons(carData);
   renderRelatedCars(carId);
@@ -781,6 +782,250 @@ function setupCarousel() {
         goToSlide(currentIndex + 1);
       } else {
         goToSlide(currentIndex - 1);
+      }
+    }
+  });
+}
+
+function setupLightbox(car) {
+  const lightbox = document.getElementById('carLightbox');
+  const imgEl = document.getElementById('lightboxImg');
+  const counterEl = document.getElementById('lightboxCounter');
+  const carNameEl = document.getElementById('lightboxCarName');
+  const thumbsContainer = document.getElementById('lightboxThumbs');
+  const closeBtn = document.getElementById('lightboxClose');
+  const backdrop = document.getElementById('lightboxBackdrop');
+  const prevBtn = document.getElementById('lightboxPrev');
+  const nextBtn = document.getElementById('lightboxNext');
+  const expandBtn = document.getElementById('carouselExpandBtn');
+  const heroMainImg = document.getElementById('carHeroMainImg');
+
+  if (!lightbox || !imgEl) return;
+
+  const gallery = (car && car.gallery && car.gallery.length > 0)
+    ? car.gallery
+    : Array.from(document.querySelectorAll('#carouselTrack .car-carousel-slide:not(.carousel-clone) img')).map(img => img.getAttribute('src'));
+
+  if (!gallery.length) return;
+
+  let activeIndex = 0;
+
+  function renderThumbs() {
+    if (!thumbsContainer) return;
+    thumbsContainer.innerHTML = gallery.map((src, idx) => `
+      <button class="car-lightbox-thumb ${idx === activeIndex ? 'active' : ''}" data-idx="${idx}" type="button" aria-label="Ver foto ${idx + 1}">
+        <img src="${src}" alt="Miniatura ${idx + 1}" loading="lazy">
+      </button>
+    `).join('');
+
+    thumbsContainer.querySelectorAll('.car-lightbox-thumb').forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const idx = parseInt(thumb.getAttribute('data-idx'), 10);
+        goTo(idx);
+      });
+    });
+  }
+
+  function updateView() {
+    imgEl.style.opacity = '0';
+    imgEl.style.transform = 'scale(0.97)';
+    setTimeout(() => {
+      imgEl.src = gallery[activeIndex];
+      imgEl.alt = (car && car.name ? car.name : 'Vehículo') + ' - Foto ' + (activeIndex + 1);
+      imgEl.style.opacity = '1';
+      imgEl.style.transform = 'scale(1)';
+    }, 60);
+
+    if (counterEl) {
+      counterEl.textContent = `${activeIndex + 1} / ${gallery.length}`;
+    }
+    if (carNameEl && car) {
+      carNameEl.textContent = car.name;
+    }
+
+    if (thumbsContainer) {
+      thumbsContainer.querySelectorAll('.car-lightbox-thumb').forEach((t, i) => {
+        t.classList.toggle('active', i === activeIndex);
+        if (i === activeIndex) {
+          t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      });
+    }
+  }
+
+  function goTo(index) {
+    if (index < 0) {
+      activeIndex = gallery.length - 1;
+    } else if (index >= gallery.length) {
+      activeIndex = 0;
+    } else {
+      activeIndex = index;
+    }
+    updateView();
+  }
+
+  function openLightbox(startIndex = 0) {
+    activeIndex = Math.max(0, Math.min(startIndex, gallery.length - 1));
+    renderThumbs();
+    updateView();
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Event Listeners
+  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  if (backdrop) backdrop.addEventListener('click', closeLightbox);
+  if (prevBtn) prevBtn.addEventListener('click', () => goTo(activeIndex - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goTo(activeIndex + 1));
+
+  const carouselEl = document.querySelector('.car-carousel');
+
+  if (expandBtn) {
+    expandBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const activeDot = document.querySelector('#carouselDots .carousel-dot.active');
+      const idx = activeDot ? parseInt(activeDot.getAttribute('data-index'), 10) : 0;
+      openLightbox(idx || 0);
+    });
+  }
+
+  // Modern cursor follow on carousel (Desktop) using RAF + Lerp physics
+  if (carouselEl && expandBtn) {
+    const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    if (!isTouchDevice) {
+      let mouseX = 0;
+      let mouseY = 0;
+      let currX = 0;
+      let currY = 0;
+      let isHovered = false;
+      let isOverControl = false;
+      let rafId = null;
+      let targetScale = 0;
+      let currScale = 0;
+
+      function updateCursor() {
+        // High-end lerp (0.18) for floaty luxury magnetic follow
+        currX += (mouseX - currX) * 0.18;
+        currY += (mouseY - currY) * 0.18;
+        currScale += (targetScale - currScale) * 0.2;
+
+        if (expandBtn) {
+          expandBtn.style.transform = `translate3d(${currX.toFixed(2)}px, ${currY.toFixed(2)}px, 0) translate(-50%, -50%) scale(${currScale.toFixed(3)})`;
+          expandBtn.style.opacity = currScale > 0.05 ? Math.min(1, currScale * 1.3).toFixed(2) : '0';
+        }
+
+        if (isHovered || currScale > 0.01) {
+          rafId = requestAnimationFrame(updateCursor);
+        } else {
+          rafId = null;
+          if (expandBtn) expandBtn.style.opacity = '0';
+        }
+      }
+
+      carouselEl.addEventListener('mouseenter', (e) => {
+        const rect = carouselEl.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+        currX = mouseX;
+        currY = mouseY;
+        isHovered = true;
+
+        const overControl = !!e.target.closest('#carouselPrev, #carouselNext, #carouselDots, .corner-cutout');
+        isOverControl = overControl;
+        targetScale = overControl ? 0 : 1;
+
+        if (!rafId) rafId = requestAnimationFrame(updateCursor);
+      });
+
+      carouselEl.addEventListener('mousemove', (e) => {
+        const rect = carouselEl.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+
+        const overControl = !!e.target.closest('#carouselPrev, #carouselNext, #carouselDots, .corner-cutout');
+        if (overControl !== isOverControl) {
+          isOverControl = overControl;
+          targetScale = isOverControl ? 0 : 1;
+        }
+
+        if (!rafId && isHovered) rafId = requestAnimationFrame(updateCursor);
+      });
+
+      carouselEl.addEventListener('mouseleave', () => {
+        isHovered = false;
+        targetScale = 0;
+        if (!rafId) rafId = requestAnimationFrame(updateCursor);
+      });
+    }
+  }
+
+  // Carousel Click / Tap handling (Single click/tap opens lightbox immediately)
+  if (carouselEl) {
+    carouselEl.addEventListener('click', (e) => {
+      // Ignore clicks on prev/next cutout buttons and dots
+      if (e.target.closest('#carouselPrev, #carouselNext, #carouselDots, .corner-cutout')) {
+        return;
+      }
+      if (e.target.closest('#carouselExpandBtn')) {
+        return;
+      }
+
+      const activeDot = document.querySelector('#carouselDots .carousel-dot.active');
+      const idx = activeDot ? parseInt(activeDot.getAttribute('data-index'), 10) : 0;
+      openLightbox(idx || 0);
+    });
+  }
+
+
+  // Click on main hero image opens the lightbox at slide 0
+  if (heroMainImg) {
+    heroMainImg.addEventListener('click', () => {
+      openLightbox(0);
+    });
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') {
+      closeLightbox();
+    } else if (e.key === 'ArrowLeft') {
+      goTo(activeIndex - 1);
+    } else if (e.key === 'ArrowRight') {
+      goTo(activeIndex + 1);
+    }
+  });
+
+  // Touch swipe support on modal
+  let touchStartX = 0;
+  let touchEndX = 0;
+  lightbox.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      touchStartX = e.touches[0].clientX;
+      touchEndX = touchStartX;
+    }
+  }, { passive: true });
+
+  lightbox.addEventListener('touchmove', (e) => {
+    if (e.touches.length === 1) {
+      touchEndX = e.touches[0].clientX;
+    }
+  }, { passive: true });
+
+  lightbox.addEventListener('touchend', () => {
+    const diff = touchEndX - touchStartX;
+    if (Math.abs(diff) > 45) {
+      if (diff < 0) {
+        goTo(activeIndex + 1);
+      } else {
+        goTo(activeIndex - 1);
       }
     }
   });

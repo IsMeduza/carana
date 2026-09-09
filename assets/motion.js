@@ -281,6 +281,65 @@
     });
   }
 
+  // ============ 2.7 CTA SCROLL PARALLAX (ALL PAGES) ============
+  function initCtaParallax() {
+    const frames = document.querySelectorAll('.cta-frame');
+    if (!frames.length) return;
+
+    const prefersReducedMotion =
+      window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    let ticking = false;
+
+    function updateCtaParallax() {
+      ticking = false;
+      const windowH = window.innerHeight || document.documentElement.clientHeight;
+
+      for (let i = 0; i < frames.length; i++) {
+        const frame = frames[i];
+        const rect = frame.getBoundingClientRect();
+
+        // Active whenever frame is within or slightly outside the visible viewport
+        if (rect.bottom >= -80 && rect.top <= windowH + 80) {
+          const totalDist = windowH + rect.height;
+          const progress = Math.min(1, Math.max(0, (windowH - rect.top) / totalDist));
+          // centered: -0.5 when entering bottom, 0 in center of viewport, +0.5 when exiting top
+          const centered = progress - 0.5;
+
+          const bg = frame.querySelector('.cta-bg');
+          if (bg) {
+            // Parallax shift downward as user scrolls down, plus subtle scale
+            const bgY = centered * 64;
+            const bgScale = 1.05 + Math.abs(centered) * 0.04;
+            bg.style.transform = `translate3d(0, ${bgY.toFixed(2)}px, 0) scale(${bgScale.toFixed(3)})`;
+          }
+
+          const content = frame.querySelector('.cta-content');
+          if (content) {
+            // Subtle counter-parallax for multiplane depth, matching hero-content
+            const contentY = centered * -24;
+            content.style.transform = `translate3d(0, ${contentY.toFixed(2)}px, 0)`;
+          }
+        }
+      }
+    }
+
+    function requestTick() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateCtaParallax);
+      }
+    }
+
+    window.addEventListener('scroll', requestTick, { passive: true });
+    window.addEventListener('resize', requestTick, { passive: true });
+    if (lenisInstance) {
+      lenisInstance.on('scroll', requestTick);
+    }
+    updateCtaParallax();
+  }
+
   // ============ 3. MOBILE NAVIGATION TOGGLE ============
   function initMobileNav() {
     const burger = document.getElementById('burger') || document.getElementById('navBurger') || document.querySelector('.nav-burger');
@@ -557,6 +616,7 @@
     initRevealObserver();
     initNavBorder();
     initStatCounters();
+    initCtaParallax();
     initMobileNav();
     initAccordions();
     initCustomDropdowns();
@@ -603,6 +663,7 @@
     initDropdowns: initCustomDropdowns,
     initAccordions: initAccordions,
     refreshCounters: (scope) => initStatCounters(scope || document),
+    refreshCtaParallax: initCtaParallax,
     initLeadForm: (cfg) => {
       const form = document.getElementById(cfg.form);
       const feedback = document.getElementById(cfg.feedback);
