@@ -18,6 +18,7 @@ const OBFUSCATE_PATHS = [
   'inventory.js',
   'car.js',
   'assets/motion.js',
+  'assets/catalog.js',
 ];
 
 const OBFUSCATOR_OPTIONS = {

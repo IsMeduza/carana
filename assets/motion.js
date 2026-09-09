@@ -347,43 +347,6 @@
 
     if (!burger || !navLinks) return;
 
-    // Ensure mobile actions (location, phone, contact button) exist in navLinks
-    if (!navLinks.querySelector('.mobile-nav-actions')) {
-      const actions = document.createElement('div');
-      actions.className = 'mobile-nav-actions';
-      actions.innerHTML = `
-        <div class="mobile-nav-icons">
-          <a href="contacto.html#map" class="mobile-icon-btn" aria-label="Ubicación">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
-          </a>
-          <a href="tel:+34900000000" class="mobile-icon-btn" aria-label="Teléfono">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-          </a>
-        </div>
-        <a class="btn btn-dark mobile-contact-btn" href="contacto.html">
-          <span>Contactar</span>
-          <span class="btn-chip btn-chip-light">
-            <span class="btn-arrow-wrap">
-              <span class="btn-arrow-track">
-                <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                </svg>
-                <svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/>
-                </svg>
-              </span>
-            </span>
-          </span>
-        </a>
-      `;
-      navLinks.appendChild(actions);
-    }
-
     function toggleMenu(forceState) {
       const isCurrentlyOpen = navLinks.classList.contains('open');
       const shouldOpen = forceState !== undefined ? forceState : !isCurrentlyOpen;

@@ -334,8 +334,8 @@ h2 { font-size: clamp(40px, 2.8vw, 46px); font-weight: 700; line-height: 1.08; l
   opacity: 0.75;
 }
 .nav-logo-icon {
-  width: 24px;
-  height: 22px;
+  width: 30px;
+  height: 28px;
   display: block;
   flex-shrink: 0;
 }
@@ -4505,11 +4505,6 @@ a.dealership-info-val:hover {
   }
   .dealership-map-card {
     height: 340px;
-  }
-}
-@media (max-width: 600px) {
-  .dealership-info-grid {
-    grid-template-columns: 1fr;
   }
 }
 

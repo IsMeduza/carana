@@ -317,24 +317,11 @@ if (testiCard) {
     .map(slug => catalog.find(c => c.slug === slug))
     .filter(Boolean);
 
-  const arrowSvg = '<svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' +
-    '<path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/></svg>' +
-    '<svg class="arrow-svg arrow-clone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' +
-    '<path d="M 4 12 L 19.88 12 M 13.75 18.75 L 19.44 13.06 C 19.73 12.77 19.88 12.38 19.88 12 M 13.75 5.25 L 19.44 10.94 C 19.73 11.23 19.88 11.62 19.88 12"/></svg>';
-
-  grid.innerHTML = cars.map((car, idx) =>
-    '<a class="car-card reveal-card reveal-delay-' + (idx + 1) + '" href="coche.html?car=' + car.slug + '">' +
-    '<div class="car-img">' +
-    '<img src="' + car.image + '" alt="' + car.alt + '">' +
-    '<div class="corner-cutout corner-cutout--bottom-right car-cutout">' +
-    '<span class="cutout-btn car-arrow">' +
-    '<span class="btn-arrow-wrap"><span class="btn-arrow-track">' + arrowSvg + '</span></span>' +
-    '</span></div></div>' +
-    '<div class="car-info">' +
-    '<div class="car-row"><span class="car-name">' + car.name + '</span><span class="car-price">' + car.priceLabel + '</span></div>' +
-    '<div class="car-row"><span class="car-meta">' + car.year + '</span><span class="car-meta"></span></div>' +
-    '</div></a>'
-  ).join('\n');
+  if (typeof window.renderCarCard === 'function') {
+    grid.innerHTML = cars.map((car, idx) =>
+      window.renderCarCard(car, { delay: idx + 1 })
+    ).join('\n');
+  }
 
   if (window.EVO && typeof window.EVO.refreshReveals === 'function') {
     window.EVO.refreshReveals();
